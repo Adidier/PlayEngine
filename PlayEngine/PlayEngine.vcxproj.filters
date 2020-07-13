@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Archivos de recursos">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{2317a8ee-ecfa-4357-ba84-532eb69df2b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE">
+      <UniqueIdentifier>{0039e17c-9ad2-445f-9baf-755fc38d0879}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\Base">
+      <UniqueIdentifier>{b8081ddd-fda0-4507-bb0d-ff5b3bd13941}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\Graphic">
+      <UniqueIdentifier>{d8619dec-de55-4ad0-a680-87a61f70b8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets">
+      <UniqueIdentifier>{e982d58c-17a0-4021-a688-a70118ffcdb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders">
+      <UniqueIdentifier>{98c012a2-0e8b-4e12-8b05-465a584724bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Assets\Shaders\Default">
+      <UniqueIdentifier>{1e3942ff-49fe-4a7d-8a74-46ba389ebe19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\Graphic\Lights">
+      <UniqueIdentifier>{658e3bb2-469b-45c5-9014-4f679046ae01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\Physics">
+      <UniqueIdentifier>{1b45bf6f-7d94-4d26-91ba-e46cc7b46218}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Base\GameState.cpp">
+      <Filter>CGE\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Base\GameStateManager.cpp">
+      <Filter>CGE\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Base\Platform.cpp">
+      <Filter>CGE\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Base\ShaderManager.cpp">
+      <Filter>CGE\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Camera.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Mesh.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Shader.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Model.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Base\Transform.cpp">
+      <Filter>CGE\Base</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\BaseModel.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Texture.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Skybox.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Lights\DirectionalLight.cpp">
+      <Filter>CGE\Graphic\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Lights\Light.cpp">
+      <Filter>CGE\Graphic\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\Lights\PointLight.cpp">
+      <Filter>CGE\Graphic\Lights</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Physics\Physics.cpp">
+      <Filter>CGE\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CGE\Base\GameState.h">
+      <Filter>CGE\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Base\GameStateManager.h">
+      <Filter>CGE\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Base\Platform.h">
+      <Filter>CGE\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Base\ShaderManager.h">
+      <Filter>CGE\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Camera.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Mesh.h">
+      <Filter>CGE\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Shader.h">
+      <Filter>CGE\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Model.h">
+      <Filter>CGE\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Base\Transform.h">
+      <Filter>CGE\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\BaseModel.h">
+      <Filter>CGE\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Texture.h">
+      <Filter>CGE\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Skybox.h">
+      <Filter>CGE\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Lights\DirectionalLight.h">
+      <Filter>CGE\Graphic\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Lights\Light.h">
+      <Filter>CGE\Graphic\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Graphic\Lights\PointLight.h">
+      <Filter>CGE\Graphic\Lights</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\Physics\Physics.h">
+      <Filter>CGE\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Enemy.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Shaders\Default\default.frag">
+      <Filter>Assets\Shaders\Default</Filter>
+    </None>
+    <None Include="Assets\Shaders\Default\default.vert">
+      <Filter>Assets\Shaders\Default</Filter>
+    </None>
+    <None Include="Assets\Shaders\OneColor.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\OneColor.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\gouraud-shader.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\gouraud-shader.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\phong-shader.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\phong-shader.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\toon-shader.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\toon-shader.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\skybox.frag">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+    <None Include="Assets\Shaders\skybox.vert">
+      <Filter>Assets\Shaders</Filter>
+    </None>
+  </ItemGroup>
+</Project>
