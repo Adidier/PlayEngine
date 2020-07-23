@@ -4,6 +4,7 @@ Enemy::Enemy(Player* player,std::string path)
 {
 	this->player = player;
 	model.LoadModel(path);
+	model.AddTexture("Assets/Textures/pina.png");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 }
 
