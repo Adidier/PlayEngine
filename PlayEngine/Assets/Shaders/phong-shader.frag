@@ -1,10 +1,8 @@
 #version 330
 
-in vec4 vCol;
 in vec2 TexCoord;
 in vec3 FragPos;
 in mat3 TBN;	
-in vec3 Normal1;
 out vec4 colour;
 
 const int MAX_POINT_LIGHTS = 3;
