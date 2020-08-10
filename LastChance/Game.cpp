@@ -2,7 +2,7 @@
 #include<iostream>
 #include <glm.hpp>
 #include <time.h>
-#include "CGE/Physics/Physics.h"
+#include "Physics/Physics.h"
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 
@@ -19,7 +19,7 @@ Game::~Game()
 void Game::Init()
 {
 	std::cout << " Menu Init" << std::endl;
-	this->platform = Platform::GetPtr();
+	this->platform = PEPlatform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
 	
 	shaderManager = ShaderManager::getPtr();

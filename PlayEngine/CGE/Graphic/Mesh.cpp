@@ -1,8 +1,8 @@
-#include "Mesh.h"
+#include "Graphic/Mesh.h"
 #include "glm.hpp"
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
-#include "../Base/ShaderManager.h"
+#include "Base/ShaderManager.h"
 
 		Mesh::Mesh()
 		{

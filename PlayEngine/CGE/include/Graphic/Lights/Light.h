@@ -1,10 +1,10 @@
 #pragma once
-
+#include "../../Export.h"
 #include <GL\glew.h>
 #include <glm.hpp>
 
 
-		class Light
+		class PLAYENGINE Light
 		{
 		public:
 			Light();

@@ -1,5 +1,5 @@
-#include "ShaderManager.h"
-#include "Platform.h"
+#include "Base/ShaderManager.h"
+#include "Base/PEPlatform.h"
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
@@ -117,7 +117,7 @@ void ShaderManager::initShader(Camera* camera)
 	if (currentShader != nullptr)
 	{
 		this->camera = camera;
-		projection = glm::perspective(45.0f, (float)Platform::GetPtr()->GetWidth() / Platform::GetPtr()->GetHeight(), 0.1f, 1000.0f);
+		projection = glm::perspective(45.0f, (float)PEPlatform::GetPtr()->GetWidth() / PEPlatform::GetPtr()->GetHeight(), 0.1f, 1000.0f);
 
 
 	}

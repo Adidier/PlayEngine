@@ -1,4 +1,4 @@
-#include "Skybox.h"
+#include "Graphic/Skybox.h"
 #include "stb_image.h"
 
 Skybox::Skybox(std::vector<std::string> faceLocations)

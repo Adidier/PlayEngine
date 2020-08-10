@@ -1,8 +1,9 @@
 #pragma once
+#include "../../Export.h"
 #include "Light.h"
 
 
-		class PointLight :
+		class PLAYENGINE PointLight :
 			public Light
 		{
 		public:

@@ -1,15 +1,16 @@
 #pragma once
+#include "../Export.h"
 #include "GameState.h"
-#include "Platform.h"
+#include "PEPlatform.h"
 #include <stack>
 
 class GameState;
 
-class GameStateManager
+class PLAYENGINE GameStateManager
 {
 private:
 	std::stack<GameState*> states;
-	Platform* platform;
+	PEPlatform* platform;
 	GameStateManager();
 	~GameStateManager();
 	static GameStateManager* ptr;

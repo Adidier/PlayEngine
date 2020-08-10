@@ -1,28 +1,29 @@
 #pragma once
+#include "../Export.h"
 #include <string>
 #include "GameState.h"
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
 #include<map>
+
 class GameState;
-class Platform
+class PLAYENGINE PEPlatform
 {
 private:
 	int width;
 	int height;
 	std::string name;
-
 	GLFWwindow* mainWindow;
 	GLint bufferWidth, bufferHeight;
 	float deltaTime{ 0 };
 	float lastTime{ 0 };
 private:
 	void init();
-	Platform(std::string name, int wWindow, int hWindow);
-	~Platform();
-	static Platform* ptr;
+	PEPlatform(std::string name, int wWindow, int hWindow);
+	~PEPlatform();
+	static PEPlatform* ptr;
 public:
-	static Platform* GetPtr();
+	static PEPlatform* GetPtr();
 
 	void RenderClear();
 	void RenderPresent();

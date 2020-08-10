@@ -1,5 +1,6 @@
 #ifndef MODEL_H
 #define MODEL_H
+#include "../Export.h"
 #include "Mesh.h"
 #include "Shader.h"
 #include "Mesh.h"
@@ -8,7 +9,7 @@
 #include "../Base/Transform.h"
 
 
-		class BaseModel
+		class PLAYENGINE BaseModel
 		{
 		public:
 			BaseModel();

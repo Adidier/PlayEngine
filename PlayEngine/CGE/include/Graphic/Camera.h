@@ -1,11 +1,12 @@
 #pragma once
+#include "../Export.h"
 #include <map>
 #include <GL\glew.h>
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 #include <GLFW\glfw3.h>
 
-class Camera
+class PLAYENGINE Camera
 {
 public:
 	Camera();

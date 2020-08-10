@@ -1,4 +1,4 @@
-#include "CGE/Base/GameStateManager.h"
+#include "Base/GameStateManager.h"
 #include "Game.h"
 
 int main(int argc, char* argv[])

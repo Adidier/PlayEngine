@@ -1,10 +1,10 @@
-#include "GameStateManager.h"
+#include "Base/GameStateManager.h"
 #include <iostream>
 GameStateManager* GameStateManager::ptr;
 
 GameStateManager::GameStateManager()
 {
-	platform = Platform::GetPtr();
+	platform = PEPlatform::GetPtr();
 }
 
 GameStateManager::~GameStateManager()

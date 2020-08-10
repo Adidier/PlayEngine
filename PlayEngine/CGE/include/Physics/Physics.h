@@ -1,9 +1,10 @@
 #pragma once
+#include "../Export.h"
 #include <GL\glew.h>
 #include <vector>
 #include "glm.hpp"
 
-class Physics
+class PLAYENGINE Physics
 {
 	private:
 		static glm::vec3 GetMin(std::vector<glm::vec4> vector)
