@@ -1,4 +1,5 @@
 #pragma once
+#include "../Export.h"
 #include<map>
 #include "../Graphic/Shader.h"
 #include "../Graphic/Camera.h"
@@ -6,7 +7,7 @@
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 
-class ShaderManager
+class PLAYENGINE ShaderManager
 {
 public:
 	void LoadShaders(const std::string& name, const std::string& pathV, const std::string& pathF);

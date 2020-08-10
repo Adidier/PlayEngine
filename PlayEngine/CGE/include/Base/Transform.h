@@ -1,9 +1,10 @@
 #pragma once
+#include "../Export.h"
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 
-		class Transform
+		class PLAYENGINE Transform
 		{
 		public:
 			void SetTranslation(float x, float y, float z);

@@ -1,6 +1,6 @@
 #pragma once
-#include "CGE/Graphic/Camera.h"
-#include "CGE/Graphic/Model.h"
+#include "Graphic/Camera.h"
+#include "Graphic/Model.h"
 class Player
 {
 	private:

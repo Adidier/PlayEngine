@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../Export.h"
 #include <stdio.h>
 #include <string>
 #include <iostream>
@@ -11,7 +11,7 @@
 
 const int MAX_POINT_LIGHTS = 3;
 
-class Shader
+class PLAYENGINE Shader
 {
 private:
 	

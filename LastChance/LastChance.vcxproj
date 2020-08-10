@@ -18,38 +18,52 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Player.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Player.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{AAC58711-E8E4-4C7D-9D60-4E1B9A45D84D}</ProjectGuid>
-    <RootNamespace>PlayEngine</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{6e9e312d-6268-46c7-ac4e-21467b53502c}</ProjectGuid>
+    <RootNamespace>LastChance</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -69,117 +83,77 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\std_image\include;C:\Dev2020\PlayEngine\PlayEngine\CGE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>PLAYENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Dev2020\PlayEngine\PlayEngine\CGE\include;..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\lib-vc2019;..\ExternalLibs\glew-2.1.0\lib\Release\Win32;..\ExternalLibs\Assimp\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3.lib;glew32.lib;Opengl32.lib;assimp-vc142-mtd.lib;%(AdditionalDependencies)</AdditionalDependencies>
-    </Link>
-  </ItemDefinitionGroup>
-  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <ClCompile>
-      <WarningLevel>Level3</WarningLevel>
-      <Optimization>Disabled</Optimization>
-      <SDLCheck>true</SDLCheck>
-      <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp_64\include;..\ExternalLibs\std_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-    </ClCompile>
-    <Link>
-      <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\lib-vc2019;..\ExternalLibs\glew-2.1.0\lib\Release\x64;..\ExternalLibs\Assimp_64\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>glfw3_64.lib;glew32.lib;Opengl32.lib;assimp-vc140-mt.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Dev2020\PlayEngine\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>PlayEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
-      <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="CGE\Base\GameState.cpp" />
-    <ClCompile Include="CGE\Base\GameStateManager.cpp" />
-    <ClCompile Include="CGE\Base\PEPlatform.cpp" />
-    <ClCompile Include="CGE\Base\ShaderManager.cpp" />
-    <ClCompile Include="CGE\Base\Transform.cpp" />
-    <ClCompile Include="CGE\Graphic\BaseModel.cpp" />
-    <ClCompile Include="CGE\Graphic\Camera.cpp" />
-    <ClCompile Include="CGE\Graphic\Lights\DirectionalLight.cpp" />
-    <ClCompile Include="CGE\Graphic\Lights\Light.cpp" />
-    <ClCompile Include="CGE\Graphic\Lights\PointLight.cpp" />
-    <ClCompile Include="CGE\Graphic\Mesh.cpp" />
-    <ClCompile Include="CGE\Graphic\Model.cpp" />
-    <ClCompile Include="CGE\Graphic\Shader.cpp" />
-    <ClCompile Include="CGE\Graphic\Skybox.cpp" />
-    <ClCompile Include="CGE\Graphic\Texture.cpp" />
-    <ClCompile Include="CGE\Physics\Physics.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="CGE\include\Base\GameState.h" />
-    <ClInclude Include="CGE\include\Base\GameStateManager.h" />
-    <ClInclude Include="CGE\include\Base\PEPlatform.h" />
-    <ClInclude Include="CGE\include\Base\ShaderManager.h" />
-    <ClInclude Include="CGE\include\Base\Transform.h" />
-    <ClInclude Include="CGE\include\Export.h" />
-    <ClInclude Include="CGE\include\Graphic\BaseModel.h" />
-    <ClInclude Include="CGE\include\Graphic\Camera.h" />
-    <ClInclude Include="CGE\include\Graphic\Lights\DirectionalLight.h" />
-    <ClInclude Include="CGE\include\Graphic\Lights\Light.h" />
-    <ClInclude Include="CGE\include\Graphic\Lights\PointLight.h" />
-    <ClInclude Include="CGE\include\Graphic\Mesh.h" />
-    <ClInclude Include="CGE\include\Graphic\Model.h" />
-    <ClInclude Include="CGE\include\Graphic\Shader.h" />
-    <ClInclude Include="CGE\include\Graphic\Skybox.h" />
-    <ClInclude Include="CGE\include\Graphic\Texture.h" />
-    <ClInclude Include="CGE\include\Physics\Physics.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Assets\Shaders\Default\default.frag" />
-    <None Include="Assets\Shaders\Default\default.vert" />
-    <None Include="Assets\Shaders\gouraud-shader.frag" />
-    <None Include="Assets\Shaders\gouraud-shader.vert" />
-    <None Include="Assets\Shaders\OneColor.frag" />
-    <None Include="Assets\Shaders\OneColor.vert" />
-    <None Include="Assets\Shaders\phong-shader.frag" />
-    <None Include="Assets\Shaders\phong-shader.vert" />
-    <None Include="Assets\Shaders\skybox.frag" />
-    <None Include="Assets\Shaders\skybox.vert" />
-    <None Include="Assets\Shaders\toon-shader.frag" />
-    <None Include="Assets\Shaders\toon-shader.vert" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

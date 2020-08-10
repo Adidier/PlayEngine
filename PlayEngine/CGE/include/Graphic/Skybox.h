@@ -1,6 +1,6 @@
 #ifndef SKYBOX_H
 #define SKYBOX_H
-
+#include "../Export.h"
 #include <vector>
 #include <string>
 #include <GL\glew.h>
@@ -11,7 +11,7 @@
 #include "Shader.h"
 #include "../Base/ShaderManager.h"
 
-	class Skybox
+	class PLAYENGINE Skybox
 	{
 	public:
 		Skybox(std::vector<std::string> faceLocations);

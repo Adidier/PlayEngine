@@ -1,10 +1,11 @@
 #pragma once
-#include "Platform.h"
+#include "../Export.h"
+#include "PEPlatform.h"
 #include <map>
-class Platform;
+class PEPlatform;
 class GameStateManager;
 
-class GameState
+class PLAYENGINE GameState
 {
 public:
 	virtual void Init() = 0;

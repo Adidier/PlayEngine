@@ -1,11 +1,11 @@
 #pragma once
-
+#include "../Export.h"
 #include <GL\glew.h>
 #include <vector>
 #include "glm.hpp"
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
-		class Mesh
+		class PLAYENGINE Mesh
 		{
 		public:
 			Mesh();

@@ -5,9 +5,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Game">
-      <UniqueIdentifier>{2317a8ee-ecfa-4357-ba84-532eb69df2b7}</UniqueIdentifier>
-    </Filter>
     <Filter Include="CGE">
       <UniqueIdentifier>{0039e17c-9ad2-445f-9baf-755fc38d0879}</UniqueIdentifier>
     </Filter>
@@ -32,25 +29,31 @@
     <Filter Include="CGE\Physics">
       <UniqueIdentifier>{1b45bf6f-7d94-4d26-91ba-e46cc7b46218}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CGE\include">
+      <UniqueIdentifier>{fa4f898b-873e-4685-8036-93432b379e71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\include\Physics">
+      <UniqueIdentifier>{7c202ab3-7db8-4005-b575-c1f64070960f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\include\Graphic">
+      <UniqueIdentifier>{bfebf9e8-b0b1-4c0c-9bd7-60cd0d6ee872}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\include\Graphic\Lights">
+      <UniqueIdentifier>{4f9621a3-83cf-40d3-b698-caf63ae91275}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\include\Base">
+      <UniqueIdentifier>{793646e1-ece4-481e-8aaa-07205d661c09}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
     <ClCompile Include="CGE\Base\GameState.cpp">
       <Filter>CGE\Base</Filter>
     </ClCompile>
     <ClCompile Include="CGE\Base\GameStateManager.cpp">
       <Filter>CGE\Base</Filter>
     </ClCompile>
-    <ClCompile Include="CGE\Base\Platform.cpp">
-      <Filter>CGE\Base</Filter>
-    </ClCompile>
     <ClCompile Include="CGE\Base\ShaderManager.cpp">
       <Filter>CGE\Base</Filter>
-    </ClCompile>
-    <ClCompile Include="CGE\Graphic\Camera.cpp">
-      <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="CGE\Graphic\Mesh.cpp">
       <Filter>CGE\Graphic</Filter>
@@ -85,68 +88,65 @@
     <ClCompile Include="CGE\Physics\Physics.cpp">
       <Filter>CGE\Physics</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
-      <Filter>Game</Filter>
+    <ClCompile Include="CGE\Graphic\Camera.cpp">
+      <Filter>CGE\Graphic</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="CGE\Base\PEPlatform.cpp">
+      <Filter>CGE\Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CGE\Base\GameState.h">
-      <Filter>CGE\Base</Filter>
+    <ClInclude Include="CGE\include\Physics\Physics.h">
+      <Filter>CGE\include\Physics</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Base\GameStateManager.h">
-      <Filter>CGE\Base</Filter>
+    <ClInclude Include="CGE\include\Base\GameState.h">
+      <Filter>CGE\include\Base</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Base\Platform.h">
-      <Filter>CGE\Base</Filter>
+    <ClInclude Include="CGE\include\Base\GameStateManager.h">
+      <Filter>CGE\include\Base</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Base\ShaderManager.h">
-      <Filter>CGE\Base</Filter>
+    <ClInclude Include="CGE\include\Base\ShaderManager.h">
+      <Filter>CGE\include\Base</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Camera.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="CGE\include\Base\Transform.h">
+      <Filter>CGE\include\Base</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Mesh.h">
-      <Filter>CGE\Graphic</Filter>
+    <ClInclude Include="CGE\include\Export.h">
+      <Filter>CGE\include</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Shader.h">
-      <Filter>CGE\Graphic</Filter>
+    <ClInclude Include="CGE\include\Graphic\BaseModel.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Model.h">
-      <Filter>CGE\Graphic</Filter>
+    <ClInclude Include="CGE\include\Graphic\Camera.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Base\Transform.h">
-      <Filter>CGE\Base</Filter>
+    <ClInclude Include="CGE\include\Graphic\Mesh.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\BaseModel.h">
-      <Filter>CGE\Graphic</Filter>
+    <ClInclude Include="CGE\include\Graphic\Model.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Texture.h">
-      <Filter>CGE\Graphic</Filter>
+    <ClInclude Include="CGE\include\Graphic\Shader.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Skybox.h">
-      <Filter>CGE\Graphic</Filter>
+    <ClInclude Include="CGE\include\Graphic\Skybox.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Lights\DirectionalLight.h">
-      <Filter>CGE\Graphic\Lights</Filter>
+    <ClInclude Include="CGE\include\Graphic\Texture.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Lights\Light.h">
-      <Filter>CGE\Graphic\Lights</Filter>
+    <ClInclude Include="CGE\include\Graphic\Lights\DirectionalLight.h">
+      <Filter>CGE\include\Graphic\Lights</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Graphic\Lights\PointLight.h">
-      <Filter>CGE\Graphic\Lights</Filter>
+    <ClInclude Include="CGE\include\Graphic\Lights\Light.h">
+      <Filter>CGE\include\Graphic\Lights</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\Physics\Physics.h">
-      <Filter>CGE\Physics</Filter>
+    <ClInclude Include="CGE\include\Graphic\Lights\PointLight.h">
+      <Filter>CGE\include\Graphic\Lights</Filter>
     </ClInclude>
-    <ClInclude Include="Game.h">
-      <Filter>Game</Filter>
+    <ClInclude Include="CGE\include\Base\PEPlatform.h">
+      <Filter>CGE\include\Base</Filter>
     </ClInclude>
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="GameObject.h" />
-    <ClInclude Include="Enemy.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\Default\default.frag">

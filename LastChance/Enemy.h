@@ -1,7 +1,7 @@
 #pragma once
 #include "GameObject.h"
 #include "Player.h"
-#include "CGE/Graphic/Model.h"
+#include "Graphic/Model.h"
 class Enemy : public GameObject
 {
 private:

@@ -1,4 +1,4 @@
-#include "Model.h"
+#include "Graphic/Model.h"
 
 
 		Model::Model()
@@ -113,8 +113,8 @@
 			int idx = std::string(path).rfind("\\");
 			std::string filename = std::string(path).substr(idx + 1);
 
-			Texture* texture;
-			texture = new Texture(filename.c_str());
+			Graphic::Texture* texture;
+			texture = new Graphic::Texture(filename.c_str());
 
 			if (!texture->LoadTextureA())
 			{

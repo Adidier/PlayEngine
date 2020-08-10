@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../Export.h"
 #include <vector>
 #include <string>
 
@@ -14,7 +14,7 @@
 #include "BaseModel.h"
 
 
-class Model : public BaseModel
+class PLAYENGINE Model : public BaseModel
 {
 public:
 	Model();
@@ -29,8 +29,8 @@ private:
 	void LoadMesh(aiMesh *mesh, const aiScene *scene);
 	void LoadMaterials(const aiScene *scene);
 
-	std::vector<Texture*> textureList;
-	std::vector<Texture*> textureNormalList;
+	std::vector<Graphic::Texture*> textureList;
+	std::vector<Graphic::Texture*> textureNormalList;
 	std::vector<unsigned int> meshToTex;
 		
 };
