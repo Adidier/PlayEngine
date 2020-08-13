@@ -3,8 +3,8 @@
 
 int main(int argc, char* argv[])
 {
-	GameStateManager* manager = GameStateManager::GetPtr();
-	manager->SetState(new Game());
+	Base::GameStateManager* manager = Base::GameStateManager::GetPtr();
+	manager->SetState(new SourceFiles::Game());
 	manager->GameLoop();
 	return 0;
 }

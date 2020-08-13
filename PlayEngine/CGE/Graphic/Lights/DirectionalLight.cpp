@@ -1,7 +1,6 @@
 #include "Graphic/Lights/DirectionalLight.h"
-
-
-
+namespace Graphics {
+	namespace Lights {
 		DirectionalLight::DirectionalLight() : Light()
 		{
 			direction = glm::vec3(0.0f, -1.0f, 0.0f);
@@ -27,3 +26,5 @@
 		DirectionalLight::~DirectionalLight()
 		{
 		}
+	}
+}

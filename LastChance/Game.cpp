@@ -6,149 +6,150 @@
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 
-
-Game::Game() : player("adidier regresa.obj")
-{
-
-}
-
-Game::~Game()
-{
-}
-
-void Game::Init()
-{
-	std::cout << " Menu Init" << std::endl;
-	this->platform = PEPlatform::GetPtr();
-	this->manager = GameStateManager::GetPtr();
-	
-	shaderManager = ShaderManager::getPtr();
-	shaderManager->initShader(player.GetCamera());
-	shaderManager->LoadShaders("OneColor", "Assets/Shaders/OneColor.vert", "Assets/Shaders/OneColor.frag");
-	shaderManager->LoadShaders("gouraud-shader", "Assets/Shaders/gouraud-shader.vert", "Assets/Shaders/gouraud-shader.frag");
-	shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
-	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
-
-	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_up.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_dn.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_bk.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
-	skybox = new Skybox(skyboxFaces);
-
-	std::vector<std::string> paths = {
-		"Assets/Models/lWall.obj",
-		"Assets/Models/rWall.obj",
-	};
-	LoadModels(paths);
-
-	std::vector<std::string> pathsEnemies = {
-	"Assets/Models/pina_pose.obj"
-	};
-	LoadEnemies(pathsEnemies);
-}
-
-void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
-{
-	for (auto path : pathFileModels)
+namespace SourceFiles {
+	Game::Game() : player("adidier regresa.obj")
 	{
-		Enemy* enemy = new Enemy(&player, path);
-		enemies.push_back(enemy);
+
 	}
-}
 
-void Game::LoadModels(const std::vector<std::string> &pathFileModels)
-{
-	for (auto path : pathFileModels)
+	Game::~Game()
 	{
-		Model *model = new Model();
-		model->LoadModel(path);	
-		model->AddTexture("Assets/Textures/brick.png");
-		map.push_back(model);
 	}
-}
 
-void Game::LoadShaders()
-{
-	
-}
-
-void Game::Draw()
-{
-	platform->RenderClear();
-	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
-
-	shaderManager->Activate("phong-shader");
-	shaderManager->draw();
-	
-	DrawMap();
-	DrawEnemies();
-
-	platform->RenderPresent();
-}
-void Game::DrawMap()
-{
-	for (auto model : map)
+	void Game::Init()
 	{
-		Transform transform;
-		transform.SetTranslation(0.0f, 0.0f, 0.0f);
-		transform.SetScale(1.0f, 1.0f, 1.0f);
-		transform.SetRotation(0, 0, 0);
-		model->SetTransform(transform);
-		model->Draw();
+		std::cout << " Menu Init" << std::endl;
+		this->platform = Base::PEPlatform::GetPtr();
+		this->manager = Base::GameStateManager::GetPtr();
+
+		shaderManager = Base::ShaderManager::getPtr();
+		shaderManager->initShader(player.GetCamera());
+		shaderManager->LoadShaders("OneColor", "Assets/Shaders/OneColor.vert", "Assets/Shaders/OneColor.frag");
+		shaderManager->LoadShaders("gouraud-shader", "Assets/Shaders/gouraud-shader.vert", "Assets/Shaders/gouraud-shader.frag");
+		shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
+		shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
+
+		std::vector<std::string> skyboxFaces;
+		skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
+		skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");
+		skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_up.tga");
+		skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_dn.tga");
+		skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_bk.tga");
+		skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
+		skybox = new Graphics::Skybox(skyboxFaces);
+
+		std::vector<std::string> paths = {
+			"Assets/Models/lWall.obj",
+			"Assets/Models/rWall.obj",
+		};
+		LoadModels(paths);
+
+		std::vector<std::string> pathsEnemies = {
+		"Assets/Models/pina_pose.obj"
+		};
+		LoadEnemies(pathsEnemies);
 	}
-}
 
-
-void Game::DrawEnemies()
-{
-	for (auto enemi : enemies)
+	void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 	{
-		enemi->Draw();
-	}
-}
-
-void Game::Update()
-{
-
-	for (auto enemi : enemies)
-	{
-		enemi->Update();
-	}
-}
-
-bool Game::MouseInput(int x, int y, bool leftbutton)
-{
-	if (x != -1 || y != -1)
-		player.GetCamera()->mouseControl(x, y);
-	return false;
-}
-
-bool Game::Input(std::map<int, bool> keys)
-{
-	bool ok = false;
-	for (auto model : map)
-	{
-		auto vertexModel1BB = model->GetMesh()->UpdateBoundingBox(glm::mat4(1));
-		if (Physics::CheckColision(vertexModel1BB, player.GetBoundingBox()))
+		for (auto path : pathFileModels)
 		{
-			ok = true;
+			SourceFiles::Enemy* enemy = new SourceFiles::Enemy(&player, path);
+			enemies.push_back(enemy);
 		}
 	}
-	if (!ok) {
-		player.GetCamera()->keyControl(keys, platform->GetDeltaTime());
+
+	void Game::LoadModels(const std::vector<std::string>& pathFileModels)
+	{
+		for (auto path : pathFileModels)
+		{
+			Graphics::Model* model = new Graphics::Model();
+			model->LoadModel(path);
+			model->AddTexture("Assets/Textures/brick.png");
+			map.push_back(model);
+		}
 	}
-	
-	return false;
-}
+
+	void Game::LoadShaders()
+	{
+
+	}
+
+	void Game::Draw()
+	{
+		platform->RenderClear();
+		skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
+
+		shaderManager->Activate("phong-shader");
+		shaderManager->draw();
+
+		DrawMap();
+		DrawEnemies();
+
+		platform->RenderPresent();
+	}
+	void Game::DrawMap()
+	{
+		for (auto model : map)
+		{
+			Base::Transform transform;
+			transform.SetTranslation(0.0f, 0.0f, 0.0f);
+			transform.SetScale(1.0f, 1.0f, 1.0f);
+			transform.SetRotation(0, 0, 0);
+			model->SetTransform(transform);
+			model->Draw();
+		}
+	}
+
+
+	void Game::DrawEnemies()
+	{
+		for (auto enemi : enemies)
+		{
+			enemi->Draw();
+		}
+	}
+
+	void Game::Update()
+	{
+
+		for (auto enemi : enemies)
+		{
+			enemi->Update();
+		}
+	}
+
+	bool Game::MouseInput(int x, int y, bool leftbutton)
+	{
+		if (x != -1 || y != -1)
+			player.GetCamera()->mouseControl(x, y);
+		return false;
+	}
+
+	bool Game::Input(std::map<int, bool> keys)
+	{
+		bool ok = false;
+		for (auto model : map)
+		{
+			auto vertexModel1BB = model->GetMesh()->UpdateBoundingBox(glm::mat4(1));
+			if (Physics::Physics::CheckColision(vertexModel1BB, player.GetBoundingBox()))
+			{
+				ok = true;
+			}
+		}
+		if (!ok) {
+			player.GetCamera()->keyControl(keys, platform->GetDeltaTime());
+		}
+
+		return false;
+	}
 
 
 
-void Game::Close()
-{
-	std::cout << " Close Init" << std::endl;
+	void Game::Close()
+	{
+		std::cout << " Close Init" << std::endl;
+	}
 }
 
 /*

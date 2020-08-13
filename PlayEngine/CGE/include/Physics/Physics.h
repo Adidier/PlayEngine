@@ -3,9 +3,9 @@
 #include <GL\glew.h>
 #include <vector>
 #include "glm.hpp"
-
-class PLAYENGINE Physics
-{
+namespace Physics {
+	class PLAYENGINE Physics
+	{
 	private:
 		static glm::vec3 GetMin(std::vector<glm::vec4> vector)
 		{
@@ -56,7 +56,7 @@ class PLAYENGINE Physics
 
 	public:
 
-		static bool CheckColision(std::vector<glm::vec4> box1, std::vector<glm::vec4> box2) 
+		static bool CheckColision(std::vector<glm::vec4> box1, std::vector<glm::vec4> box2)
 		{
 			auto amin = GetMin(box1);
 			auto bmin = GetMin(box2);
@@ -65,9 +65,10 @@ class PLAYENGINE Physics
 			auto bmax = GetMax(box2);
 
 			return	(amin.x <= bmax.x && amax.x >= bmin.x) &&
-					(amin.y <= bmax.y && amax.y >= bmin.y) &&
-					(amin.z <= bmax.z && amax.z >= bmin.z);
+				(amin.y <= bmax.y && amax.y >= bmin.y) &&
+				(amin.z <= bmax.z && amax.z >= bmin.z);
 
 		}
-};
+	};
+}
 

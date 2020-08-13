@@ -9,34 +9,35 @@
 #include "Player.h"
 #include "Enemy.h"
 #include<vector>
+namespace SourceFiles {
+	class Game : public Base::GameState
+	{
+	private:
+		Base::PEPlatform* platform;
+		Base::GameStateManager* manager;
+		Base::ShaderManager* shaderManager;
+		Graphics::Skybox* skybox;
+		Player player;
+		std::vector<Graphics::Model*> map;
 
-class Game : public GameState
-{
-private:
-	PEPlatform* platform;
-	GameStateManager* manager;
-	ShaderManager* shaderManager;
-	Skybox *skybox;
-	Player player;
-	std::vector<Model*> map;
+		std::vector<SourceFiles::Enemy*> enemies;
 
-	std::vector<Enemy*> enemies;
-
-public:
-	Game();
-	~Game();
-	void Init() override;
-	void Draw() override;
-	void DrawMap();
-	void DrawEnemies();
-	bool Input(std::map<int, bool> keys) override;
-	bool MouseInput(int x, int y, bool leftbutton);
-	void Update() override;
-	void Close() override;
-	void LoadShaders();
-	void LoadModels(const std::vector<std::string> &pathFileModels);
-	void LoadEnemies(const std::vector<std::string>& pathFileModels);
-};
+	public:
+		Game();
+		~Game();
+		void Init() override;
+		void Draw() override;
+		void DrawMap();
+		void DrawEnemies();
+		bool Input(std::map<int, bool> keys) override;
+		bool MouseInput(int x, int y, bool leftbutton);
+		void Update() override;
+		void Close() override;
+		void LoadShaders();
+		void LoadModels(const std::vector<std::string>& pathFileModels);
+		void LoadEnemies(const std::vector<std::string>& pathFileModels);
+	};
+}
 
 /*
 	std::vector<Mesh*> meshList;

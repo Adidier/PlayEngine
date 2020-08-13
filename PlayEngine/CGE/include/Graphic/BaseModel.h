@@ -8,19 +8,20 @@
 #include<vector>
 #include "../Base/Transform.h"
 
+namespace Graphics {
+	class PLAYENGINE BaseModel
+	{
+	public:
+		BaseModel();
+		virtual void Draw() = 0;
+		void SetTransform(Base::Transform transform);
+		Graphics::Mesh* GetMesh();
+	protected:
+		std::vector<Mesh*> meshList;
+		Base::Transform transform;
+		std::vector<GLfloat> vertices;
 
-		class PLAYENGINE BaseModel
-		{
-		public:
-			BaseModel();
-			virtual void Draw() = 0;
-			void SetTransform(Transform transform);
-			Mesh* GetMesh();
-		protected:
-			std::vector<Mesh*> meshList;
-			Transform transform;
-			std::vector<GLfloat> vertices;
-			
-		};
+	};
+}
 
 #endif

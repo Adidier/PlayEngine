@@ -1,18 +1,19 @@
 
 #include "Graphic/BaseModel.h"
+namespace Graphics {
 
+	void BaseModel::SetTransform(Base::Transform _transform)
+	{
+		transform = _transform;
+	}
 
-		void BaseModel::SetTransform(Transform _transform)
-		{
-			transform = _transform;
-		}
+	BaseModel::BaseModel()
+	{
+		//transform = nullptr;
+	}
 
-		BaseModel::BaseModel()
-		{
-			//transform = nullptr;
-		}
-
-		Mesh* BaseModel::GetMesh()
-		{
-			return meshList[0];
-		}
+	Mesh* BaseModel::GetMesh()
+	{
+		return meshList[0];
+	}
+}

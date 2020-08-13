@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\std_image\include;C:\Dev2020\PlayEngine\PlayEngine\CGE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\std_image\include;$(SolutionDir)\PlayEngine\CGE\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PLAYENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>

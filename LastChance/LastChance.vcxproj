@@ -101,12 +101,12 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Dev2020\PlayEngine\PlayEngine\CGE\include;..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\PlayEngine\CGE\include;..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Dev2020\PlayEngine\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>PlayEngine.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

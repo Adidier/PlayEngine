@@ -1,6 +1,7 @@
 #include "Graphic/Lights/PointLight.h"
 
-
+namespace Graphics {
+	namespace Lights {
 
 		PointLight::PointLight() : Light()
 		{
@@ -38,3 +39,5 @@
 		PointLight::~PointLight()
 		{
 		}
+	}
+}

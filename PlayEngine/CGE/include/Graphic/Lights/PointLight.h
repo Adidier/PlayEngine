@@ -1,7 +1,8 @@
 #pragma once
 #include "../../Export.h"
 #include "Light.h"
-
+namespace Graphics {
+	namespace Lights {
 
 		class PLAYENGINE PointLight :
 			public Light
@@ -24,4 +25,6 @@
 
 			GLfloat constant, linear, exponent;
 		};
+	}
+}
 

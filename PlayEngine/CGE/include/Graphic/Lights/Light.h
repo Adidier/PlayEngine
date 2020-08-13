@@ -3,7 +3,8 @@
 #include <GL\glew.h>
 #include <glm.hpp>
 
-
+namespace Graphics {
+	namespace Lights {
 		class PLAYENGINE Light
 		{
 		public:
@@ -16,3 +17,5 @@
 			GLfloat ambientIntensity;
 			GLfloat diffuseIntensity;
 		};
+	}
+}

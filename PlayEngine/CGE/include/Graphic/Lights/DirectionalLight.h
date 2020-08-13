@@ -1,7 +1,8 @@
 #pragma once
 #include "../../Export.h"
 #include "Light.h"
-
+namespace Graphics {
+	namespace Lights {
 
 		class PLAYENGINE DirectionalLight : public Light
 		{
@@ -19,3 +20,5 @@
 		private:
 			glm::vec3 direction;
 		};
+	}
+}

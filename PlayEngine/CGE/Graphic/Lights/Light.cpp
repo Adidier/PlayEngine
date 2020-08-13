@@ -1,6 +1,7 @@
 #include "Graphic/Lights/Light.h"
 
-
+namespace Graphics {
+	namespace Lights {
 		Light::Light()
 		{
 			colour = glm::vec3(1.0f, 1.0f, 1.0f);
@@ -18,4 +19,5 @@
 		Light::~Light()
 		{
 		}
-
+	}
+}

@@ -108,9 +108,6 @@
     <ClInclude Include="CGE\include\Base\ShaderManager.h">
       <Filter>CGE\include\Base</Filter>
     </ClInclude>
-    <ClInclude Include="CGE\include\Base\Transform.h">
-      <Filter>CGE\include\Base</Filter>
-    </ClInclude>
     <ClInclude Include="CGE\include\Export.h">
       <Filter>CGE\include</Filter>
     </ClInclude>
@@ -145,6 +142,9 @@
       <Filter>CGE\include\Graphic\Lights</Filter>
     </ClInclude>
     <ClInclude Include="CGE\include\Base\PEPlatform.h">
+      <Filter>CGE\include\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Base\Transform.h">
       <Filter>CGE\include\Base</Filter>
     </ClInclude>
   </ItemGroup>

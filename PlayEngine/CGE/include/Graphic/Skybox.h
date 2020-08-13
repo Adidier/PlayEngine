@@ -10,7 +10,7 @@
 #include "Mesh.h"
 #include "Shader.h"
 #include "../Base/ShaderManager.h"
-
+namespace Graphics {
 	class PLAYENGINE Skybox
 	{
 	public:
@@ -21,7 +21,7 @@
 		Mesh* skyMesh;
 		GLuint textureId;
 		GLuint uniformProjection, uniformView;
-		ShaderManager *shaderManager;
+		Base::ShaderManager* shaderManager;
 	};
-
+}
 #endif

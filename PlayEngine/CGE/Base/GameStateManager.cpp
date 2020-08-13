@@ -1,61 +1,63 @@
 #include "Base/GameStateManager.h"
 #include <iostream>
-GameStateManager* GameStateManager::ptr;
+namespace Base {
+	GameStateManager* GameStateManager::ptr;
 
-GameStateManager::GameStateManager()
-{
-	platform = PEPlatform::GetPtr();
-}
-
-GameStateManager::~GameStateManager()
-{
-}
-
-GameStateManager* GameStateManager::GetPtr()
-{
-	if (ptr == nullptr)
+	GameStateManager::GameStateManager()
 	{
-		ptr = new GameStateManager();
+		platform = PEPlatform::GetPtr();
 	}
-	return ptr;
-}
 
-void GameStateManager::GameLoop()
-{
-	//Para que el juego se cierre al poner ESC
-	while (!platform->shouldWindowClose())
+	GameStateManager::~GameStateManager()
 	{
-		try
+	}
+
+	GameStateManager* GameStateManager::GetPtr()
+	{
+		if (ptr == nullptr)
 		{
-			if (states.size() == 0)
-				throw std::exception("Error");
-			auto state = states.top();
-			if (state == nullptr)
+			ptr = new GameStateManager();
+		}
+		return ptr;
+	}
+
+	void GameStateManager::GameLoop()
+	{
+		//Para que el juego se cierre al poner ESC
+		while (!platform->shouldWindowClose())
+		{
+			try
 			{
+				if (states.size() == 0)
+					throw std::exception("Error");
+				auto state = states.top();
+				if (state == nullptr)
+				{
+					break;
+				}
+
+				state->Update();
+				state->Draw();
+				platform->CheckEvent(state, &GameState::Input, &GameState::MouseInput);
+			}
+			catch (...)
+			{
+				std::cout << "Critical error App is closing";
 				break;
 			}
-			
-			state->Update();
-			state->Draw();
-			platform->CheckEvent(state, &GameState::Input, &GameState::MouseInput);
-		}
-		catch (...)
-		{
-			std::cout << "Critical error App is closing";
-			break;
 		}
 	}
-}
 
-void GameStateManager::SetState(GameState* state)
-{
-	state->Init();
-	states.push(state);
-}
+	void GameStateManager::SetState(GameState* state)
+	{
+		state->Init();
+		states.push(state);
+	}
 
-void GameStateManager::RealaseState()
-{
-	auto state = states.top();
-	state->Close();
-	states.pop();
+	void GameStateManager::RealaseState()
+	{
+		auto state = states.top();
+		state->Close();
+		states.pop();
+	}
 }
