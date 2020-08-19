@@ -7,9 +7,9 @@
 			transform = _transform;
 		}
 
-		BaseModel::BaseModel()
+		BaseModel::BaseModel(const std::string& name, const std::string& path )
+
 		{
-			//transform = nullptr;
 		}
 
 		Mesh* BaseModel::GetMesh()

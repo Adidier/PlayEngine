@@ -1,10 +1,11 @@
 #include "Enemy.h"
+#include "Base/ResourceManager.h"
 
 Enemy::Enemy(Player* player,std::string path)
 {
 	this->player = player;
-	model.LoadModel(path);
-	model.AddTexture("Assets/Textures/pina.png");
+	model = (Model *)ResourceManager::GetPtr()->GetElement("Enemy", path);
+	model->AddTexture("Assets/Textures/pina.png");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 }
 
@@ -12,8 +13,8 @@ void Enemy::Draw()
 {
 	transform.SetScale(1.1f, 1.1f, 1.1f);
 	transform.SetRotation(0, 0, 0);
-	model.SetTransform(transform);
-	model.Draw();
+	model->SetTransform(transform);
+	model->Draw();
 }
 
 void Enemy::Update()

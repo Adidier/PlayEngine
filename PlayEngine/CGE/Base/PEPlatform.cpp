@@ -1,4 +1,6 @@
 #include "Base/PEPlatform.h"
+#include "Base/ServiceConfiguration.h"
+
 #include <iostream>
 
 PEPlatform* PEPlatform::ptr;
@@ -9,10 +11,13 @@ bool (GameState::* PEPlatform::mouse)(int, int, bool);
 std::map<int, bool> PEPlatform::keys;
 bool PEPlatform::leftButtonMouse;
 
-PEPlatform::PEPlatform(std::string name, int wWindow, int hWindow)
+PEPlatform::PEPlatform(std::string name)
 {
-	width = wWindow;
-	height = hWindow;
+	auto serviceConfiguration = ServiceConfiguration::getptr();
+	serviceConfiguration->load("Assets/Config/Config.lua");
+
+	serviceConfiguration->getEntry("ScreenHeight", height);
+	serviceConfiguration->getEntry("ScreenWidth", width);
 	this->name = name;
 	init();
 	for (size_t i = 0; i < 1024; i++)
@@ -116,7 +121,7 @@ PEPlatform* PEPlatform::GetPtr()
 {
 	if (ptr == nullptr)
 	{
-		ptr = new PEPlatform("THE GAME", 800, 600);
+		ptr = new PEPlatform("THE GAME");
 	}
 	return ptr;
 }

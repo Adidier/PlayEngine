@@ -1,8 +1,8 @@
 #include "Player.h"
-Player::Player(std::string pathModel)
+Player::Player(std::string pathModel) 
 {
 	camera = Camera(glm::vec3(10, 0.7, 0.6f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f, 0.0f, 55.0f, 0.1f);
-	model.LoadModel("Assets/Models/player.obj");
+	//adidier model->LoadModel("Assets/Models/player.obj");
 }
 
 Camera *Player::GetCamera()
@@ -17,5 +17,5 @@ std::vector<glm::vec4> Player::GetBoundingBox()
 	auto rotacion = camera.getCameraRotation();
 	transform.SetRotation(0,0, 0);
 	transform.SetScale(1, 1, 1);
-	return model.GetMesh()->UpdateBoundingBox(transform.GetTransform());
+	return model->GetMesh()->UpdateBoundingBox(transform.GetTransform());
 }

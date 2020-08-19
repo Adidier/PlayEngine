@@ -21,6 +21,7 @@ void Game::Init()
 	std::cout << " Menu Init" << std::endl;
 	this->platform = PEPlatform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
+	resourceManager = ResourceManager::GetPtr();
 	
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(player.GetCamera());
@@ -38,9 +39,10 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);
 
-	std::vector<std::string> paths = {
-		"Assets/Models/lWall.obj",
-		"Assets/Models/rWall.obj",
+	std::map<std::string, std::string> paths = {
+		{"Enemy","Assets/Models/pina_pose.obj"},
+		{"Wall1","Assets/Models/lWall.obj"},
+		{"Wall2","Assets/Models/rWall.obj"},
 	};
 	LoadModels(paths);
 
@@ -59,14 +61,15 @@ void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 	}
 }
 
-void Game::LoadModels(const std::vector<std::string> &pathFileModels)
+void Game::LoadModels(const std::map<std::string, std::string> &models)
 {
-	for (auto path : pathFileModels)
+	for (auto model : models)
 	{
-		Model *model = new Model();
-		model->LoadModel(path);	
-		model->AddTexture("Assets/Textures/brick.png");
-		map.push_back(model);
+		auto resourceManger = ResourceManager::GetPtr();
+		resourceManger->Add(ResourceType::Model3d, model.first, model.second);
+		auto asset = (Model*)ResourceManager::GetPtr()->GetElement(model.first, model.second);
+		asset->AddTexture("Assets/Textures/brick.png");
+		map.push_back(asset);
 	}
 }
 

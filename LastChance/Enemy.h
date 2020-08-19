@@ -5,7 +5,7 @@
 class Enemy : public GameObject
 {
 private:
-	Model model;
+	Model* model;
 	Transform transform;
 	Player* player;
 public:

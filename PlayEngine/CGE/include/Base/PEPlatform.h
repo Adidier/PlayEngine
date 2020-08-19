@@ -19,7 +19,7 @@ private:
 	float lastTime{ 0 };
 private:
 	void init();
-	PEPlatform(std::string name, int wWindow, int hWindow);
+	PEPlatform(std::string name);
 	~PEPlatform();
 	static PEPlatform* ptr;
 public:

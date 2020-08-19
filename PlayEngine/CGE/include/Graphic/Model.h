@@ -14,11 +14,12 @@
 #include "BaseModel.h"
 
 
-class PLAYENGINE Model : public BaseModel
+class PLAYENGINE Model : public BaseModel , public Resource
 {
 public:
-	Model();
-	void LoadModel(const std::string& fileName); 
+	Model(const std::string& name, const std::string& path = "./");
+
+	virtual Resource* Load(); 
 	virtual void Draw() override;
 	void ClearModel();
 	~Model();

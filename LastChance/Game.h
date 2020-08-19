@@ -4,6 +4,7 @@
 #include "Graphic/Mesh.h"
 #include "Graphic/Shader.h"
 #include "Base/ShaderManager.h"
+#include "Base/ResourceManager.h"
 #include "Graphic/Model.h"
 #include "Graphic/Skybox.h"
 #include "Player.h"
@@ -15,6 +16,7 @@ class Game : public GameState
 private:
 	PEPlatform* platform;
 	GameStateManager* manager;
+	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;
 	Skybox *skybox;
 	Player player;
@@ -34,7 +36,7 @@ public:
 	void Update() override;
 	void Close() override;
 	void LoadShaders();
-	void LoadModels(const std::vector<std::string> &pathFileModels);
+	void LoadModels(const std::map<std::string, std::string>& models);
 	void LoadEnemies(const std::vector<std::string>& pathFileModels);
 };
 

@@ -5,7 +5,7 @@ class Player
 {
 	private:
 		Camera camera;
-		Model model;
+		Model *model;
 		Transform transform;
 	private:
 		int energy { 0 };
