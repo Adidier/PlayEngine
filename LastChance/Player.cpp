@@ -1,8 +1,12 @@
 #include "Player.h"
-Player::Player(std::string pathModel) 
+#include "Base/ResourceManager.h"
+
+Player::Player() 
 {
 	camera = Camera(glm::vec3(10, 0.7, 0.6f), glm::vec3(0.0f, 1.0f, 0.0f), 0.0f, 0.0f, 55.0f, 0.1f);
 	//adidier model->LoadModel("Assets/Models/player.obj");
+	model = (Model*)ResourceManager::GetPtr()->GetElement("Player", "Assets/Models/pina_pose.obj");
+
 }
 
 Camera *Player::GetCamera()

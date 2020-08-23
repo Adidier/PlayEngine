@@ -19,7 +19,7 @@ private:
 	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;
 	Skybox *skybox;
-	Player player;
+	Player *player;
 	std::vector<Model*> map;
 
 	std::vector<Enemy*> enemies;

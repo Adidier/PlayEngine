@@ -3,11 +3,29 @@
 #include <GL\glew.h>
 #include <vector>
 #include "glm.hpp"
+#include "BulletCollision/CollisionDispatch/btCollisionObject.h"
+#include "BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
+#include "BulletCollision/CollisionShapes/btCollisionShape.h"
+#include "BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#include "LinearMath/btTransform.h"
+#include "LinearMath/btHashMap.h"
 
 class PLAYENGINE Physics
 {
-	private:
-		static glm::vec3 GetMin(std::vector<glm::vec4> vector)
+private:
+	btAlignedObjectArray<btCollisionShape*> m_collisionShapes;
+	btBroadphaseInterface* m_broadphase;
+	btCollisionDispatcher* m_dispatcher;
+	btConstraintSolver* m_solver;
+	btDefaultCollisionConfiguration* m_collisionConfiguration;
+	btDiscreteDynamicsWorld* m_dynamicsWorld;
+
+public:
+	void InitPhysics();
+private:
+};
+
+		/*static glm::vec3 GetMin(std::vector<glm::vec4> vector)
 		{
 			GLfloat minX = vector[0].x;
 			GLfloat minY = vector[0].y;
@@ -71,3 +89,4 @@ class PLAYENGINE Physics
 		}
 };
 
+*/

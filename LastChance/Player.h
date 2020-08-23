@@ -10,7 +10,7 @@ class Player
 	private:
 		int energy { 0 };
 	public:
-		Player(std::string pathModel);
+		Player();
 		Camera *GetCamera();
 		std::vector<glm::vec4> GetBoundingBox();
 };

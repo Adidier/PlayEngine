@@ -26,7 +26,7 @@
 				this->vertex.push_back(z);
 			}
 
-			InitBoundingBox();
+			//InitBoundingBox();
 
 			glGenVertexArrays(1, &VAO);
 			glBindVertexArray(VAO);
@@ -101,7 +101,7 @@
 		{
 			ClearMesh();
 		}
-
+		/*
 		void Mesh::PushVertex(GLfloat x, GLfloat y, GLfloat z)
 		{
 			vertexBoundingBox.push_back(glm::vec4(x,y,z,1));
@@ -132,7 +132,7 @@
 			PushVertex(max[0], max[1], max[2]);
 			PushVertex(min[0], max[1], max[2]);
 		}
-
+		/*
 		const std::vector<glm::vec4>* Mesh::GetVertexBoundingBox()
 		{
 			return &vertexBoundingBox;
@@ -146,4 +146,4 @@
 				vector.push_back( transform * element);
 			}
 			return vector;
-		}
+		}*/

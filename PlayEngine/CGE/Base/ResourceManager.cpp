@@ -65,7 +65,7 @@ Resource* ResourceManager::GetElement(const std::string& name, const std::string
 unsigned int ResourceManager::Add(ResourceType type, const std::string& name, const std::string& path)
 {
 	if (resourceMap == nullptr || name.empty() || path.empty())
-		return -1;//adidier
+		return -1;//adidier revisar tipo de retorno
 	
 	Resource* element = GetElement(name, path);
 	if (element != nullptr)
