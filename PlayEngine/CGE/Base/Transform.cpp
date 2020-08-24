@@ -14,9 +14,9 @@
 
 		void Transform::SetRotation(float x, float y, float z)
 		{
-			_rotation.x = x;
+			orn.setEuler(x, y, z);/*		_rotation.x = x;
 			_rotation.y = y;
-			_rotation.z = z;
+			_rotation.z = z;*/
 		}
 
 		void Transform::SetScale(float x, float y, float z)
@@ -36,6 +36,8 @@
 			_model = glm::mat4(1.0);
 			_model = glm::translate(_model, _translation);
 			_model = glm::scale(_model, _scale);
+			glm::vec3 _rotation;
+			orn.getEulerZYX(_rotation.x, _rotation.y, _rotation.z);
 			_model = glm::rotate(_model, _rotation.x, glm::vec3(1, 0, 0));
 			_model = glm::rotate(_model, _rotation.y, glm::vec3(0, 1, 0));
 			_model = glm::rotate(_model, _rotation.z, glm::vec3(0, 0, 1));

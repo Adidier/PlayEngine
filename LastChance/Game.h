@@ -9,6 +9,8 @@
 #include "Graphic/Skybox.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Floor.h"
+#include "Physics/Physics.h"
 #include<vector>
 
 class Game : public GameState
@@ -21,9 +23,11 @@ private:
 	Skybox *skybox;
 	Player *player;
 	std::vector<Model*> map;
+	Physics *physics;
 
 	std::vector<Enemy*> enemies;
 
+	Floor* floor;
 public:
 	Game();
 	~Game();
@@ -39,20 +43,3 @@ public:
 	void LoadModels(const std::map<std::string, std::string>& models);
 	void LoadEnemies(const std::vector<std::string>& pathFileModels);
 };
-
-/*
-	std::vector<Mesh*> meshList;
-	Texture* mainTexture;
-	Texture* rTexture;
-	Texture* gTexture;
-	Texture* bTexture;
-	Texture* blendTexture;
-	Texture* normalTexture;
-
-	Model* model1;
-	Model* model2;
-
-	Transform transformModel1;
-	Transform transformModel2;
-
-*/

@@ -3,7 +3,8 @@
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
-
+#include "Bullet3Common/b3Quaternion.h"
+#include "Bullet3Common/b3Transform.h"
 		class PLAYENGINE Transform
 		{
 		public:
@@ -15,7 +16,8 @@
 			Transform();
 		private:
 			glm::vec3 _translation;
-			glm::vec3 _rotation;
+			
+			b3Quaternion orn;
 			glm::vec3 _scale;
 			glm::mat4 _model;
 		};

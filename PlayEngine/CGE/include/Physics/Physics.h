@@ -19,10 +19,16 @@ private:
 	btConstraintSolver* m_solver;
 	btDefaultCollisionConfiguration* m_collisionConfiguration;
 	btDiscreteDynamicsWorld* m_dynamicsWorld;
-
+	static Physics* ptr;
 public:
+	static Physics* GetPtr();
 	void InitPhysics();
+	btRigidBody* createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color = btVector4(1, 0, 0, 1));
+
+	void Update();
 private:
+	Physics() {};
+
 };
 
 		/*static glm::vec3 GetMin(std::vector<glm::vec4> vector)

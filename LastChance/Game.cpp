@@ -17,6 +17,8 @@ Game::~Game()
 
 void Game::Init()
 {
+	physics = Physics::GetPtr();
+	physics->InitPhysics();
 	std::cout << " Menu Init" << std::endl;
 	this->platform = PEPlatform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
@@ -28,9 +30,13 @@ void Game::Init()
 	{"Wall2","Assets/Models/rWall.obj"},
 	{"Player","Assets/Models/pina_pose.obj"},
 	};
-	LoadModels(paths);
+	//LoadModels(paths);
 
 	player = new Player();
+
+
+
+	floor = new Floor();
 
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(player->GetCamera());
@@ -51,16 +57,17 @@ void Game::Init()
 
 
 	std::vector<std::string> pathsEnemies = {
-	"Assets/Models/pina_pose.obj"
+	"Enemy1",
+	"Enemy2",
 	};
-	//LoadEnemies(pathsEnemies);
+	LoadEnemies(pathsEnemies);
 }
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (auto path : pathFileModels)
+	for (int i=0;i<25;i++)
 	{
-		Enemy* enemy = new Enemy(player, path);
+		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
 	}
 }
@@ -87,12 +94,13 @@ void Game::Draw()
 	platform->RenderClear();
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
+	
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
 	
 	DrawMap();
 	DrawEnemies();
-
+	floor->Draw();
 	platform->RenderPresent();
 }
 void Game::DrawMap()
@@ -119,11 +127,14 @@ void Game::DrawEnemies()
 
 void Game::Update()
 {
-
+	floor->Update();
 	for (auto enemi : enemies)
 	{
 		enemi->Update();
 	}
+
+
+	physics->Update();
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
