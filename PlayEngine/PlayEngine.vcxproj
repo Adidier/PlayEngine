@@ -149,6 +149,7 @@
     <ClCompile Include="CGE\Graphic\Skybox.cpp" />
     <ClCompile Include="CGE\Graphic\Texture.cpp" />
     <ClCompile Include="CGE\Physics\Physics.cpp" />
+    <ClCompile Include="CGE\Physics\RigidBody.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGE\include\Base\GameState.h" />
@@ -171,6 +172,7 @@
     <ClInclude Include="CGE\include\Graphic\Skybox.h" />
     <ClInclude Include="CGE\include\Graphic\Texture.h" />
     <ClInclude Include="CGE\include\Physics\Physics.h" />
+    <ClInclude Include="CGE\include\Physics\RigidBody.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\Default\default.frag" />

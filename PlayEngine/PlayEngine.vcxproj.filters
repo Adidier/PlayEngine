@@ -103,6 +103,9 @@
     <ClCompile Include="CGE\Base\ResourceManager.cpp">
       <Filter>CGE\Base</Filter>
     </ClCompile>
+    <ClCompile Include="CGE\Physics\RigidBody.cpp">
+      <Filter>CGE\Physics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGE\include\Physics\Physics.h">
@@ -164,6 +167,9 @@
     </ClInclude>
     <ClInclude Include="CGE\include\Base\ResourceManager.h">
       <Filter>CGE\include\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Physics\RigidBody.h">
+      <Filter>CGE\include\Physics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

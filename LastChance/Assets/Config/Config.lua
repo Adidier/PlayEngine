@@ -1,6 +1,6 @@
 ScreenHeight = 1080
 ScreenWidth = 1920
-Fullscreen = true
+Fullscreen = false
 Name = "Last chance"
 Assets = "assets/"
 States = "states/"

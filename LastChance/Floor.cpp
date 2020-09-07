@@ -6,8 +6,6 @@
 Floor::Floor()
 {
 
-	auto resourceManger = ResourceManager::GetPtr();
-	resourceManger->Add(ResourceType::Model3d, "Floor", "Assets/Models/floor2.obj");
 	//
 	model = (Model*)ResourceManager::GetPtr()->GetElement("Floor", "Assets/Models/floor2.obj");
 	model->AddTexture("Assets/Textures/brick.png");

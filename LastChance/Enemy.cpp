@@ -1,27 +1,17 @@
 #include "Enemy.h"
 #include "Base/ResourceManager.h"
 #include "Physics/Physics.h"
-#include "btBulletDynamicsCommon.h"
+
 
 Enemy::Enemy(Player* player)
 {
 	this->player = player;
-	auto resourceManger = ResourceManager::GetPtr();
-	resourceManger->Add(ResourceType::Model3d, "Enemy", "Assets/Models/pina_pose.obj");
+
 	model = (Model *)ResourceManager::GetPtr()->GetElement("Enemy", "Assets/Models/pina_pose.obj");
 	model->AddTexture("Assets/Textures/pina.png");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 
-
-	btBoxShape* colShape = new btBoxShape(btVector3(2.1, 2.1, 2.1));
-	btTransform startTransform;
-	startTransform.setIdentity();
-	startTransform.setOrigin(btVector3(
-		btScalar(0.0),
-		btScalar(0.0),
-		btScalar(0.0)));
-	rigidBody = Physics::GetPtr()->createRigidBody(0.1f, startTransform, colShape);
-	
+	rigidBody = new RigidBody(0.1, glm::vec3(0, 0, 0), glm::vec3(2.1, 2.1, 2.1));
 }
 
 void Enemy::Draw()
@@ -42,10 +32,8 @@ void Enemy::Update()
 		*/
 
 	//transform.SetTranslation()
-	btVector3 pos = rigidBody->getWorldTransform().getOrigin();
-	btQuaternion rot = rigidBody->getWorldTransform().getRotation();
-	transform.SetTranslation(pos.getX(), pos.getY(), pos.getZ());
-	glm::vec3 _rotation;
-	rot.getEulerZYX(_rotation.x, _rotation.y, _rotation.z);
-	transform.SetRotation(_rotation.x, _rotation.y, _rotation.z);
+	auto pos = rigidBody->GetObjectPosition();
+	auto rot = rigidBody->GetObjectRotation();
+	transform.SetTranslation(pos.x, pos.y, pos.z);
+	transform.SetRotation(rot.x, rot.y, rot.z);
 }

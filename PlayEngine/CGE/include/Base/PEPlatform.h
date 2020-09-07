@@ -4,6 +4,7 @@
 #include "GameState.h"
 #include <GL\glew.h>
 #include <GLFW\glfw3.h>
+#include "Base/ServiceConfiguration.h"
 #include<map>
 
 class GameState;
@@ -17,6 +18,7 @@ private:
 	GLint bufferWidth, bufferHeight;
 	float deltaTime{ 0 };
 	float lastTime{ 0 };
+	ServiceConfiguration *serviceConfiguration;
 private:
 	void init();
 	PEPlatform(std::string name);
@@ -24,7 +26,6 @@ private:
 	static PEPlatform* ptr;
 public:
 	static PEPlatform* GetPtr();
-
 	void RenderClear();
 	void RenderPresent();
 	void CheckEvent(GameState* obj, bool (GameState::* keyboard)(std::map<int, bool>), bool (GameState::* mouse)(int, int, bool));

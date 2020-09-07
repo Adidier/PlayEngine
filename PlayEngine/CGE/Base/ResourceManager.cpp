@@ -2,6 +2,8 @@
 #include "Base/ResourceManager.h"
 #include "Base/Resource.h"
 #include "Graphic/Model.h"
+#include "Graphic/Texture.h"
+
 #include <map>
 
 ResourceManager* ResourceManager::ptr = nullptr;
@@ -27,6 +29,15 @@ ResourceManager::~ResourceManager()
 	delete resourceMap;
 }
 
+void ResourceManager::GetSafeOpenIds(unsigned int& a)
+{
+	//mu.lock();
+	GLuint VAO;
+	glGenBuffers(1, &VAO);
+	GLenum loop_error = glGetError();
+	a = VAO;
+	//mu.unlock();
+}
 void ResourceManager::ClearResources()
 {
 	for (auto resource = resourceMap->begin(); resource != resourceMap->end(); resource++)
@@ -62,26 +73,55 @@ Resource* ResourceManager::GetElement(const std::string& name, const std::string
 	return nullptr;
 }
 
-unsigned int ResourceManager::Add(ResourceType type, const std::string& name, const std::string& path)
+void ResourceManager::Wait()
+{
+	for (auto& th : pool)
+	{
+		if(th->joinable())
+		th->join();
+	}
+}
+unsigned int ResourceManager::Add(ResourceType type,const std::string& name,const std::string& path)
+{
+	AddElementToPool(type, name, path);
+	return -1;//adidier arreglado
+}
+
+unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::string& name, const std::string& path)
 {
 	if (resourceMap == nullptr || name.empty() || path.empty())
-		return -1;//adidier revisar tipo de retorno
+		return -1;
 	
 	Resource* element = GetElement(name, path);
 	if (element != nullptr)
 	{
 		return element->GetHandle();
 	}
-
+	
 	Resource* resource = nullptr;
 	handleCount++;
+
 	if (type == ResourceType::Model3d)
 	{
 		resource = new Model(name,path);
 	}
-	resource->Load();
+	else if (type == ResourceType::Texture)
+	{
+		resource = new Graphic::Texture(1, name, path);
+	}
+
+	std::thread* thr = new std::thread(&Resource::ReadFile, resource);
+	pool.push_back(thr);
 	resourceMap->insert(std::make_pair(handleCount, resource));
-	return handleCount;
+}
+
+void ResourceManager::Load()
+{
+	for (auto i = resourceMap->begin(); i != resourceMap->end(); i++)
+	{
+		auto model = (i->second);
+		model->Load();
+	}
 }
 
 

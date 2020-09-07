@@ -3,6 +3,8 @@
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 #include "Base/ShaderManager.h"
+#include "Base/ResourceManager.h"
+#include "Base/PEPlatform.h"
 
 		Mesh::Mesh()
 		{
@@ -27,10 +29,9 @@
 			}
 
 			//InitBoundingBox();
-
 			glGenVertexArrays(1, &VAO);
+			//glGenVertexArrays(1, &VAO);
 			glBindVertexArray(VAO);
-
 			glGenBuffers(1, &IBO);
 			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IBO);
 			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices[0]) * numOfIndices, indices, GL_STATIC_DRAW);

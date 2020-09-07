@@ -1,7 +1,10 @@
 #pragma once
 #include "../Export.h"
-#include "Resource.h"
+#include "Graphic/Model.h"
 #include <map>
+#include <thread> 
+#include <list> 
+#include <mutex>
 
 enum ResourceType
 {
@@ -12,26 +15,26 @@ enum ResourceType
 
 class PLAYENGINE ResourceManager
 {
-private:
-	static size_t handleCount;
-	std::map<size_t, Resource*>* resourceMap;
-	ResourceManager();
-	~ResourceManager();
-	static ResourceManager* ptr;
+	public:
+		std::mutex mu;
+	private:
+		static size_t handleCount;
+		std::list<std::thread*> pool;
+		std::map<size_t, Resource*>* resourceMap;
+		ResourceManager();
+		~ResourceManager();
+		static ResourceManager* ptr;
 
-public:
+	public:
 
+		static ResourceManager* GetPtr();
+		void ClearResources();
+		void GetSafeOpenIds(unsigned int& a);
+			size_t GetSize();
+		Resource* GetElement(const std::string& name, const std::string& path);
 
-
-	static ResourceManager* GetPtr();
-	void ClearResources();
-
-	size_t GetSize();
-	Resource* GetElement(const std::string& name, const std::string& path);
-	//Resource* GetElement(const std::string& name, const std::string& path = "./");
-	/*
-	Resource* GetElement(const int handle)
-	void Remove(const unsigned int handle)
-	*/
-	unsigned int Add(ResourceType type, const std::string& name, const std::string& path = "./");
+		void Wait();
+		unsigned int AddElementToPool(ResourceType type, const std::string& name, const  std::string& path);
+		void Load();
+		unsigned int Add(ResourceType type,const std::string& name, const std::string& path = "./");
 };

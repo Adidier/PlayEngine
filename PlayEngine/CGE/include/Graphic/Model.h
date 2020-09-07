@@ -19,7 +19,8 @@ class PLAYENGINE Model : public BaseModel , public Resource
 public:
 	Model(const std::string& name, const std::string& path = "./");
 
-	virtual Resource* Load(); 
+	virtual bool ReadFile() override;
+	virtual Resource* Load() override;
 	virtual void Draw() override;
 	void ClearModel();
 	~Model();
@@ -33,6 +34,7 @@ private:
 	std::vector<Graphic::Texture*> textureList;
 	std::vector<Graphic::Texture*> textureNormalList;
 	std::vector<unsigned int> meshToTex;
+	Assimp::Importer importer;
 		
 };
 

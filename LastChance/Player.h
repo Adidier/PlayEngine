@@ -2,6 +2,7 @@
 #include "Graphic/Camera.h"
 #include "Graphic/Model.h"
 #include "btBulletDynamicsCommon.h"
+
 class Player
 {
 	private:

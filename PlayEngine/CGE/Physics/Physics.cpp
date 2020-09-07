@@ -25,7 +25,7 @@ void Physics::InitPhysics()
 
 void Physics::Update()
 {
-	m_dynamicsWorld->stepSimulation(1.f / 60.f, 10);
+	m_dynamicsWorld->stepSimulation(1.f / 60.f, 10); //adidier
 }
 
 btRigidBody* Physics::createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color)

@@ -25,6 +25,25 @@ void ServiceConfiguration::load(std::string file)
 
 }
 
+void ServiceConfiguration::getEntry(std::string entry, std::string& out)
+{
+	lua_getglobal(lState, entry.c_str());
+	size_t size = 100;
+	if (lua_tolstring(lState, -1, &size))
+	{
+		out = lua_tolstring(lState, -1, &size);
+	}
+}
+
+void ServiceConfiguration::getEntry(std::string entry, bool& out)
+{
+	lua_getglobal(lState, entry.c_str());
+	if (lua_toboolean(lState, -1))
+	{
+		out = (bool)lua_toboolean(lState, -1);
+	}
+}
+
 void ServiceConfiguration::getEntry(std::string entry, int& out)
 {
 	lua_getglobal(lState, entry.c_str());

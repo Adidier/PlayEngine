@@ -1,5 +1,5 @@
 #include "Base/PEPlatform.h"
-#include "Base/ServiceConfiguration.h"
+
 
 #include <iostream>
 
@@ -13,12 +13,12 @@ bool PEPlatform::leftButtonMouse;
 
 PEPlatform::PEPlatform(std::string name)
 {
-	auto serviceConfiguration = ServiceConfiguration::getptr();
+	serviceConfiguration = ServiceConfiguration::getptr();
 	serviceConfiguration->load("Assets/Config/Config.lua");
 
 	serviceConfiguration->getEntry("ScreenHeight", height);
 	serviceConfiguration->getEntry("ScreenWidth", width);
-	this->name = name;
+	serviceConfiguration->getEntry("Name", this->name);
 	init();
 	for (size_t i = 0; i < 1024; i++)
 	{
@@ -40,7 +40,17 @@ void PEPlatform::init()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
-	mainWindow = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+	bool fullScreen = false;
+	serviceConfiguration->getEntry("Fullscreen", fullScreen);
+	if (fullScreen)
+	{
+		mainWindow = glfwCreateWindow(width, height, name.c_str(), glfwGetPrimaryMonitor(), NULL);
+	}
+	else
+	{
+		mainWindow = glfwCreateWindow(width, height, name.c_str(), NULL, NULL);
+	}
+
 	if (!mainWindow)
 	{
 		printf("Error creating GLFW window!");

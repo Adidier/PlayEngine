@@ -1,5 +1,6 @@
 #include "Graphic/Model.h"
-
+#include "Base/ResourceManager.h"
+//#include "Texture.h"
 
 Model::Model(const std::string& name, const std::string& path) :
 	BaseModel(name,path),
@@ -25,16 +26,21 @@ void Model::Draw()
 	}
 }
 
-Resource* Model::Load()
+bool Model::ReadFile()
 {
-	Assimp::Importer importer;
-	const aiScene *scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenSmoothNormals | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
+	const aiScene* scene = importer.ReadFile(path, aiProcess_Triangulate | aiProcess_FlipUVs | aiProcess_GenSmoothNormals | aiProcess_JoinIdenticalVertices | aiProcess_CalcTangentSpace);
 
 	if (!scene)
 	{
 		printf("Model (%s) failed to load: %s", path, importer.GetErrorString());
-		return nullptr;
+		return false;
 	}
+	return true;
+}
+
+Resource* Model::Load()
+{
+	const aiScene* scene = importer.GetScene();
 
 	LoadNode(scene->mRootNode, scene);
 
@@ -117,16 +123,7 @@ void Model::AddTexture(std::string path)
 	int idx = std::string(path).rfind("\\");
 	std::string filename = std::string(path).substr(idx + 1);
 
-	Graphic::Texture* texture;
-	texture = new Graphic::Texture(filename.c_str());
-
-	if (!texture->LoadTextureA())
-	{
-		printf("Failed to load texture at: %s\n", filename);
-		delete texture;
-		texture = nullptr;
-		return;
-	}
+	Graphic::Texture* texture = (Graphic::Texture*)ResourceManager::GetPtr()->GetElement("TEXTURE", path);
 	textureList.push_back(texture);
 }
 
