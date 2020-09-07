@@ -37,7 +37,7 @@ public:
 	void DrawEnemies();
 	bool Input(std::map<int, bool> keys) override;
 	bool MouseInput(int x, int y, bool leftbutton);
-	void Update() override;
+	void Update(unsigned int delta) override;
 	void Close() override;
 	void LoadShaders();
 	void LoadModels(const std::map<std::string, std::string>& models);

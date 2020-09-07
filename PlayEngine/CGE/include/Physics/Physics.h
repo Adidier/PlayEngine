@@ -25,7 +25,7 @@ public:
 	void InitPhysics();
 	btRigidBody* createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color = btVector4(1, 0, 0, 1));
 
-	void Update();
+	void Update(unsigned int delta);
 private:
 	Physics() {};
 

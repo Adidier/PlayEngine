@@ -22,7 +22,7 @@ void Enemy::Draw()
 	model->Draw();
 }
 
-void Enemy::Update()
+void Enemy::Update(unsigned int delta)
 {
 	/*glm::vec3 dir = player->GetCamera()->getCameraPosition() - transform.GetTranslation();
 	dir = glm::normalize(dir)*0.1f;

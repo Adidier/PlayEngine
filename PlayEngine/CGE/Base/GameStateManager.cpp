@@ -1,6 +1,10 @@
 #include "Base/GameStateManager.h"
 #include <iostream>
+#include <chrono>
+	
 GameStateManager* GameStateManager::ptr;
+
+using namespace std::chrono;
 
 GameStateManager::GameStateManager()
 {
@@ -22,11 +26,17 @@ GameStateManager* GameStateManager::GetPtr()
 
 void GameStateManager::GameLoop()
 {
+	milliseconds time, oldtime, newtime, frameRateTime;
+	frameRateTime = oldtime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 	//Para que el juego se cierre al poner ESC
+	unsigned int frameRate = 0;
 	while (!platform->shouldWindowClose())
 	{
 		try
 		{
+			newtime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
+			time = newtime - oldtime;
+			
 			if (states.size() == 0)
 				throw std::exception("Error");
 			auto state = states.top();
@@ -35,9 +45,22 @@ void GameStateManager::GameLoop()
 				break;
 			}
 			
-			state->Update();
-			state->Draw();
+			if (newtime - frameRateTime >= seconds(1))
+			{
+				std::cout << frameRate << std::endl;
+				frameRate = 0;
+				frameRateTime = newtime;
+			}
+
 			platform->CheckEvent(state, &GameState::Input, &GameState::MouseInput);
+
+			state->Update(time.count());
+			
+			state->Draw();
+			frameRate++;
+			
+
+			oldtime = newtime;
 		}
 		catch (...)
 		{

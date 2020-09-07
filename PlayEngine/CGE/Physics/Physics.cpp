@@ -23,7 +23,7 @@ void Physics::InitPhysics()
 	m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
 }
 
-void Physics::Update()
+void Physics::Update(unsigned int delta)
 {
 	m_dynamicsWorld->stepSimulation(1.f / 60.f, 10); //adidier
 }

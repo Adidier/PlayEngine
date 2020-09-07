@@ -15,6 +15,6 @@ private:
 public:
 	Floor();
 	void Draw() override;
-	void Update() override;
+	void Update(unsigned int delta) override;
 };
 

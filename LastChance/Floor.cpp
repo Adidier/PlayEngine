@@ -30,7 +30,7 @@ void Floor::Draw()
 	model->Draw();
 }
 
-void Floor::Update()
+void Floor::Update(unsigned int delta)
 {
 
 	btVector3 pos = rigidBody->getWorldTransform().getOrigin();

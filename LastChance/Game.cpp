@@ -128,14 +128,14 @@ void Game::DrawEnemies()
 	}
 }
 
-void Game::Update()
+void Game::Update(unsigned int delta)
 {
-	floor->Update();
+	floor->Update(delta);
 	for (auto enemi : enemies)
 	{
-		enemi->Update();
+		enemi->Update(delta);
 	}
-	physics->Update();
+	physics->Update(delta);
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
