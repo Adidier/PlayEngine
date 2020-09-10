@@ -6,6 +6,7 @@
 Enemy::Enemy(Player* player)
 {
 	this->player = player;
+	scriptEnemy = new ScriptEnemy("Assets/Scripts/Enemy/AI.lua");
 
 	model = (Model *)ResourceManager::GetPtr()->GetElement("Enemy", "Assets/Models/pina_pose.obj");
 	model->AddTexture("Assets/Textures/pina.png");
