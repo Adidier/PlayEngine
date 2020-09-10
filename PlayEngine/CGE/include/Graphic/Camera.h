@@ -5,6 +5,7 @@
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 #include <GLFW\glfw3.h>
+#include "Audio/AudioPlayer.h"
 
 class PLAYENGINE Camera
 {
@@ -37,5 +38,7 @@ private:
 	float firstMove;
 
 	void update();
+
+	AudioPlayer* audioPlayer;
 };
 

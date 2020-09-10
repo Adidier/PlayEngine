@@ -1,6 +1,7 @@
 #pragma once
 #include "../Export.h"
 #include "Graphic/Model.h"
+#include "Audio/AudioPlayer.h"
 #include <map>
 #include <thread> 
 #include <list> 

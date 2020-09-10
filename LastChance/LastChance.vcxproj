@@ -38,7 +38,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{6e9e312d-6268-46c7-ac4e-21467b53502c}</ProjectGuid>
     <RootNamespace>LastChance</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -103,7 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\PlayEngine\CGE\include;..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\lua\include;..\ExternalLibs\std_image\include;..\ExternalLibs\Bullet\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\PlayEngine\CGE\include;..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\lua\include;..\ExternalLibs\std_image\include;..\ExternalLibs\Bullet\include;C:\Users\Usuario\Desktop\proyecto adidier\PlayEngine\ExternalLibs\SDL2-2.0.12\include;C:\Users\Usuario\Desktop\proyecto adidier\PlayEngine\ExternalLibs\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

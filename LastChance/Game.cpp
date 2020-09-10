@@ -37,6 +37,8 @@ void Game::Init()
 	resourceManger->Add(ResourceType::Model3d, "Enemy", "Assets/Models/pina_pose.obj");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE",  "Assets/Textures/pina.png");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/brick.png");
+	resourceManger->Add(ResourceType::Sound, "MUSIC", "Assets/Sounds/funnysong.wav");
+	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
 
 	resourceManger->Wait();
 	resourceManger->Load();
@@ -66,6 +68,7 @@ void Game::Init()
 	"Enemy2",
 	};
 	LoadEnemies(pathsEnemies);
+	LoadMusic();
 }
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
@@ -87,6 +90,12 @@ void Game::LoadModels(const std::map<std::string, std::string> &models)
 		asset->AddTexture("Assets/Textures/brick.png");
 		map.push_back(asset);
 	}
+}
+
+void Game::LoadMusic()
+{
+	auto asset = (AudioPlayer*)ResourceManager::GetPtr()->GetElement("MUSIC", "Assets/Sounds/funnysong.wav");
+	asset->PlayMusic();
 }
 
 void Game::LoadShaders()
