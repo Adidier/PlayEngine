@@ -33,6 +33,9 @@
     <ClCompile Include="Floor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ScriptEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Enemy.h">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="Floor.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ScriptEnemy.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
