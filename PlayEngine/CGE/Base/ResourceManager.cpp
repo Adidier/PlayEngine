@@ -4,6 +4,7 @@
 #include "Graphic/Model.h"
 #include "Graphic/Texture.h"
 #include "Audio/AudioPlayer.h"
+#include "Audio/MusicPlayer.h"
 
 #include <map>
 
@@ -113,6 +114,10 @@ unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::str
 	else if (type == ResourceType::Sound)
 	{
 		resource = new AudioPlayer(2, name, path);
+	}
+	else if (type == ResourceType::Music)
+	{
+		resource = new MusicPlayer (3, name, path);
 	}
 
 	std::thread* thr = new std::thread(&Resource::ReadFile, resource);

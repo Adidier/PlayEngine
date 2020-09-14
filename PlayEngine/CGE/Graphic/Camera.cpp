@@ -25,10 +25,6 @@ void Camera::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 
 	if (keys[GLFW_KEY_J])
 	{
-		if (Mix_Playing(1) == false)
-		{
-			Mix_FreeChunk(audioPlayer->ReturnShotSoundEfect());
-		}
 		audioPlayer->PlaySoundEfect();
 	}
 

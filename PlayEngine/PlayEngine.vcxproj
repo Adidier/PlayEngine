@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CGE\Audio\AudioPlayer.cpp" />
+    <ClCompile Include="CGE\Audio\MusicPlayer.cpp" />
     <ClCompile Include="CGE\Base\GameState.cpp" />
     <ClCompile Include="CGE\Base\GameStateManager.cpp" />
     <ClCompile Include="CGE\Base\PEPlatform.cpp" />
@@ -154,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGE\include\Audio\AudioPlayer.h" />
+    <ClInclude Include="CGE\include\Audio\MusicPlayer.h" />
     <ClInclude Include="CGE\include\Base\GameState.h" />
     <ClInclude Include="CGE\include\Base\GameStateManager.h" />
     <ClInclude Include="CGE\include\Base\PEPlatform.h" />

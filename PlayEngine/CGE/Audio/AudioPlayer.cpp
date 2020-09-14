@@ -16,22 +16,9 @@ AudioPlayer::AudioPlayer(const unsigned int handle, const std::string& name, con
     }
 }
 
-void AudioPlayer::PlayMusic()
-{
-    backGround = Mix_LoadMUS(pathToFile.c_str());
-    if (backGround == nullptr) 
-    {
-        printf("Failed to load music! SDL_mixer Error: %s\n", Mix_GetError());
-        success = false;
-    }
-    else
-    {
-         Mix_PlayMusic(backGround, -1);
-    }
-}
+
 void AudioPlayer::PlaySoundEfect()
 {
-    shotSoundEfect = Mix_LoadWAV(pathToFile.c_str());
     if (shotSoundEfect == nullptr)
     {
         printf("Failed to load scratch sound effect! SDL_mixer Error: %s\n", Mix_GetError());
@@ -43,15 +30,10 @@ void AudioPlayer::PlaySoundEfect()
     }
 }
 
-Mix_Chunk* AudioPlayer::ReturnShotSoundEfect()
-{
-    return shotSoundEfect;
-}
-
 bool AudioPlayer::ReadFile()
 {
-    pathToFile = path;
-    if (!backGround)
+    shotSoundEfect = Mix_LoadWAV(path.c_str());
+    if (!shotSoundEfect)
     {
         printf("AudioPlayer (%s) failed to load: %s", path);
         return false;
@@ -68,5 +50,5 @@ Resource* AudioPlayer::Load()
 
 AudioPlayer:: ~AudioPlayer() 
 {
-
+    Mix_FreeChunk(shotSoundEfect);
 }

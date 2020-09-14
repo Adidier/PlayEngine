@@ -115,6 +115,9 @@
     <ClCompile Include="CGE\Audio\AudioPlayer.cpp">
       <Filter>CGE\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="CGE\Audio\MusicPlayer.cpp">
+      <Filter>CGE\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CGE\include\Physics\Physics.h">
@@ -181,6 +184,9 @@
       <Filter>CGE\include\Physics</Filter>
     </ClInclude>
     <ClInclude Include="CGE\include\Audio\AudioPlayer.h">
+      <Filter>CGE\include\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Audio\MusicPlayer.h">
       <Filter>CGE\include\Audio</Filter>
     </ClInclude>
   </ItemGroup>

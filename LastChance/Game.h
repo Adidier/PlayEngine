@@ -12,6 +12,7 @@
 #include "Floor.h"
 #include "Physics/Physics.h"
 #include "Audio/AudioPlayer.h"
+#include "Audio/MusicPlayer.h"
 #include<vector>
 
 class Game : public GameState

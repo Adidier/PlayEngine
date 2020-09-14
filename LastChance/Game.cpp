@@ -37,7 +37,7 @@ void Game::Init()
 	resourceManger->Add(ResourceType::Model3d, "Enemy", "Assets/Models/pina_pose.obj");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE",  "Assets/Textures/pina.png");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/brick.png");
-	resourceManger->Add(ResourceType::Sound, "MUSIC", "Assets/Sounds/funnysong.wav");
+	resourceManger->Add(ResourceType::Music, "MUSIC", "Assets/Sounds/funnysong.wav");
 	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
 
 	resourceManger->Wait();
@@ -94,7 +94,7 @@ void Game::LoadModels(const std::map<std::string, std::string> &models)
 
 void Game::LoadMusic()
 {
-	auto asset = (AudioPlayer*)ResourceManager::GetPtr()->GetElement("MUSIC", "Assets/Sounds/funnysong.wav");
+	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("MUSIC", "Assets/Sounds/funnysong.wav");
 	asset->PlayMusic();
 }
 
@@ -156,7 +156,6 @@ bool Game::MouseInput(int x, int y, bool leftbutton)
 
 bool Game::Input(std::map<int, bool> keys)
 {
-	
 	player->GetCamera()->keyControl(keys, platform->GetDeltaTime());
 	
 	return false;
