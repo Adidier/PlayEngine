@@ -70,7 +70,7 @@ void Game::Init()
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<200;i++)
+	for (int i=0;i<10;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
