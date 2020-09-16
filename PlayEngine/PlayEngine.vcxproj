@@ -142,6 +142,9 @@
     <ClCompile Include="CGE\Base\Transform.cpp" />
     <ClCompile Include="CGE\Graphic\BaseModel.cpp" />
     <ClCompile Include="CGE\Graphic\Camera.cpp" />
+    <ClCompile Include="CGE\Graphic\GUI.cpp" />
+    <ClCompile Include="CGE\Graphic\GUI_IMAGE.cpp" />
+    <ClCompile Include="CGE\Graphic\GUI_Overlay.cpp" />
     <ClCompile Include="CGE\Graphic\Lights\DirectionalLight.cpp" />
     <ClCompile Include="CGE\Graphic\Lights\Light.cpp" />
     <ClCompile Include="CGE\Graphic\Lights\PointLight.cpp" />
@@ -167,6 +170,9 @@
     <ClInclude Include="CGE\include\Export.h" />
     <ClInclude Include="CGE\include\Graphic\BaseModel.h" />
     <ClInclude Include="CGE\include\Graphic\Camera.h" />
+    <ClInclude Include="CGE\include\Graphic\GUI.h" />
+    <ClInclude Include="CGE\include\Graphic\GUI_IMAGE.h" />
+    <ClInclude Include="CGE\include\Graphic\GUI_Overlay.h" />
     <ClInclude Include="CGE\include\Graphic\Lights\DirectionalLight.h" />
     <ClInclude Include="CGE\include\Graphic\Lights\Light.h" />
     <ClInclude Include="CGE\include\Graphic\Lights\PointLight.h" />

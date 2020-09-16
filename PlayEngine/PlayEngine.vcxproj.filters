@@ -112,6 +112,15 @@
     <ClCompile Include="CGE\Physics\RigidBody.cpp">
       <Filter>CGE\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="CGE\Graphic\GUI.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\GUI_Overlay.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Graphic\GUI_IMAGE.cpp">
+      <Filter>CGE\Graphic</Filter>
+    </ClCompile>
     <ClCompile Include="CGE\Audio\AudioPlayer.cpp">
       <Filter>CGE\Audio</Filter>
     </ClCompile>
@@ -182,6 +191,15 @@
     </ClInclude>
     <ClInclude Include="CGE\include\Physics\RigidBody.h">
       <Filter>CGE\include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Graphic\GUI.h">
+      <Filter>CGE\include\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Graphic\GUI_Overlay.h">
+      <Filter>CGE\include\Graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Graphic\GUI_IMAGE.h">
+      <Filter>CGE\include\Graphic</Filter>
     </ClInclude>
     <ClInclude Include="CGE\include\Audio\AudioPlayer.h">
       <Filter>CGE\include\Audio</Filter>

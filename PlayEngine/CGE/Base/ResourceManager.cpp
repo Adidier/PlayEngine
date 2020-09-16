@@ -3,6 +3,7 @@
 #include "Base/Resource.h"
 #include "Graphic/Model.h"
 #include "Graphic/Texture.h"
+#include "Graphic/GUI_IMAGE.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
 
@@ -110,6 +111,10 @@ unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::str
 	else if (type == ResourceType::Texture)
 	{
 		resource = new Graphic::Texture(1, name, path);
+	}
+	else if (type == ResourceType::GUI_Image)
+	{
+		resource = new Graphic::GUI_IMAGE(1, name, path);
 	}
 	else if (type == ResourceType::Sound)
 	{

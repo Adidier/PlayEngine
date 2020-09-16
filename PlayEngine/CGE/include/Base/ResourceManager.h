@@ -12,6 +12,7 @@ enum ResourceType
 {
 	Model3d,
 	Texture,
+	GUI_Image,
 	Sound,
 	Music
 };
