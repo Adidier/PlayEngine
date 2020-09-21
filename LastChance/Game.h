@@ -11,6 +11,8 @@
 #include "Enemy.h"
 #include "Floor.h"
 #include "Physics/Physics.h"
+#include "Audio/AudioPlayer.h"
+#include "Audio/MusicPlayer.h"
 #include<vector>
 
 class Game : public GameState
@@ -42,4 +44,5 @@ public:
 	void LoadShaders();
 	void LoadModels(const std::map<std::string, std::string>& models);
 	void LoadEnemies(const std::vector<std::string>& pathFileModels);
+	void LoadMusic();
 };

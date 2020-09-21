@@ -44,6 +44,12 @@
     <Filter Include="CGE\include\Base">
       <UniqueIdentifier>{793646e1-ece4-481e-8aaa-07205d661c09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="CGE\Audio">
+      <UniqueIdentifier>{2bdf291b-bacc-459e-834a-963f4e95f511}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CGE\include\Audio">
+      <UniqueIdentifier>{e58ca44c-dc02-4a3d-8adc-0225538710cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CGE\Base\GameState.cpp">
@@ -105,6 +111,12 @@
     </ClCompile>
     <ClCompile Include="CGE\Physics\RigidBody.cpp">
       <Filter>CGE\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Audio\AudioPlayer.cpp">
+      <Filter>CGE\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="CGE\Audio\MusicPlayer.cpp">
+      <Filter>CGE\Audio</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +182,12 @@
     </ClInclude>
     <ClInclude Include="CGE\include\Physics\RigidBody.h">
       <Filter>CGE\include\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Audio\AudioPlayer.h">
+      <Filter>CGE\include\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="CGE\include\Audio\MusicPlayer.h">
+      <Filter>CGE\include\Audio</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

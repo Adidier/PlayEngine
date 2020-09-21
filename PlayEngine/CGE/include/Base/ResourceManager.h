@@ -1,6 +1,8 @@
 #pragma once
 #include "../Export.h"
 #include "Graphic/Model.h"
+#include "Audio/AudioPlayer.h"
+#include "Audio/MusicPlayer.h"
 #include <map>
 #include <thread> 
 #include <list> 
@@ -10,7 +12,8 @@ enum ResourceType
 {
 	Model3d,
 	Texture,
-	Sound
+	Sound,
+	Music
 };
 
 class PLAYENGINE ResourceManager
