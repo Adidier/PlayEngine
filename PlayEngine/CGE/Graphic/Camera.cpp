@@ -47,7 +47,7 @@ glm::vec3 Camera::getCameraPosition()
 }
 
 
-glm::vec3 Camera::getCameraRotation()
+glm::vec3 Camera::getFront()
 {
 	return front;
 }

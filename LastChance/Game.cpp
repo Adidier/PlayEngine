@@ -70,7 +70,7 @@ void Game::Init()
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<200;i++)
+	for (int i=0;i<1;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -157,3 +157,13 @@ void Game::Close()
 {
 	std::cout << " Close Init" << std::endl;
 }
+/*
+
+render de una imagen sobre el contexto de OpenGL HUD-- Max
+arreglar box colliders ---- Walter
+agregar biblioteca sonido ---- Alfredo
+cargar un conjunto de modelos para hacer un mapa basico con box colliders --Pao 
+
+2 parcial
+
+*/

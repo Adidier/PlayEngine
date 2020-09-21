@@ -1,10 +1,14 @@
 #pragma once
 #include <string>
+#include "lua.hpp"
 
 class ScriptEnemy
 {
+private:
+	lua_State* L = nullptr;
 public:
-	ScriptEnemy(std::string luaFile);
-	float Rotate(float Forwardx, float Forwardy, float Forwardz,float x, float y, float z);
+	ScriptEnemy(const std::string &luaFile);
+	std::string GetAction(double distance);
+
 };
 

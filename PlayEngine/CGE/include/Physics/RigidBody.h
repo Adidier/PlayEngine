@@ -11,6 +11,9 @@ public:
 
 	glm::vec3 GetObjectPosition();
 	glm::vec3 GetObjectRotation();
+	void ApplyForce(const glm::vec3& rForce);
+	void SetLinearVelocity(const glm::vec3& velocity);
+
 private:
 	btRigidBody* rigidBody;
 };

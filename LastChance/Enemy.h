@@ -16,6 +16,7 @@ private:
 public:
 	Enemy(Player* player);
 	void Draw() override;
-	void Update(unsigned int delta) override;
+	void Update(unsigned int delta) override; 
 };
+
 

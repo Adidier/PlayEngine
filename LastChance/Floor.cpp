@@ -18,7 +18,7 @@ Floor::Floor()
 		btScalar(-50.0),
 		btScalar(0.0)));
 	btQuaternion rot;
-	rot.setEuler(0, 0.25, 0);
+	rot.setEuler(0, 0, 0);
 	startTransform.setRotation(rot);
 	rigidBody = Physics::GetPtr()->createRigidBody(0.0f, startTransform, colShape);
 	
