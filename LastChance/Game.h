@@ -10,6 +10,8 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Floor.h"
+#include "Level.h"
+#include "Wall.h"
 #include "Physics/Physics.h"
 #include "Graphic/GUI.h"
 #include "Audio/AudioPlayer.h"
@@ -30,7 +32,11 @@ private:
 	Graphic::GUI* gui;
 
 	std::vector<Enemy*> enemies;
-
+	Level* level;
+	Wall* wall;
+	Wall* wall1;
+	Wall* wall2;
+	Wall* wall3;
 	Floor* floor;
 public:
 	Game();

@@ -9,6 +9,7 @@ class Floor : public GameObject
 {
 private:
 	Model* model;
+	Model* room;
 	Transform transform;
 	btRigidBody* rigidBody;
 	float angle = 0;

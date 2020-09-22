@@ -166,7 +166,7 @@ public:
 		btScalar sqz;
 		btScalar sarg;
 		sqx = m_floats[0] * m_floats[0];
-		sqy = m_floats[1] * m_floats[1];
+		sqy = m_floats[1] * m_floats[1]; 
 		sqz = m_floats[2] * m_floats[2];
 		squ = m_floats[3] * m_floats[3];
 		sarg = btScalar(-2.) * (m_floats[0] * m_floats[2] - m_floats[3] * m_floats[1]);
