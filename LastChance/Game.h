@@ -11,6 +11,7 @@
 #include "Enemy.h"
 #include "Floor.h"
 #include "Physics/Physics.h"
+#include "Graphic/GUI.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
 #include<vector>
@@ -26,6 +27,7 @@ private:
 	Player *player;
 	std::vector<Model*> map;
 	Physics *physics;
+	Graphic::GUI* gui;
 
 	std::vector<Enemy*> enemies;
 

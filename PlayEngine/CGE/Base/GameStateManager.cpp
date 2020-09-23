@@ -1,6 +1,7 @@
 #include "Base/GameStateManager.h"
 #include <iostream>
 #include <chrono>
+#include"Graphic/GUI_Overlay.h"
 	
 GameStateManager* GameStateManager::ptr;
 
@@ -30,6 +31,9 @@ void GameStateManager::GameLoop()
 	frameRateTime = oldtime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 	//Para que el juego se cierre al poner ESC
 	unsigned int frameRate = 0;
+	//UI OVERLAY
+	Graphic::GUI_Overlay* gui = Graphic::GUI_Overlay::GetPtr();
+
 	while (!platform->shouldWindowClose())
 	{
 		try
@@ -55,8 +59,11 @@ void GameStateManager::GameLoop()
 			platform->CheckEvent(state, &GameState::Input, &GameState::MouseInput);
 
 			state->Update(time.count());
-			
+			platform->RenderClear();
 			state->Draw();
+			//DIBUJAR EL GUI OVERLAY AQUI
+			gui->Draw();
+			platform->RenderPresent();
 			frameRate++;
 			
 
