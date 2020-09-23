@@ -39,9 +39,11 @@ void Game::Init()
 	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/brick.png");
 	resourceManger->Add(ResourceType::Music, "MUSIC", "Assets/Sounds/funnysong.wav");
 	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
+	resourceManger->Add(ResourceType::GUI_Image, "IMAGE", "Assets/Textures/montanas.png");
+
 
 	resourceManger->Wait();
-	resourceManger->Load();
+	
 	
 	player = new Player();
 	floor = new Floor();
@@ -52,7 +54,9 @@ void Game::Init()
 	shaderManager->LoadShaders("gouraud-shader", "Assets/Shaders/gouraud-shader.vert", "Assets/Shaders/gouraud-shader.frag");
 	shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
 	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
+	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
 
+	resourceManger->Load();
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");
@@ -62,6 +66,7 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);
 
+	gui = new Graphic::GUI((Graphic::GUI_IMAGE*) resourceManager->GetElement("IMAGE","Assets/Textures/montanas.png"),player->GetCamera(),shaderManager);
 
 	std::vector<std::string> pathsEnemies = {
 	"Enemy1",
@@ -105,16 +110,14 @@ void Game::LoadShaders()
 
 void Game::Draw()
 {
-	platform->RenderClear();
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("phong-shader");
+	shaderManager->Activate("toon-shader");
 	shaderManager->draw();
 	
 	DrawMap();
 	DrawEnemies();
 	floor->Draw();
-	platform->RenderPresent();
 }
 void Game::DrawMap()
 {
