@@ -21,23 +21,6 @@ namespace Graphic
 
 	void GUI_Overlay::Draw()
 	{
-		//glDisable(GL_DEPTH_TEST);
-		//glDisable(GL_CULL_FACE);
-		//glDisable(GL_TEXTURE_2D);
-		//glDisable(GL_LIGHTING);
-
-		//glMatrixMode(GL_MODELVIEW);
-		//glPushMatrix();
-		//glLoadIdentity();
-		//glOrtho(0.0, 800, 600, 1.0, -1.0, 1.0);
-		//glEnable(GL_BLEND);
-		//glEnable(GL_TEXTURE_2D);
-		//glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
-		//glMatrixMode(GL_MODELVIEW);
-		//glLoadIdentity();
-		//glColor3f(1, 1, 1);
-
 		for (auto gui : *guis)
 		{
 			gui->Draw();

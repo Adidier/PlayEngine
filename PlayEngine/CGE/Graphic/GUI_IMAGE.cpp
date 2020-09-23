@@ -1,4 +1,5 @@
 #include "Graphic/GUI_IMAGE.h"
+#include"Base/ShaderManager.h"
 #include "stb_image.h"
 
 namespace Graphic
@@ -24,19 +25,23 @@ namespace Graphic
 
 	Resource* GUI_IMAGE::Load()
 	{
+		auto sm = ShaderManager::getPtr();
+		sm->Activate("gui");
+
 		glGenTextures(1, &GUI_IMAGE_ID);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
 		glGenerateMipmap(GL_TEXTURE_2D);
+		glBindTexture(GL_TEXTURE_2D, 0);
 		stbi_image_free(texData);
 		return this;
 	}
 
 	void GUI_IMAGE::UseGUI_IMAGE(unsigned int i)
 	{
-		glActiveTexture(i);
-		glBindTexture(GL_TEXTURE_CUBE_MAP, GUI_IMAGE_ID);
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
 	}
 
 	void GUI_IMAGE::ClearGUI_IMAGE()

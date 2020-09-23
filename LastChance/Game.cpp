@@ -43,7 +43,7 @@ void Game::Init()
 
 
 	resourceManger->Wait();
-	resourceManger->Load();
+	
 	
 	player = new Player();
 	floor = new Floor();
@@ -54,7 +54,9 @@ void Game::Init()
 	shaderManager->LoadShaders("gouraud-shader", "Assets/Shaders/gouraud-shader.vert", "Assets/Shaders/gouraud-shader.frag");
 	shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
 	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
+	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
 
+	resourceManger->Load();
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");

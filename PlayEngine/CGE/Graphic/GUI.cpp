@@ -10,17 +10,17 @@ namespace Graphic
 		overlay->Add(this);
 		uniformProjection = shaderManager->GetUniformId("projection");
 		uniformView = shaderManager->GetUniformId("view");
+
 		unsigned int planeIndices[] = {
-			// front
-			0, 1, 2,
-			2, 1, 3,
+			2, 1, 0,
+			2, 3, 0,
 		};
 
 		std::vector<GLfloat> planeVertices = {
-			-1.0f, 1.0f, -1.0f,
-			-1.0f, -1.0f, -1.0f,
+			0.0f, 0.0f, -1.0f,
+			1.0f, 0.0f, -1.0f,
 			1.0f, 1.0f, -1.0f,
-			1.0f, -1.0f, -1.0f,
+			0.0f, 1.0f, -1.0f,
 		};
 
 		plane = new Mesh();
@@ -37,20 +37,15 @@ namespace Graphic
 	{
 		glm::mat4 viewMatrix = sm->GetViewMatrix(); glm::mat4 projectionMatrix = sm->GetProjectionMatrix();
 
-		sm->Activate("skybox");
+		sm->Activate("gui");
 		uniformView = sm->GetUniformId("view");
-		viewMatrix = glm::mat4(glm::mat3(viewMatrix));
+		viewMatrix = glm::mat4(1);
 		sm->draw();
-		glDepthMask(GL_TRUE);
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 		image->UseGUI_IMAGE(GL_TEXTURE0+100);
-
-		glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
-		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(viewMatrix));
-		//glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(glm::mat4(1))); //Si usa esta se queda arriba la imagen
+		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(glm::mat4(1)));
 		plane->RenderMesh();
-		glDepthMask(GL_TRUE);
-
-
 	}
 }
