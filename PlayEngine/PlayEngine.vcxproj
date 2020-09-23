@@ -22,7 +22,7 @@
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{AAC58711-E8E4-4C7D-9D60-4E1B9A45D84D}</ProjectGuid>
     <RootNamespace>PlayEngine</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,12 +76,12 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\std_image\include;..\PlayEngine\CGE\include;..\ExternalLibs\lua\include;..\ExternalLibs\Bullet\include;C:\Users\Usuario\Desktop\proyecto adidier\PlayEngine\ExternalLibs\SDL2-2.0.12\include;C:\Users\Usuario\Desktop\proyecto adidier\PlayEngine\ExternalLibs\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\ExternalLibs\glfw-3.3.bin.WIN32\include;..\ExternalLibs\glew-2.1.0\include;..\ExternalLibs\glm\glm;..\ExternalLibs\Assimp\include;..\ExternalLibs\std_image\include;..\PlayEngine\CGE\include;..\ExternalLibs\lua\include;..\ExternalLibs\Bullet\include;..\ExternalLibs\SDL2-2.0.12\include;..\ExternalLibs\SDL2_mixer-2.0.4\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>PLAYENGINE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Users\Usuario\Desktop\proyecto adidier\PlayEngine\ExternalLibs\SDL2_mixer-2.0.4\lib\x86;C:\Users\Usuario\Desktop\proyecto adidier\PlayEngine\ExternalLibs\SDL2-2.0.12\lib\x86;..\ExternalLibs\glfw-3.3.bin.WIN32\lib-vc2019;..\ExternalLibs\glew-2.1.0\lib\Release\Win32;..\ExternalLibs\Assimp\;$(SolutionDir)\;..\ExternalLibs\lua\lib;..\ExternalLibs\Bullet\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\ExternalLibs\SDL2_mixer-2.0.4\lib\x86;..\ExternalLibs\SDL2-2.0.12\lib\x86;..\ExternalLibs\glfw-3.3.bin.WIN32\lib-vc2019;..\ExternalLibs\glew-2.1.0\lib\Release\Win32;..\ExternalLibs\Assimp\;$(SolutionDir)\;..\ExternalLibs\lua\lib;..\ExternalLibs\Bullet\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>glfw3.lib;glew32.lib;Opengl32.lib;assimp-vc142-mtd.lib;lua51.lib;Bullet3Dynamics_Debug.lib;BulletCollision_Debug.lib;BulletDynamics_Debug.lib;LinearMath_Debug.lib;SDL2.lib;SDL2main.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
