@@ -6,6 +6,7 @@
 Enemy::Enemy(Player* player)
 {
 	this->player = player;
+	scriptEnemy = new ScriptEnemy("Assets/AI/Enemy/Actions/Action.lua");
 
 	model = (Model *)ResourceManager::GetPtr()->GetElement("Enemy", "Assets/Models/pina_pose.obj");
 	model->AddTexture("Assets/Textures/pina.png");
@@ -17,23 +18,27 @@ Enemy::Enemy(Player* player)
 void Enemy::Draw()
 {
 	transform.SetScale(1.1f, 1.1f, 1.1f);
-	//transform.SetRotation(0, 0, 0);
 	model->SetTransform(transform);
 	model->Draw();
 }
  
 void Enemy::Update(unsigned int delta)
 {
-	/*glm::vec3 dir = player->GetCamera()->getCameraPosition() - transform.GetTranslation();
-	dir = glm::normalize(dir)*0.1f;
-	transform.SetTranslation(transform.GetTranslation().x + dir.x,
-		transform.GetTranslation().y + dir.y,
-		transform.GetTranslation().z + dir.z);
-		*/
-
-	//transform.SetTranslation()
 	auto pos = rigidBody->GetObjectPosition();
 	auto rot = rigidBody->GetObjectRotation();
 	transform.SetTranslation(pos.x, pos.y, pos.z);
 	transform.SetRotation(rot.x, rot.y, rot.z);
+	glm::vec3 front(cos(rot.y), 0, sin(rot.y));
+	float dot = glm::dot (front,player->GetCamera()->getCameraPosition());
+	float normals = glm::length(front) * glm::length(player->GetCamera()->getCameraPosition());
+	float angle = glm::acos(dot/normals);
+	float distance = glm::distance(player->GetCamera()->getCameraPosition(), pos);
+	
+	std::cout << distance << std::endl;
+	auto action =scriptEnemy->GetAction(distance);
+	if (action == "walk")
+	{
+		rigidBody->SetLinearVelocity(glm::vec3(200, 0, 0));
+		rigidBody->ApplyForce(glm::vec3(200, 0, 0));
+	}
 }

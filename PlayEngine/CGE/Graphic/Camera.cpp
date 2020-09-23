@@ -1,4 +1,5 @@
 #include "Graphic/Camera.h"
+#include "Base/ResourceManager.h"
 Camera::Camera() {}
 
 Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLfloat startPitch, GLfloat startMoveSpeed, GLfloat startTurnSpeed)
@@ -13,12 +14,19 @@ Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLf
 	moveSpeed = startMoveSpeed;
 	turnSpeed = startTurnSpeed;
 
+	audioPlayer = (AudioPlayer*)ResourceManager::GetPtr()->GetElement("SHOTSOUND", "Assets/Sounds/laser_shot.wav");
+
 	update();
 }
 
 void Camera::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 {
 	GLfloat velocity = moveSpeed * deltaTime;
+
+	if (keys[GLFW_KEY_J])
+	{
+		audioPlayer->PlaySoundEfect();
+	}
 
 	if (keys[GLFW_KEY_W])
 	{
@@ -39,6 +47,11 @@ void Camera::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 	{
 		nextPosition += right * velocity;
 	}
+
+	if (keys[GLFW_KEY_D])
+	{
+		nextPosition += right * velocity;
+	}
 }
 
 glm::vec3 Camera::getCameraPosition()
@@ -47,7 +60,7 @@ glm::vec3 Camera::getCameraPosition()
 }
 
 
-glm::vec3 Camera::getCameraRotation()
+glm::vec3 Camera::getFront()
 {
 	return front;
 }
@@ -59,6 +72,8 @@ void Camera::mouseControl(GLfloat xChange, GLfloat yChange)
 		prevYPos = yChange;
 		firstMove = false;
 	}
+
+
 
 	float xoffset = xChange - prevXPos;
 	float yoffset = yChange - prevYPos;

@@ -37,6 +37,8 @@ void Game::Init()
 	resourceManger->Add(ResourceType::Model3d, "Enemy", "Assets/Models/pina_pose.obj");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE",  "Assets/Textures/pina.png");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/brick.png");
+	resourceManger->Add(ResourceType::Music, "MUSIC", "Assets/Sounds/funnysong.wav");
+	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
 
 	resourceManger->Wait();
 	resourceManger->Load();
@@ -66,11 +68,12 @@ void Game::Init()
 	"Enemy2",
 	};
 	LoadEnemies(pathsEnemies);
+	LoadMusic();
 }
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<10;i++)
+	for (int i=0;i<1;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -87,6 +90,12 @@ void Game::LoadModels(const std::map<std::string, std::string> &models)
 		asset->AddTexture("Assets/Textures/brick.png");
 		map.push_back(asset);
 	}
+}
+
+void Game::LoadMusic()
+{
+	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("MUSIC", "Assets/Sounds/funnysong.wav");
+	asset->PlayMusic();
 }
 
 void Game::LoadShaders()
@@ -147,7 +156,6 @@ bool Game::MouseInput(int x, int y, bool leftbutton)
 
 bool Game::Input(std::map<int, bool> keys)
 {
-	
 	player->GetCamera()->keyControl(keys, platform->GetDeltaTime());
 	
 	return false;
@@ -157,3 +165,13 @@ void Game::Close()
 {
 	std::cout << " Close Init" << std::endl;
 }
+/*
+
+render de una imagen sobre el contexto de OpenGL HUD-- Max
+arreglar box colliders ---- Walter
+agregar biblioteca sonido ---- Alfredo
+cargar un conjunto de modelos para hacer un mapa basico con box colliders --Pao 
+
+2 parcial
+
+*/

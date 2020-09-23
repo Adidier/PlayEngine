@@ -10,3 +10,8 @@ DownKey = 83
 LeftKey = 65
 RightKey = 68
 
+
+ function f (x, y)
+	print (x)
+	return (x*y)
+  end
