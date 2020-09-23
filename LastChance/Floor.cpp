@@ -10,7 +10,7 @@ Floor::Floor()
 	model = (Model*)ResourceManager::GetPtr()->GetElement("Floor", "Assets/Models/floor2.obj");
 	model->AddTexture("Assets/Textures/brick.png");
 
-	btBoxShape* colShape = new btBoxShape(btVector3(1000.1, 0.1, 1000.1));
+	btBoxShape* colShape = new btBoxShape(btVector3(640.1, 0, 640.1));
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(
@@ -37,7 +37,7 @@ void Floor::Update(unsigned int delta)
 	btQuaternion rot = rigidBody->getWorldTransform().getRotation();
 	transform.SetTranslation(pos.getX(), pos.getY(), pos.getZ());
 	glm::vec3 _rotation;
-	rot.getEulerZYX(_rotation.x, _rotation.y, _rotation.z);
+	rot.getEulerZYX(_rotation.z, _rotation.y, _rotation.x);
 	transform.SetRotation(_rotation.x, _rotation.y, _rotation.z);
 	transform.SetScale(1, 1, 1);
 }

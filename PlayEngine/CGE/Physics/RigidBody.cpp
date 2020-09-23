@@ -4,7 +4,7 @@
 
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& box)
 {
-	btBoxShape* colShape = new btBoxShape(btVector3(box.x, box.y, box.z));
+	btBoxShape* colShape = new btBoxShape(btVector3(box.x*2, box.y*2, box.z*2));
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
