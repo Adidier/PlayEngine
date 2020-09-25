@@ -34,9 +34,15 @@ void Game::Init()
 
 	auto resourceManger = ResourceManager::GetPtr();
 	resourceManger->Add(ResourceType::Model3d, "Floor", "Assets/Models/floor2.obj");
+	resourceManger->Add(ResourceType::Model3d, "Container", "Assets/Models/Container.obj");
 	resourceManger->Add(ResourceType::Model3d, "Enemy", "Assets/Models/pina_pose.obj");
+	resourceManger->Add(ResourceType::Model3d, "Wall", "Assets/Models/Wall.obj");
+	//resourceManger->Add(ResourceType::Model3d, "Robot", "Assets/Models/robot.obj");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE",  "Assets/Textures/pina.png");
 	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/brick.png");
+	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/ContainerAlbedo.png");
+	//resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/RobbiDiffuse.png");
+	//Aquí agrego los modelos y tecturas
 	resourceManger->Add(ResourceType::Music, "MUSIC", "Assets/Sounds/funnysong.wav");
 	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
 	resourceManger->Add(ResourceType::GUI_Image, "IMAGE", "Assets/Textures/montanas.png");
@@ -47,6 +53,15 @@ void Game::Init()
 	
 	player = new Player();
 	floor = new Floor();
+	level = new Level();
+	wall = new Wall();
+	wall->setTransform(0, 50, -600, 0);
+	wall1 = new Wall();
+	wall1->setTransform(0, 50, 600, 0);
+	wall2 = new Wall();
+	wall2->setTransform(600, 50, 0, -1.57f );
+	wall3 = new Wall();
+	wall3->setTransform(-600, 50, 0, 1.57f);
 
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(player->GetCamera());
@@ -118,6 +133,12 @@ void Game::Draw()
 	DrawMap();
 	DrawEnemies();
 	floor->Draw();
+	level->Draw();
+	wall->Draw();
+	wall1->Draw();
+	wall2->Draw();
+	wall3->Draw();
+	platform->RenderPresent();
 }
 void Game::DrawMap()
 {
@@ -143,6 +164,11 @@ void Game::DrawEnemies()
 void Game::Update(unsigned int delta)
 {
 	floor->Update(delta);
+	level->Update(delta);
+	wall->Update(delta);
+	wall1->Update(delta);
+	wall2->Update(delta);
+	wall3->Update(delta);
 	for (auto enemi : enemies)
 	{
 		enemi->Update(delta);
