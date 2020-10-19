@@ -10,7 +10,7 @@ class PLAYENGINE GameStateManager
 {
 private:
 	std::stack<GameState*> states;
-	PEPlatform* platform;
+	Platform* platform;
 	GameStateManager();
 	~GameStateManager();
 	static GameStateManager* ptr;

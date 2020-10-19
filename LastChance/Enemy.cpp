@@ -34,7 +34,7 @@ void Enemy::Update(unsigned int delta)
 	float angle = glm::acos(dot/normals);
 	float distance = glm::distance(player->GetCamera()->getCameraPosition(), pos);
 	
-	std::cout << distance << std::endl;
+	//std::cout << distance << std::endl;
 	auto action =scriptEnemy->GetAction(distance);
 	if (action == "walk")
 	{

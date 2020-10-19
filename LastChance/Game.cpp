@@ -20,7 +20,7 @@ void Game::Init()
 	physics = Physics::GetPtr();
 	physics->InitPhysics();
 	std::cout << " Menu Init" << std::endl;
-	this->platform = PEPlatform::GetPtr();
+	this->platform = Platform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
 	resourceManager = ResourceManager::GetPtr();
 	
@@ -45,7 +45,7 @@ void Game::Init()
 	//Aquí agrego los modelos y tecturas
 	resourceManger->Add(ResourceType::Music, "MUSIC", "Assets/Sounds/funnysong.wav");
 	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
-	resourceManger->Add(ResourceType::GUI_Image, "IMAGE", "Assets/Textures/montanas.png");
+	resourceManger->Add(ResourceType::GUILine, "IMAGE", "Assets/Textures/montanas.png");
 
 
 	resourceManger->Wait();
@@ -81,7 +81,8 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);
 
-	gui = new Graphic::GUI((Graphic::GUI_IMAGE*) resourceManager->GetElement("IMAGE","Assets/Textures/montanas.png"),player->GetCamera(),shaderManager);
+	gui = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("LINE", "line"),
+		player->GetCamera(), shaderManager);
 
 	std::vector<std::string> pathsEnemies = {
 	"Enemy1",
@@ -93,7 +94,7 @@ void Game::Init()
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<1;i++)
+	for (int i=0;i<20;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -138,7 +139,6 @@ void Game::Draw()
 	wall1->Draw();
 	wall2->Draw();
 	wall3->Draw();
-	platform->RenderPresent();
 }
 void Game::DrawMap()
 {

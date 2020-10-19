@@ -7,17 +7,14 @@ Skybox::Skybox(std::vector<std::string> faceLocations)
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->LoadShaders("skybox", "Assets/Shaders/skybox.vert", "Assets/Shaders/skybox.frag");
 
-
 	uniformProjection = shaderManager->GetUniformId("projection");
 	uniformView = shaderManager->GetUniformId("view");
-
 
 	// Texture Setup
 	glGenTextures(1, &textureId);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureId);
 
 	int width, height, bitDepth;
-
 	for (size_t i = 0; i < 6; i++)
 	{
 		unsigned char* texData = stbi_load(faceLocations[i].c_str(), &width, &height, &bitDepth, 0);

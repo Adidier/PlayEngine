@@ -14,6 +14,7 @@
 #include "Wall.h"
 #include "Physics/Physics.h"
 #include "Graphic/GUI.h"
+#include "Graphic/GUILine.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
 #include<vector>
@@ -21,7 +22,7 @@
 class Game : public GameState
 {
 private:
-	PEPlatform* platform;
+	Platform* platform;
 	GameStateManager* manager;
 	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;

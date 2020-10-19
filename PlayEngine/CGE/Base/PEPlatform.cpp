@@ -3,15 +3,15 @@
 
 #include <iostream>
 
-PEPlatform* PEPlatform::ptr;
-GameState* PEPlatform::obj;
+Platform* Platform::ptr;
+GameState* Platform::obj;
 
-bool (GameState::* PEPlatform::keyboard)(std::map<int, bool>);
-bool (GameState::* PEPlatform::mouse)(int, int, bool);
-std::map<int, bool> PEPlatform::keys;
-bool PEPlatform::leftButtonMouse;
+bool (GameState::* Platform::keyboard)(std::map<int, bool>);
+bool (GameState::* Platform::mouse)(int, int, bool);
+std::map<int, bool> Platform::keys;
+bool Platform::leftButtonMouse;
 
-PEPlatform::PEPlatform(std::string name)
+Platform::Platform(std::string name)
 {
 	serviceConfiguration = ServiceConfiguration::getptr();
 	serviceConfiguration->load("Assets/Config/Config.lua");
@@ -26,7 +26,7 @@ PEPlatform::PEPlatform(std::string name)
 	}
 }
 
-void PEPlatform::init()
+void Platform::init()
 {
 	if (!glfwInit())
 	{
@@ -81,30 +81,30 @@ void PEPlatform::init()
 	// Create Viewport
 	glViewport(0, 0, bufferWidth, bufferHeight);
 }
-PEPlatform::~PEPlatform()
+Platform::~Platform()
 {
 	glfwDestroyWindow(mainWindow);
 	glfwTerminate();
 }
 
-void PEPlatform::RenderClear()
+void Platform::RenderClear()
 {
 	// Clear the window
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
-void PEPlatform::RenderPresent()
+void Platform::RenderPresent()
 {
 	glfwSwapBuffers(mainWindow);
 }
 
-float PEPlatform::GetDeltaTime()
+float Platform::GetDeltaTime()
 {
 	return deltaTime;
 }
 
-void PEPlatform::CheckEvent(GameState* obj, bool (GameState::* keyboard)(std::map<int, bool>), bool (GameState::* mouse)(int, int, bool))
+void Platform::CheckEvent(GameState* obj, bool (GameState::* keyboard)(std::map<int, bool>), bool (GameState::* mouse)(int, int, bool))
 {
 	GLfloat now = glfwGetTime();
 	deltaTime = now - lastTime;
@@ -117,55 +117,55 @@ void PEPlatform::CheckEvent(GameState* obj, bool (GameState::* keyboard)(std::ma
 	glfwSetCursorPosCallback(mainWindow, HandleMousePosition);
 	glfwSetMouseButtonCallback(mainWindow, HandleMouseButton);
 }
-int PEPlatform::GetWidth()
+int Platform::GetWidth()
 {
 	return width;
 }
 
-int PEPlatform::GetHeight()
+int Platform::GetHeight()
 {
 	return height;
 }
 
-PEPlatform* PEPlatform::GetPtr()
+Platform* Platform::GetPtr()
 {
 	if (ptr == nullptr)
 	{
-		ptr = new PEPlatform("THE GAME");
+		ptr = new Platform("THE GAME");
 	}
 	return ptr;
 }
 
-void  PEPlatform::HandleKeys(GLFWwindow* window, int key, int code, int action, int mode)
+void  Platform::HandleKeys(GLFWwindow* window, int key, int code, int action, int mode)
 {
 	if (key >= 0 && key < 1024)
 	{
 		if (action == GLFW_PRESS)
 		{
-			PEPlatform::keys[key] = true;
+			Platform::keys[key] = true;
 		}
 		else if (action == GLFW_RELEASE)
 		{
-			PEPlatform::keys[key] = false;
+			Platform::keys[key] = false;
 		}
 	}
 	if (keys[GLFW_KEY_ESCAPE])
 		glfwSetWindowShouldClose(window, 1);
-	(PEPlatform::obj->*PEPlatform::keyboard)(keys);
+	(Platform::obj->*Platform::keyboard)(keys);
 }
 
 
-void PEPlatform::HandleMousePosition(GLFWwindow* window, double x, double y)
+void Platform::HandleMousePosition(GLFWwindow* window, double x, double y)
 {
-	(PEPlatform::obj->*PEPlatform::mouse)(x, y, leftButtonMouse);
+	(Platform::obj->*Platform::mouse)(x, y, leftButtonMouse);
 }
 
-void PEPlatform::HandleMouseButton(GLFWwindow* window, int button, int action, int mod)
+void Platform::HandleMouseButton(GLFWwindow* window, int button, int action, int mod)
 {
-	(PEPlatform::obj->*PEPlatform::mouse)(-1, -1, action);
+	(Platform::obj->*Platform::mouse)(-1, -1, action);
 
 }
 
-bool PEPlatform::shouldWindowClose() {
+bool Platform::shouldWindowClose() {
 	return glfwWindowShouldClose(mainWindow);
 }

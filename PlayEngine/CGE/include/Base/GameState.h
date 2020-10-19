@@ -2,7 +2,7 @@
 #include "../Export.h"
 #include "PEPlatform.h"
 #include <map>
-class PEPlatform;
+class Platform;
 class GameStateManager;
 
 class PLAYENGINE GameState

@@ -9,7 +9,7 @@ using namespace std::chrono;
 
 GameStateManager::GameStateManager()
 {
-	platform = PEPlatform::GetPtr();
+	platform = Platform::GetPtr();
 }
 
 GameStateManager::~GameStateManager()
@@ -32,7 +32,7 @@ void GameStateManager::GameLoop()
 	//Para que el juego se cierre al poner ESC
 	unsigned int frameRate = 0;
 	//UI OVERLAY
-	Graphic::GUI_Overlay* gui = Graphic::GUI_Overlay::GetPtr();
+	Graphic::GUIOverlay* gui = Graphic::GUIOverlay::GetPtr();
 
 	while (!platform->shouldWindowClose())
 	{

@@ -143,8 +143,9 @@
     <ClCompile Include="CGE\Graphic\BaseModel.cpp" />
     <ClCompile Include="CGE\Graphic\Camera.cpp" />
     <ClCompile Include="CGE\Graphic\GUI.cpp" />
-    <ClCompile Include="CGE\Graphic\GUI_IMAGE.cpp" />
-    <ClCompile Include="CGE\Graphic\GUI_Overlay.cpp" />
+    <ClCompile Include="CGE\Graphic\GUIImage.cpp" />
+    <ClCompile Include="CGE\Graphic\GUILine.cpp" />
+    <ClCompile Include="CGE\Graphic\GUIOverlay.cpp" />
     <ClCompile Include="CGE\Graphic\Lights\DirectionalLight.cpp" />
     <ClCompile Include="CGE\Graphic\Lights\Light.cpp" />
     <ClCompile Include="CGE\Graphic\Lights\PointLight.cpp" />
@@ -171,8 +172,10 @@
     <ClInclude Include="CGE\include\Graphic\BaseModel.h" />
     <ClInclude Include="CGE\include\Graphic\Camera.h" />
     <ClInclude Include="CGE\include\Graphic\GUI.h" />
+    <ClInclude Include="CGE\include\Graphic\GUILine.h" />
     <ClInclude Include="CGE\include\Graphic\GUI_IMAGE.h" />
     <ClInclude Include="CGE\include\Graphic\GUI_Overlay.h" />
+    <ClInclude Include="CGE\include\Graphic\IGUILayer.h" />
     <ClInclude Include="CGE\include\Graphic\Lights\DirectionalLight.h" />
     <ClInclude Include="CGE\include\Graphic\Lights\Light.h" />
     <ClInclude Include="CGE\include\Graphic\Lights\PointLight.h" />
@@ -185,18 +188,22 @@
     <ClInclude Include="CGE\include\Physics\RigidBody.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Shaders\Default\default.frag" />
-    <None Include="Assets\Shaders\Default\default.vert" />
-    <None Include="Assets\Shaders\gouraud-shader.frag" />
-    <None Include="Assets\Shaders\gouraud-shader.vert" />
-    <None Include="Assets\Shaders\OneColor.frag" />
-    <None Include="Assets\Shaders\OneColor.vert" />
-    <None Include="Assets\Shaders\phong-shader.frag" />
-    <None Include="Assets\Shaders\phong-shader.vert" />
-    <None Include="Assets\Shaders\skybox.frag" />
-    <None Include="Assets\Shaders\skybox.vert" />
-    <None Include="Assets\Shaders\toon-shader.frag" />
-    <None Include="Assets\Shaders\toon-shader.vert" />
+    <None Include="..\LastChance\Assets\Shaders\Default\default.frag" />
+    <None Include="..\LastChance\Assets\Shaders\Default\default.vert" />
+    <None Include="..\LastChance\Assets\Shaders\distance-color .frag" />
+    <None Include="..\LastChance\Assets\Shaders\distance-color .vert" />
+    <None Include="..\LastChance\Assets\Shaders\gouraud-shader.frag" />
+    <None Include="..\LastChance\Assets\Shaders\gouraud-shader.vert" />
+    <None Include="..\LastChance\Assets\Shaders\gui.frag" />
+    <None Include="..\LastChance\Assets\Shaders\gui.vert" />
+    <None Include="..\LastChance\Assets\Shaders\OneColor.frag" />
+    <None Include="..\LastChance\Assets\Shaders\OneColor.vert" />
+    <None Include="..\LastChance\Assets\Shaders\phong-shader.frag" />
+    <None Include="..\LastChance\Assets\Shaders\phong-shader.vert" />
+    <None Include="..\LastChance\Assets\Shaders\skybox.frag" />
+    <None Include="..\LastChance\Assets\Shaders\skybox.vert" />
+    <None Include="..\LastChance\Assets\Shaders\toon-shader.frag" />
+    <None Include="..\LastChance\Assets\Shaders\toon-shader.vert" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

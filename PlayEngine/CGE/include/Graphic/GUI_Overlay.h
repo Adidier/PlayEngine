@@ -5,14 +5,14 @@
 
 namespace Graphic
 {
-	class GUI_Overlay
+	class GUIOverlay
 	{
 	private:
 		std::list<class GUI*>* guis;
-		GUI_Overlay();
-		static GUI_Overlay* ptr;
+		GUIOverlay();
+		static GUIOverlay* ptr;
 	public:
-		static GUI_Overlay* GetPtr();
+		static GUIOverlay* GetPtr();
 		void Draw();
 		void Add(class GUI*);
 		void Remove(class GUI*);

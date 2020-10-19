@@ -4,32 +4,33 @@
 
 namespace Graphic
 {
-	GUI::GUI(GUI_IMAGE* m_image, Camera* camera, ShaderManager* shaderManager): image(m_image), cameraToDraw(camera), sm(shaderManager)
+	GUI::GUI(IGUILayer* m_image, Camera* camera, ShaderManager* shaderManager): image(m_image), cameraToDraw(camera), sm(shaderManager)
 	{
-		GUI_Overlay* overlay = GUI_Overlay::GetPtr();
+		GUIOverlay* overlay = GUIOverlay::GetPtr();
 		overlay->Add(this);
 		uniformProjection = shaderManager->GetUniformId("projection");
 		uniformView = shaderManager->GetUniformId("view");
 
 		unsigned int planeIndices[] = {
-			2, 1, 0,
+			
 			2, 3, 0,
+			2, 1, 0,
 		};
 
 		std::vector<GLfloat> planeVertices = {
-			0.0f, 0.0f, -1.0f,
-			1.0f, 0.0f, -1.0f,
-			1.0f, 1.0f, -1.0f,
-			0.0f, 1.0f, -1.0f,
+			-1.0f, -1.0f, -1.0f,1,1,
+			1.0f, -1.0f, -1.0f,0,1,
+			1.0f, 1.0f, -1.0f,0,0,
+			-1.0f, 1.0f, -1.0f,1,0
 		};
 
 		plane = new Mesh();
-		plane->CreateMesh(planeVertices, planeIndices, 12, 6, 3);
+		plane->CreateMesh(planeVertices, planeIndices, 20, 6, 5);
 	}
 
 	GUI::~GUI()
 	{
-		GUI_Overlay* overlay = GUI_Overlay::GetPtr();
+		GUIOverlay* overlay = GUIOverlay::GetPtr();
 		overlay->Remove(this);
 	}
 
@@ -44,7 +45,7 @@ namespace Graphic
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
-		image->UseGUI_IMAGE(GL_TEXTURE0+100);
+		image->Draw();
 		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(glm::mat4(1)));
 		plane->RenderMesh();
 	}

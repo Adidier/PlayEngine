@@ -8,7 +8,7 @@
 #include<map>
 
 class GameState;
-class PLAYENGINE PEPlatform
+class PLAYENGINE Platform
 {
 private:
 	int width;
@@ -21,11 +21,11 @@ private:
 	ServiceConfiguration *serviceConfiguration;
 private:
 	void init();
-	PEPlatform(std::string name);
-	~PEPlatform();
-	static PEPlatform* ptr;
+	Platform(std::string name);
+	~Platform();
+	static Platform* ptr;
 public:
-	static PEPlatform* GetPtr();
+	static Platform* GetPtr();
 	void RenderClear();
 	void RenderPresent();
 	void CheckEvent(GameState* obj, bool (GameState::* keyboard)(std::map<int, bool>), bool (GameState::* mouse)(int, int, bool));
