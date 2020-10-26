@@ -36,7 +36,7 @@ class PLAYENGINE ResourceManager
 		void ClearResources();
 		void GetSafeOpenIds(unsigned int& a);
 			size_t GetSize();
-		Resource* GetElement(const std::string& name, const std::string& path);
+		Resource* GetElement(const std::string& name);
 
 		void Wait();
 		unsigned int AddElementToPool(ResourceType type, const std::string& name, const  std::string& path);
