@@ -78,7 +78,7 @@ void Game::Init()
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<1;i++)
+	for (int i=0;i<10;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -100,7 +100,7 @@ void Game::LoadModels(const std::map<std::string, std::string> &models)
 void Game::LoadMusic()
 {
 	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("MUSIC", "Assets/Sounds/funnysong.wav");
-	asset->PlayMusic();
+	//asset->PlayMusic();
 }
 
 void Game::LoadShaders()

@@ -38,7 +38,7 @@ void Enemy::Update(unsigned int delta)
 	auto action =scriptEnemy->GetAction(distance);
 	if (action == "walk")
 	{
-		rigidBody->SetLinearVelocity(glm::vec3(200, 0, 0));
-		rigidBody->ApplyForce(glm::vec3(200, 0, 0));
+		//rigidBody->SetLinearVelocity(glm::vec3(200, 0, 0));
+		//rigidBody->ApplyForce(glm::vec3(200, 0, 0));
 	}
 }
