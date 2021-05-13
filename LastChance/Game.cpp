@@ -169,12 +169,9 @@ void Game::Close()
 	std::cout << " Close Init" << std::endl;
 }
 /*
-
 render de una imagen sobre el contexto de OpenGL HUD-- Max
 arreglar box colliders ---- Walter
 agregar biblioteca sonido ---- Alfredo
 cargar un conjunto de modelos para hacer un mapa basico con box colliders --Pao 
-
 2 parcial
-
 */
