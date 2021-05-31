@@ -19,6 +19,7 @@ public:
 	GLint GetSpecularIntensityLocation();
 	GLint GetShininessLocation();
 	GLint GetColor1();
+	void SetColor1(float r, float g, float b);
 	GLint GetColor2();
 	glm::mat4 GetViewMatrix();
 	glm::mat4 GetProjectionMatrix();

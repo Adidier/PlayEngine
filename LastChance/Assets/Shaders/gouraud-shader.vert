@@ -15,13 +15,13 @@ uniform vec3 myLightPosition;
 vec3 ADSLightModel( in vec3 myNormal, in vec3 myPosition )
 {
 	
-	const vec3 myLightAmbient = vec3( 0.2, 0.2, 0.2 );
+	const vec3 myLightAmbient = vec3( 0.3, 0.3, 0.3 );
 	const vec3 myLightDiffuse = vec3( 1.0 , 1.0 , 1.0 );
 	const vec3 myLightSpecular = vec3( 1.0 , 1.0 , 1.0 );
-	const vec3 myMaterialAmbient = vec3( 1.0 , 0.5, 0.0 );
+	const vec3 myMaterialAmbient = vec3( 0.3 , 0.3, 0.3 );
 	const vec3 myMaterialDiffuse = vec3( 1.0 , 0.5, 0.0 );
 	const vec3 myMaterialSpecular = vec3( 0.6, 0.6, 0.6 );
-	const float myMaterialShininess = 1.0;
+	const float myMaterialShininess = 0.6;
 	//normal, light, view, and light reflection vectors
 	vec3 norm = normalize( myNormal );
 	vec3 lightv = normalize( myLightPosition - myPosition);
@@ -33,7 +33,6 @@ vec3 ADSLightModel( in vec3 myNormal, in vec3 myPosition )
 	vec3 diffuse = max(0.0, dot(lightv, norm)) * myMaterialDiffuse *myLightDiffuse;
 	//Optionally you can add a diffuse attenuation term at this
 	//point
-	//   7717098016
 	//specular light computation
 	vec3 specular = vec3( 0.0, 0.0, 0.0 );
 	if( dot(lightv, viewv) > 0.0)

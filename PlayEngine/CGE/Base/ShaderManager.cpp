@@ -78,6 +78,10 @@ GLuint ShaderManager::GetNormalTexture()
 	return normalTexture;
 }
 
+void ShaderManager::SetColor1(float r, float g, float b)
+{
+	glUniform3f(color1, r, g, b);
+}
 
 
 GLint ShaderManager::GetShininessLocation()

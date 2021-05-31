@@ -55,6 +55,7 @@ void Game::Init()
 	shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
 	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
 	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
+	shaderManager->LoadShaders("ADSLighting", "Assets/Shaders/ADSLighting.vert", "Assets/Shaders/ADSLighting.frag");
 
 	resourceManger->Load();
 	std::vector<std::string> skyboxFaces;
@@ -110,9 +111,10 @@ void Game::LoadShaders()
 
 void Game::Draw()
 {
-	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
-
-	shaderManager->Activate("toon-shader");
+	//skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
+	shaderManager->LoadShaders("ADSLighting", "Assets/Shaders/ADSLighting.vert", "Assets/Shaders/ADSLighting.frag");
+	shaderManager->Activate("ADSLighting");
+	shaderManager->SetColor1(1, 0, 0);
 	shaderManager->draw();
 	
 	DrawMap();
@@ -142,6 +144,7 @@ void Game::DrawEnemies()
 
 void Game::Update(unsigned int delta)
 {
+	
 	floor->Update(delta);
 	for (auto enemi : enemies)
 	{
