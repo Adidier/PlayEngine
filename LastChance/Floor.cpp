@@ -15,7 +15,7 @@ Floor::Floor()
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(
 		btScalar(0.0),
-		btScalar(-50.0),
+		btScalar(00.0),
 		btScalar(0.0)));
 	btQuaternion rot;
 	rot.setEuler(0, 0, 0);

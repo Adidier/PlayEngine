@@ -12,7 +12,7 @@ Enemy::Enemy(Player* player)
 	model->AddTexture("Assets/Textures/pina.png");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 
-	rigidBody = new RigidBody(1.0, glm::vec3(0, 0, 0), glm::vec3(2.5, 7.1, 3));
+	rigidBody = new RigidBody(1.0, glm::vec3(0, 0, 0), glm::vec3(2.5, 4.0, 3));
 }
 
 void Enemy::Draw()
