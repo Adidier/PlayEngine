@@ -8,7 +8,6 @@
 
 Game::Game()
 {
-
 }
 
 Game::~Game()
