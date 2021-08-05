@@ -107,7 +107,7 @@ unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::str
 
 	if (type == ResourceType::Model3d)
 	{
-		resource = new Model(name,path);
+		resource = new Graphic::Model(name,path);
 	}
 	else if (type == ResourceType::Texture)
 	{

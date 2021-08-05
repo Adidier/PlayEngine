@@ -7,7 +7,7 @@ class Player
 {
 	private:
 		Camera camera;
-		Model *model;
+		Graphic::Model *model;
 		Transform transform;
 		btRigidBody* rigidBody;
 	private:

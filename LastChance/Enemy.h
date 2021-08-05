@@ -9,7 +9,7 @@ class Enemy : public GameObject
 {
 private:
 	ScriptEnemy* scriptEnemy;
-	Model* model;
+	Graphic::Model* model;
 	Transform transform;
 	Player* player;
 	RigidBody* rigidBody;

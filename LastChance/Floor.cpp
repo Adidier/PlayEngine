@@ -7,7 +7,7 @@ Floor::Floor()
 {
 
 	//
-	model = (Model*)ResourceManager::GetPtr()->GetElement("Floor", "Assets/Models/floor2.obj");
+	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("Floor", "Assets/Models/floor2.obj");
 	model->AddTexture("Assets/Textures/brick.png");
 
 	btBoxShape* colShape = new btBoxShape(btVector3(640.1, 0, 640.1));

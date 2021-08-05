@@ -5,7 +5,7 @@
 class Wall: public GameObject
 {
 private:
-	Model* wall;
+	Graphic::Model* wall;
 	Transform transform;
 	btRigidBody* rigidBody;
 	float angle = 0;

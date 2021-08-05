@@ -8,7 +8,6 @@
 
 Game::Game()
 {
-
 }
 
 Game::~Game()
@@ -107,7 +106,7 @@ void Game::LoadModels(const std::map<std::string, std::string> &models)
 	{
 		auto resourceManger = ResourceManager::GetPtr();
 		resourceManger->Add(ResourceType::Model3d, model.first, model.second);
-		auto asset = (Model*)ResourceManager::GetPtr()->GetElement(model.first, model.second);
+		auto asset = (Graphic::Model*)ResourceManager::GetPtr()->GetElement(model.first, model.second);
 		asset->AddTexture("Assets/Textures/brick.png");
 		map.push_back(asset);
 	}

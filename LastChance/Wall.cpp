@@ -3,7 +3,7 @@
 #include "Physics/Physics.h"
 #include "btBulletDynamicsCommon.h"
 Wall::Wall() {
-	wall = (Model*)ResourceManager::GetPtr()->GetElement("Wall", "Assets/Models/Wall.obj");
+	wall = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("Wall", "Assets/Models/Wall.obj");
 	wall->AddTexture("Assets/Textures/brick.png");
 
 

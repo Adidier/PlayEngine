@@ -28,7 +28,7 @@ private:
 	ShaderManager* shaderManager;
 	Skybox *skybox;
 	Player *player;
-	std::vector<Model*> map;
+	std::vector<Graphic::Model*> map;
 	Physics *physics;
 	Graphic::GUI* gui;
 
