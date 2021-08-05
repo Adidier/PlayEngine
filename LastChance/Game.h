@@ -26,7 +26,7 @@ private:
 	GameStateManager* manager;
 	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;
-	Skybox *skybox;
+	Graphic::Skybox *skybox;
 	Player *player;
 	std::vector<Model*> map;
 	Physics *physics;

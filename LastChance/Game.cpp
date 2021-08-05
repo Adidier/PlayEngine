@@ -79,7 +79,7 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_dn.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_bk.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
-	skybox = new Skybox(skyboxFaces);
+	skybox = new Graphic::Skybox(skyboxFaces);
 
 	gui = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("LINE", "line"),
 		player->GetCamera(), shaderManager);
