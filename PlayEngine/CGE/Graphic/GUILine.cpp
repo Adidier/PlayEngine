@@ -4,7 +4,7 @@
 
 namespace Graphic
 {
-	GUILine::GUILine(const unsigned int handle) : IGUILayer(handle, "Line", "line")
+	GUILine::GUILine(const unsigned int handle) : IGUILayer(handle, "LINE", "line")
 	{
 		GUI_IMAGE_ID = 0;
 		width = 1024;
@@ -36,7 +36,6 @@ namespace Graphic
 		buffer[offset + 2] = B;
 		buffer[offset + 3] = A;
 
-		
 	}
 
 	void GUILine::PutPixel(const int& x, const int& y, const char& R, const char& G, const char& B, const char& A)
@@ -48,11 +47,10 @@ namespace Graphic
 	{
 		ShaderManager::getPtr()->Activate("gui");
 
-		if (GUI_IMAGE_ID == 0)
-		{
-			glGenTextures(1, &GUI_IMAGE_ID);
-		}
+		glGenTextures(1, &GUI_IMAGE_ID);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
+		for(int i=0;i<100;i++)
+		PutPixel(100+i, 100, 0, 255, 0, 255);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, Buffer);
 		glGenerateMipmap(GL_TEXTURE_2D);
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -66,6 +64,8 @@ namespace Graphic
 	{
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
+
+		
 	}
 
 	void GUILine::Clear()

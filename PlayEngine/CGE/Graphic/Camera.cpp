@@ -14,7 +14,7 @@ Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLf
 	moveSpeed = startMoveSpeed;
 	turnSpeed = startTurnSpeed;
 
-	audioPlayer = (AudioPlayer*)ResourceManager::GetPtr()->GetElement("SHOTSOUND");
+	audioPlayer = (AudioPlayer*)ResourceManager::GetPtr()->GetElement("SHOTSOUND", "Assets/Sounds/laser_shot.wav");
 
 	update();
 }

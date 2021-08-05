@@ -123,7 +123,7 @@ void Model::AddTexture(std::string path)
 	int idx = std::string(path).rfind("\\");
 	std::string filename = std::string(path).substr(idx + 1);
 
-	Graphic::Texture* texture = (Graphic::Texture*)ResourceManager::GetPtr()->GetElement(filename);
+	Graphic::Texture* texture = (Graphic::Texture*)ResourceManager::GetPtr()->GetElement("TEXTURE", path);
 	textureList.push_back(texture);
 }
 

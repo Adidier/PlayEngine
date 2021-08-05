@@ -1,7 +1,5 @@
 #include "Graphic/Skybox.h"
 #include "stb_image.h"
-namespace Graphic
-{
 
 Skybox::Skybox(std::vector<std::string> faceLocations)
 {
@@ -94,4 +92,3 @@ Skybox::~Skybox()
 {
 }
 
-}

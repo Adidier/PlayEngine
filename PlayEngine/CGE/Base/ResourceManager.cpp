@@ -57,9 +57,9 @@ size_t ResourceManager::GetSize()
 	return resourceMap->size();//adidier revisar validaciones
 }
 
-Resource* ResourceManager::GetElement(const std::string& name)
+Resource* ResourceManager::GetElement(const std::string& name, const std::string& path)
 {
-	if (name.empty())
+	if (name.empty() || path.empty())
 		return nullptr;
 
 	for (auto i = resourceMap->begin(); i != resourceMap->end(); i++)
@@ -67,7 +67,7 @@ Resource* ResourceManager::GetElement(const std::string& name)
 		auto resource = i->second;
 		if (resource != nullptr)
 		{
-			if (resource->GetName() == name)
+			if (resource->GetName() == name && resource->GetPath() == path)
 			{
 				return resource;
 			}
@@ -88,7 +88,7 @@ void ResourceManager::Wait()
 unsigned int ResourceManager::Add(ResourceType type,const std::string& name,const std::string& path)
 {
 	AddElementToPool(type, name, path);
-	return -1;//adidier arreglalo
+	return -1;//adidier arreglado
 }
 
 unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::string& name, const std::string& path)
@@ -96,7 +96,7 @@ unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::str
 	if (resourceMap == nullptr || name.empty() || path.empty())
 		return -1;
 	
-	Resource* element = GetElement(name);
+	Resource* element = GetElement(name, path);
 	if (element != nullptr)
 	{
 		return element->GetHandle();
