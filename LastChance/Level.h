@@ -6,8 +6,8 @@
 class Level: public GameObject
 {
 private:
-	Model* container;
-	Model* robot;
+	Graphic::Model* container;
+	Graphic::Model* robot;
 	Transform Containertransform;
 	Transform RobotTransform;
 	btRigidBody* rigidBody;

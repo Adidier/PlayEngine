@@ -8,7 +8,7 @@ Enemy::Enemy(Player* player)
 	this->player = player;
 	scriptEnemy = new ScriptEnemy("Assets/AI/Enemy/Actions/Action.lua");
 
-	model = (Model *)ResourceManager::GetPtr()->GetElement("Enemy", "Assets/Models/pina_pose.obj");
+	model = (Graphic::Model *)ResourceManager::GetPtr()->GetElement("Enemy", "Assets/Models/pina_pose.obj");
 	model->AddTexture("Assets/Textures/pina.png");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 

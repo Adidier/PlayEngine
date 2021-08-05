@@ -4,7 +4,7 @@
 #include "btBulletDynamicsCommon.h"
 
 Level::Level() {
-	container = (Model*)ResourceManager::GetPtr()->GetElement("Container", "Assets/Models/Container.obj");
+	container = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("Container", "Assets/Models/Container.obj");
 	container->AddTexture("Assets/Textures/ContainerAlbedo.png");
 
 	//robot = (Model*)ResourceManager::GetPtr()->GetElement("Robot", "Assets/Models/robot.obj");
