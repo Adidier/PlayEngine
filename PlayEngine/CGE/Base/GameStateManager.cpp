@@ -27,7 +27,7 @@ GameStateManager* GameStateManager::GetPtr()
 
 void GameStateManager::GameLoop()
 {
-	milliseconds time, oldtime, newtime, frameRateTime;
+	milliseconds deltaTime, oldtime, newtime, frameRateTime;
 	frameRateTime = oldtime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
 	//Para que el juego se cierre al poner ESC
 	unsigned int frameRate = 0;
@@ -39,7 +39,7 @@ void GameStateManager::GameLoop()
 		try
 		{
 			newtime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
-			time = newtime - oldtime;
+			deltaTime = newtime - oldtime;
 			
 			if (states.size() == 0)
 				throw std::exception("Error");
@@ -58,14 +58,13 @@ void GameStateManager::GameLoop()
 
 			platform->CheckEvent(state, &GameState::Input, &GameState::MouseInput);
 
-			state->Update(time.count());
+			state->Update(deltaTime.count());
 			platform->RenderClear();
 			state->Draw();
-			//DIBUJAR EL GUI OVERLAY AQUI
-			gui->Draw();
+			//TODO DIBUJAR EL GUI OVERLAY AQUI
+			//gui->Draw();
 			platform->RenderPresent();
-			frameRate++;
-			
+			frameRate++;	
 
 			oldtime = newtime;
 		}

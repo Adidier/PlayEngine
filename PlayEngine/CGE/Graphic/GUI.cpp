@@ -4,6 +4,7 @@
 
 namespace Graphic
 {
+	//TODO revisar todo
 	GUI::GUI(IGUILayer* m_image, Camera* camera, ShaderManager* shaderManager): image(m_image), cameraToDraw(camera), sm(shaderManager)
 	{
 		GUIOverlay* overlay = GUIOverlay::GetPtr();

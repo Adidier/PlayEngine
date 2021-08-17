@@ -44,7 +44,7 @@ void ResourceManager::GetSafeOpenIds(unsigned int& a)
 }
 void ResourceManager::ClearResources()
 {
-	for (auto resource = resourceMap->begin(); resource != resourceMap->end(); resource++)
+	for (auto resource = resourceMap->begin(); resource != resourceMap->end(); ++resource)
 	{
 		delete resource->second;
 	}
@@ -81,17 +81,19 @@ void ResourceManager::Wait()
 {
 	for (auto& th : pool)
 	{
-		if(th->joinable())
-		th->join();
+		if (th->joinable())
+		{
+			th->join();
+		}
 	}
 }
 unsigned int ResourceManager::Add(ResourceType type,const std::string& name,const std::string& path)
 {
-	AddElementToPool(type, name, path);
+	AddResource(type, name, path);
 	return -1;//adidier arreglado
 }
 
-unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::string& name, const std::string& path)
+unsigned int ResourceManager::AddResource(ResourceType type, const std::string& name, const std::string& path)
 {
 	if (resourceMap == nullptr || name.empty() || path.empty())
 		return -1;
@@ -104,7 +106,7 @@ unsigned int ResourceManager::AddElementToPool(ResourceType type, const std::str
 	
 	Resource* resource = nullptr;
 	handleCount++;
-
+	//TODO mejorar
 	if (type == ResourceType::Model3d)
 	{
 		resource = new Graphic::Model(name,path);

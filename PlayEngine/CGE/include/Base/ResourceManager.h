@@ -39,7 +39,7 @@ class PLAYENGINE ResourceManager
 		Resource* GetElement(const std::string& name, const std::string& path);
 
 		void Wait();
-		unsigned int AddElementToPool(ResourceType type, const std::string& name, const  std::string& path);
+		unsigned int AddResource(ResourceType type, const std::string& name, const  std::string& path);
 		void Load();
 		unsigned int Add(ResourceType type,const std::string& name, const std::string& path = "./");
 };

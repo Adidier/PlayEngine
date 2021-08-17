@@ -39,8 +39,9 @@ void ServiceConfiguration::load(std::string file)
 		printf("No se pudo abrir el archivo de configuracion: %s", lua_tostring(lState, -1));
 		return;
 	}
-	
+	//TODO  quitar estos comentarios
 	double c = f(lState, 3.14, 2);
+
 	/*
 	lua_getglobal(lState, "width");
 	lua_getglobal(lState, "height");

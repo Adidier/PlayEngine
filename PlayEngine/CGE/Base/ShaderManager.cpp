@@ -152,3 +152,7 @@ void ShaderManager::Activate(const std::string& name)
 		uniformShininess = currentShader->GetUniformId("material.shininess");
 	}
 }
+
+
+//ADSL lighting
+//TODO Forward Rendering -----
