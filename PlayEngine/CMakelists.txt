@@ -1,0 +1,57 @@
+# cmake_minimum_required(VERSION 3.0.0)
+# set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# project(PlayEngine)
+
+#add_subdirectory("")
+include_directories("../ExternalLibs/Assimp/include"
+                    "../ExternalLibs/Bullet/include"
+                    "../ExternalLibs/glew-2.1.0/include"
+                    "../ExternalLibs/glfw-3.3.bin.WIN32/include"
+					"../ExternalLibs/glm/glm"
+					"../ExternalLibs/lua/include"
+					"../ExternalLibs/SDL2_mixer-2.0.4/include"
+					"../ExternalLibs/std_image/include"
+                    "../ExternalLibs/SDL2-2.0.12/include"
+                    "include/")
+
+add_library(PlayEngine SHARED "Audio/AudioPlayer.cpp"
+                              "Audio/MusicPlayer.cpp"
+                              "Base/GameState.cpp"
+                              "Base/GameStateManager.cpp"
+                              "Base/PEPlatform.cpp"
+                              "Base/Resource.cpp"
+                              "Base/ResourceManager.cpp"
+                              "Base/ServiceConfiguration.cpp"
+                              "Base/ShaderManager.cpp"
+                              "Base/Transform.cpp"
+                              "Physics/Physics.cpp"
+                              "Physics/RigidBody.cpp"
+                              "Graphic/Texture.cpp"
+                              "Graphic/Skybox.cpp"
+                              "Graphic/Shader.cpp"
+                              "Graphic/Model.cpp"
+                              "Graphic/Mesh.cpp"
+                              "Graphic/GUIOverlay.cpp"
+                              "Graphic/GUILine.cpp"
+                              "Graphic/Lights/DirectionalLight.cpp"
+                              "Graphic/Lights/Light.cpp"
+                              "Graphic/Lights/PointLight.cpp"
+                              "Graphic/BaseModel.cpp"
+                              "Graphic/Camera.cpp"
+                              "Graphic/GUI.cpp"
+                              "Graphic/GUIImage.cpp")       
+
+target_link_libraries(PlayEngine "../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2"
+                                 "../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer"
+                                 "../../ExternalLibs/lua/lib/lua51"
+                                 "../../ExternalLibs/glfw-3.3.bin.WIN32/lib-vc2019/glfw3"
+                                 "../../ExternalLibs/glew-2.1.0/lib/Release/Win32/glew32"
+                                 "../../ExternalLibs/Assimp/assimp-vc142-mtd"
+                                 "../../ExternalLibs/Bullet/lib/BulletDynamics_Debug"
+                                 "../../ExternalLibs/Bullet/lib/Bullet3Dynamics_Debug"
+                                 "../../ExternalLibs/Bullet/lib/BulletCollision_Debug"
+                                 "../../ExternalLibs/Bullet/lib/LinearMath_Debug"
+                                 "Opengl32"
+                                 )

@@ -1,0 +1,30 @@
+# cmake_minimum_required(VERSION 3.0.0)
+# set(CMAKE_CXX_STANDARD 17)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# project(LastTowerDefense)
+
+#add_subdirectory("")
+include_directories("include/")
+include_directories("../PlayEngine/include/")
+include_directories("../ExternalLibs/Assimp/include"
+                    "../ExternalLibs/Bullet/include"
+                    "../ExternalLibs/glew-2.1.0/include"
+                    "../ExternalLibs/glfw-3.3.bin.WIN32/include"
+					"../ExternalLibs/glm/glm"
+					"../ExternalLibs/lua/include"
+					"../ExternalLibs/SDL2_mixer-2.0.4/include"
+					"../ExternalLibs/std_image/include"
+                    "../ExternalLibs/SDL2-2.0.12/include")
+
+add_executable(LastTowerDefense  "src/Enemy.cpp"
+                              "src/Floor.cpp"
+                              "src/Game.cpp"
+                              "src/GameObject.cpp"
+                              "src/Level.cpp"
+                              "src/main.cpp"
+                              "src/Player.cpp"
+                              "src/ScriptEnemy.cpp"
+                              "src/Wall.cpp")       
+
+target_link_libraries(LastTowerDefense "PlayEngine")
