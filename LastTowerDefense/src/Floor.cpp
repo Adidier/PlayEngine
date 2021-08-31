@@ -5,10 +5,8 @@
 
 Floor::Floor()
 {
-
-	//
-	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("Floor", "Assets/Models/floor2.obj");
-	model->AddTexture("Assets/Textures/brick.png");
+	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("floor2");
+	model->AddTexture("brick");
 
 	btBoxShape* colShape = new btBoxShape(btVector3(640.1, 0, 640.1));
 	btTransform startTransform;
@@ -20,8 +18,7 @@ Floor::Floor()
 	btQuaternion rot;
 	rot.setEuler(0, 0, 0);
 	startTransform.setRotation(rot);
-	rigidBody = Physics::GetPtr()->createRigidBody(0.0f, startTransform, colShape);
-	
+	rigidBody = Physics::GetPtr()->createRigidBody(0.0f, startTransform, colShape);	
 }
 
 void Floor::Draw()

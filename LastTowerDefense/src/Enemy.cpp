@@ -8,8 +8,8 @@ Enemy::Enemy(Player* player)
 	this->player = player;
 	scriptEnemy = new ScriptEnemy("Assets/AI/Enemy/Actions/Action.lua");
 
-	model = (Graphic::Model *)ResourceManager::GetPtr()->GetElement("Enemy", "Assets/Models/pina_pose.obj");
-	model->AddTexture("Assets/Textures/pina.png");
+	model = (Graphic::Model *)ResourceManager::GetPtr()->GetElement("pina_pose");
+	model->AddTexture("pina");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 
 	rigidBody = new RigidBody(1.0, glm::vec3(0, 0, 0), glm::vec3(2.5, 7.1, 3));
