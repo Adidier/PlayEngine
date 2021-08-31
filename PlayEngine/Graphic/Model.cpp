@@ -1,6 +1,7 @@
 #include "Graphic/Model.h"
 #include "Base/ResourceManager.h"
-//#include "Texture.h"
+#include <filesystem>
+
 namespace Graphic 
 {
 	Model::Model(const std::string& name, const std::string& path) :
@@ -11,11 +12,9 @@ namespace Graphic
 
 	void Model::Draw()
 	{
-
 		GLuint uniformModel = 0;
 		uniformModel = ShaderManager::getPtr()->GetUniformId("model");
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(transform.GetTransform()));
-		
 
 		for (size_t i = 0; i < meshList.size(); i++)
 		{
@@ -113,18 +112,12 @@ namespace Graphic
 					AddTexture(path.C_Str());
 				}
 			}
-
-	
 		}
 	}
 
-	void Model::AddTexture(std::string path)
+	void Model::AddTexture(std::string filename)
 	{
-			
-		int idx = std::string(path).rfind("\\");
-		std::string filename = std::string(path).substr(idx + 1);
-
-		Graphic::Texture* texture = (Graphic::Texture*)ResourceManager::GetPtr()->GetElement("TEXTURE", path);
+		Graphic::Texture* texture = (Graphic::Texture*)ResourceManager::GetPtr()->GetElement(filename);
 		textureList.push_back(texture);
 	}
 

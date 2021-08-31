@@ -9,6 +9,7 @@
 #include "Audio/MusicPlayer.h"
 
 #include <map>
+#include <filesystem>
 
 ResourceManager* ResourceManager::ptr = nullptr;
 size_t ResourceManager::handleCount = 0;
@@ -18,6 +19,8 @@ ResourceManager* ResourceManager::GetPtr()
 	if (ptr == nullptr)
 	{
 		ptr = new ResourceManager();
+		//adidier llamar platform contiene la configuracion inicial del engine
+		ptr->PathsReader("./Assets/");
 	}
 	return ptr;
 }
@@ -57,9 +60,9 @@ size_t ResourceManager::GetSize()
 	return resourceMap->size();//adidier revisar validaciones
 }
 
-Resource* ResourceManager::GetElement(const std::string& name, const std::string& path)
+const Resource* ResourceManager::GetElement(const std::string& name)
 {
-	if (name.empty() || path.empty())
+	if (name.empty())
 		return nullptr;
 
 	for (auto i = resourceMap->begin(); i != resourceMap->end(); i++)
@@ -67,7 +70,7 @@ Resource* ResourceManager::GetElement(const std::string& name, const std::string
 		auto resource = i->second;
 		if (resource != nullptr)
 		{
-			if (resource->GetName() == name && resource->GetPath() == path)
+			if (resource->GetName() == name)
 			{
 				return resource;
 			}
@@ -87,10 +90,44 @@ void ResourceManager::Wait()
 		}
 	}
 }
-unsigned int ResourceManager::Add(ResourceType type,const std::string& name,const std::string& path)
+
+void ResourceManager::PathsReader(std::string path, bool force)
 {
-	AddResource(type, name, path);
-	return -1;//adidier arreglado
+	try {
+		for (std::filesystem::directory_entry file : std::filesystem::directory_iterator(path))
+		{
+			const std::filesystem::path path = file.path();
+			if (file.is_directory())
+			{
+				PathsReader(path.generic_string());
+			}
+			if (file.is_regular_file())
+			{
+				paths[path.filename().generic_string()] = path.generic_string();
+			}
+		}
+	}
+	catch(...)
+	{
+	}
+}
+
+std::string ResourceManager::GetPath(ResourceType type,const std::string &name)
+{
+	for (auto extensionType : ResourcesTypes[type])
+	{
+		auto path = paths.find(name + "." + extensionType);
+		if (path != paths.end())
+		{
+			return path->second;
+		}
+	}
+	return "";
+}
+
+unsigned int ResourceManager::Add(ResourceType type,const std::string& name)
+{
+	return AddResource(type, name, GetPath(type, name));
 }
 
 unsigned int ResourceManager::AddResource(ResourceType type, const std::string& name, const std::string& path)
@@ -98,7 +135,7 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	if (resourceMap == nullptr || name.empty() || path.empty())
 		return -1;
 	
-	Resource* element = GetElement(name, path);
+	Resource* element = (Resource*)(GetElement(name));
 	if (element != nullptr)
 	{
 		return element->GetHandle();

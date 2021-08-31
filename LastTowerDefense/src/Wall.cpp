@@ -3,9 +3,8 @@
 #include "Physics/Physics.h"
 #include "btBulletDynamicsCommon.h"
 Wall::Wall() {
-	wall = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("Wall", "Assets/Models/Wall.obj");
-	wall->AddTexture("Assets/Textures/brick.png");
-
+	wall = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("wall");
+	wall->AddTexture("brick");
 
 	/*btBoxShape* colShape = new btBoxShape(btVector3(1000.1, 0.1, 1000.1));
 	btTransform startTransform;
@@ -18,7 +17,6 @@ Wall::Wall() {
 	rot.setEuler(0, 0, 0);
 	startTransform.setRotation(rot);
 	rigidBody = Physics::GetPtr()->createRigidBody(0.0f, startTransform, colShape);*/
-
 }
 
 void Wall::setTransform(float posx, float posy, float posz, float rotx) {

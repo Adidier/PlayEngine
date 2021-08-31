@@ -22,33 +22,21 @@ void Game::Init()
 	this->platform = Platform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
 	resourceManager = ResourceManager::GetPtr();
+	resourceManager->Add(ResourceType::Model3d, "floor");
+	resourceManager->Add(ResourceType::Model3d, "floor2");
+	resourceManager->Add(ResourceType::Model3d, "container");
+	resourceManager->Add(ResourceType::Model3d, "pina_pose");
+	resourceManager->Add(ResourceType::Model3d, "wall");
 	
-	std::map<std::string, std::string> paths = {
-	{"Enemy","Assets/Models/pina_pose.obj"},
-	{"Wall1","Assets/Models/lWall.obj"},
-	{"Wall2","Assets/Models/rWall.obj"},
-	{"Player","Assets/Models/pina_pose.obj"},
-	};
-	//LoadModels(paths);
+	resourceManager->Add(ResourceType::Texture, "pina");
+	resourceManager->Add(ResourceType::Texture, "brick");
+	resourceManager->Add(ResourceType::Texture, "ContainerAlbedo");
 
-	auto resourceManger = ResourceManager::GetPtr();
-	resourceManger->Add(ResourceType::Model3d, "Floor", "Assets/Models/floor2.obj");
-	resourceManger->Add(ResourceType::Model3d, "Container", "Assets/Models/Container.obj");
-	resourceManger->Add(ResourceType::Model3d, "Enemy", "Assets/Models/pina_pose.obj");
-	resourceManger->Add(ResourceType::Model3d, "Wall", "Assets/Models/Wall.obj");
-	//resourceManger->Add(ResourceType::Model3d, "Robot", "Assets/Models/robot.obj");
-	resourceManger->Add(ResourceType::Texture, "TEXTURE",  "Assets/Textures/pina.png");
-	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/brick.png");
-	resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/ContainerAlbedo.png");
-	//resourceManger->Add(ResourceType::Texture, "TEXTURE", "Assets/Textures/RobbiDiffuse.png");
-	//Aquí agrego los modelos y tecturas
-	resourceManger->Add(ResourceType::Music, "MUSIC", "Assets/Sounds/funnysong.wav");
-	resourceManger->Add(ResourceType::Sound, "SHOTSOUND", "Assets/Sounds/laser_shot.wav");
-	resourceManger->Add(ResourceType::GUILine, "IMAGE", "Assets/Textures/montanas.png");
+	resourceManager->Add(ResourceType::Music, "funnysong");
+	resourceManager->Add(ResourceType::Sound, "laser_shot");
+	resourceManager->Add(ResourceType::GUILine, "montanas");
 
-
-	resourceManger->Wait();
-	
+	resourceManager->Wait();
 	
 	player = new Player();
 	floor = new Floor();
@@ -70,7 +58,7 @@ void Game::Init()
 	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
 	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
 
-	resourceManger->Load();
+	resourceManager->Load();
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");
@@ -80,12 +68,11 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);
 
-	gui = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("LINE", "line"),
-		player->GetCamera(), shaderManager);
+	gui = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("line"), player->GetCamera(), shaderManager);
 
 	std::vector<std::string> pathsEnemies = {
-	"Enemy1",
-	"Enemy2",
+		"Enemy1",
+		"Enemy2"
 	};
 	LoadEnemies(pathsEnemies);
 	LoadMusic();
@@ -100,27 +87,14 @@ void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 	}
 }
 
-void Game::LoadModels(const std::map<std::string, std::string> &models)
-{
-	for (auto model : models)
-	{
-		auto resourceManger = ResourceManager::GetPtr();
-		resourceManger->Add(ResourceType::Model3d, model.first, model.second);
-		auto asset = (Graphic::Model*)ResourceManager::GetPtr()->GetElement(model.first, model.second);
-		asset->AddTexture("Assets/Textures/brick.png");
-		map.push_back(asset);
-	}
-}
-
 void Game::LoadMusic()
 {
-	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("MUSIC", "Assets/Sounds/funnysong.wav");
+	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("funnysong");
 	asset->PlayMusic();
 }
 
 void Game::LoadShaders()
 {
-	
 }
 
 void Game::Draw()
