@@ -3,7 +3,7 @@
 
 Player::Player() 
 {
-	camera = Camera(glm::vec3(10, 0.7, 100.6f), glm::vec3(0.0f, 1.0f, 0.0f), 3.0f, 3.0f, 355.0f, 0.1f);
+	camera = Camera(glm::vec3(10, 10.7, 100.6f), glm::vec3(0.0f, 1.0f, 0.0f), 3.0f, 3.0f, 355.0f, 0.1f);
 	//adidier model->LoadModel("Assets/Models/player.obj");
 	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("pina_pose");
 }

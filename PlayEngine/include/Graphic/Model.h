@@ -12,6 +12,9 @@
 #include "../Base/Transform.h"
 #include "../Base/ShaderManager.h"
 #include "BaseModel.h"
+#include <glm.hpp>
+#include <gtc\matrix_transform.hpp>
+#include <gtc\type_ptr.hpp>
 
 namespace Graphic
 {
@@ -26,8 +29,14 @@ namespace Graphic
 		void ClearModel();
 		~Model();
 		void AddTexture(std::string path);
-	private:
+		float GetMaxDistance();
+		glm::vec3 GetCenter();
+		glm::vec3 GetCorner();
 
+		float maxDistance;
+	private:
+		glm::vec3 GetCenterMesh(aiMesh* mesh);
+		glm::vec3 GetCornerMesh(aiMesh* mesh, glm::vec3 center);
 		void LoadNode(aiNode *node, const aiScene *scene);
 		void LoadMesh(aiMesh *mesh, const aiScene *scene);
 		void LoadMaterials(const aiScene *scene);
@@ -36,7 +45,10 @@ namespace Graphic
 		std::vector<Graphic::Texture*> textureNormalList;
 		std::vector<unsigned int> meshToTex;
 		Assimp::Importer importer;
-		
+
+		glm::vec3 maxVector;
+		glm::vec3 center;
+		glm::vec3 corner;
 	};
 
 }

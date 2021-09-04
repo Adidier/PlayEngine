@@ -9,7 +9,6 @@ class Floor : public GameObject
 {
 private:
 	Graphic::Model* model;
-	Graphic::Model* room;
 	Transform transform;
 	btRigidBody* rigidBody;
 	float angle = 0;

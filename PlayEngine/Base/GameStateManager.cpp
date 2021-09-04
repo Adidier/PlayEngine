@@ -62,7 +62,7 @@ void GameStateManager::GameLoop()
 			platform->RenderClear();
 			state->Draw();
 			//TODO DIBUJAR EL GUI OVERLAY AQUI
-			//gui->Draw();
+			gui->Draw();
 			platform->RenderPresent();
 			frameRate++;	
 

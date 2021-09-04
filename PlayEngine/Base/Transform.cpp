@@ -37,6 +37,6 @@ glm::mat4 Transform::GetTransform()
 	auto rotation = glm::eulerAngles(_rotation);
 	_model = glm::rotate(_model, rotation.x, glm::vec3(1, 0, 0));
 	_model = glm::rotate(_model, rotation.y, glm::vec3(0, 1, 0));
-	_model = glm::rotate(_model, rotation.z, glm::vec3(0, 0, 1));
+	_model = glm::rotate(_model, rotation.z, glm::vec3(0, 0, 1));//adidier mejorar la rotacion
 	return _model;
 }

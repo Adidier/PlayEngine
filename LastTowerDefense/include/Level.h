@@ -11,7 +11,6 @@ private:
 	Transform Containertransform;
 	Transform RobotTransform;
 	btRigidBody* rigidBody;
-	btRigidBody* rigidBodyrobot;
 	float angle = 0;
 public:
 	Level();

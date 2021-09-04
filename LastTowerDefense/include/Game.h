@@ -30,7 +30,9 @@ private:
 	Player *player;
 	std::vector<Graphic::Model*> map;
 	Physics *physics;
-	Graphic::GUI* gui;
+
+	Graphic::GUI* weaponUI;
+	Graphic::GUI* playerUI;
 
 	std::vector<Enemy*> enemies;
 	Level* level;

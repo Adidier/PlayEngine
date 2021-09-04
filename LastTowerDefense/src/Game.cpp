@@ -24,6 +24,7 @@ void Game::Init()
 	resourceManager = ResourceManager::GetPtr();
 	resourceManager->Add(ResourceType::Model3d, "floor");
 	resourceManager->Add(ResourceType::Model3d, "floor2");
+	resourceManager->Add(ResourceType::Model3d, "floor3");
 	resourceManager->Add(ResourceType::Model3d, "container");
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
@@ -34,10 +35,14 @@ void Game::Init()
 
 	resourceManager->Add(ResourceType::Music, "funnysong");
 	resourceManager->Add(ResourceType::Sound, "laser_shot");
-	resourceManager->Add(ResourceType::GUILine, "montanas");
+
+	resourceManager->Add(ResourceType::ImageUI, "PlayerWeapon");
+	resourceManager->Add(ResourceType::ImageUI, "PlayerState");
 
 	resourceManager->Wait();
-	
+
+	resourceManager->Load();
+
 	player = new Player();
 	floor = new Floor();
 	level = new Level();
@@ -58,7 +63,7 @@ void Game::Init()
 	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
 	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
 
-	resourceManager->Load();
+	
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");
@@ -68,7 +73,9 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);
 
-	gui = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("line"), player->GetCamera(), shaderManager);
+	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("PlayerWeapon"), player->GetCamera(), shaderManager);
+	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("PlayerState"), player->GetCamera(), shaderManager);
+	
 
 	std::vector<std::string> pathsEnemies = {
 		"Enemy1",

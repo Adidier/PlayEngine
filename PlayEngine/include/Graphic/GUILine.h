@@ -8,15 +8,15 @@
 namespace Graphic
 {
 	typedef unsigned char stbi_uc;
-	class PLAYENGINE GUILine : public IGUILayer
+	class PLAYENGINE LineUI : public IGUILayer
 	{
 	public:
-		GUILine(const unsigned int handle);
+		LineUI(const unsigned int handle);
 		bool ReadFile() override;
 		Resource* Load() override;
 		void Draw() override;
 		void Clear();
-		~GUILine();
+		~LineUI();
 		void PutPixel(GLubyte* buffer, const int& x, const int& y, const char& R, const char& G, const char& B, const char& A);
 		void PutPixel(const int& x, const int& y, const char& R, const char& G, const char& B, const char& A);
 

@@ -12,6 +12,7 @@
 #include <filesystem>
 
 ResourceManager* ResourceManager::ptr = nullptr;
+unsigned long ResourceManager::CounterImageUI = 0;
 size_t ResourceManager::handleCount = 0;
 
 ResourceManager* ResourceManager::GetPtr()
@@ -60,7 +61,7 @@ size_t ResourceManager::GetSize()
 	return resourceMap->size();//adidier revisar validaciones
 }
 
-const Resource* ResourceManager::GetElement(const std::string& name)
+Resource* ResourceManager::GetElement(const std::string& name)
 {
 	if (name.empty())
 		return nullptr;
@@ -150,15 +151,15 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 	else if (type == ResourceType::Texture)
 	{
-		resource = new Graphic::Texture(1, name, path);
+		resource = new Graphic::Texture(1, name, path);//adidier quitar identificador / primer parametro
 	}
-	else if (type == ResourceType::GUI_Image)
+	else if (type == ResourceType::ImageUI)
 	{
-		resource = new Graphic::GuiImage(1, name, path);
+		resource = new Graphic::ImageUI(CounterImageUI++, name, path);
 	}
-	else if (type == ResourceType::GUILine)
+	else if (type == ResourceType::LineUI)
 	{
-		resource = new Graphic::GUILine(1);
+		resource = new Graphic::LineUI(1);
 	}
 	else if (type == ResourceType::Sound)
 	{

@@ -5,15 +5,17 @@
 
 Floor::Floor()
 {
-	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("floor2");
+	
+	model = dynamic_cast<Graphic::Model*>(ResourceManager::GetPtr()->GetElement("floor3"));
 	model->AddTexture("brick");
+	glm::vec3 cornerModel = model->GetCorner();
 
-	btBoxShape* colShape = new btBoxShape(btVector3(640.1, 0, 640.1));
+	btBoxShape* colShape = new btBoxShape(btVector3(abs(cornerModel.x), abs(cornerModel.y), abs(cornerModel.z)));
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(
 		btScalar(0.0),
-		btScalar(-50.0),
+		btScalar(0.0),
 		btScalar(0.0)));
 	btQuaternion rot;
 	rot.setEuler(0, 0, 0);

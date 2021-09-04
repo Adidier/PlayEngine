@@ -5,9 +5,10 @@
 namespace Graphic 
 {
 	Model::Model(const std::string& name, const std::string& path) :
-		BaseModel(name,path),
+		BaseModel(),
 		Resource(0,name, path)
 	{
+		maxDistance = std::numeric_limits<float>::min();
 	}
 
 	void Model::Draw()
@@ -51,6 +52,9 @@ namespace Graphic
 
 	void Model::LoadNode(aiNode * node, const aiScene * scene)
 	{
+		node->mTransformation.Rotation;
+		node->mTransformation.Translation;
+
 		for (size_t i = 0; i < node->mNumMeshes; i++)
 		{
 			LoadMesh(scene->mMeshes[node->mMeshes[i]], scene);
@@ -62,10 +66,53 @@ namespace Graphic
 		}
 	}
 
+	glm::vec3 Model::GetCenterMesh(aiMesh* mesh)
+	{
+		glm::vec3 center(0,0,0);
+
+		for (size_t i = 0; i < mesh->mNumVertices; i++)
+		{
+			center += glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+		}
+		center /= mesh->mNumVertices;
+		return center;
+	}
+
+
+	glm::vec3 Model::GetCenter()
+	{
+		return center;
+	}
+
+	glm::vec3 Model::GetCorner()
+	{
+		return corner;
+	}
+
+	glm::vec3 Model::GetCornerMesh(aiMesh* mesh, glm::vec3 center)
+	{
+		for (size_t i = 0; i < mesh->mNumVertices; i++)
+		{
+			float x = (mesh->mVertices[i].x - center.x);
+			float y = (mesh->mVertices[i].y - center.y);
+			float z = (mesh->mVertices[i].z - center.z);
+			float dis = sqrt(x * x + y * y + z * z);
+			if (maxDistance < dis)
+			{
+				maxDistance = dis;
+				maxVector = glm::vec3(mesh->mVertices[i].x, mesh->mVertices[i].y, mesh->mVertices[i].z);
+			}
+		}		
+		return maxVector;
+	}
+
 	void Model::LoadMesh(aiMesh * mesh, const aiScene * scene)
 	{
 		std::vector<GLfloat> vertices;
 		std::vector<unsigned int> indices;
+
+		center = GetCenterMesh(mesh);
+		corner = GetCornerMesh(mesh, center);
 
 		for (size_t i = 0; i < mesh->mNumVertices; i++)
 		{
@@ -98,11 +145,9 @@ namespace Graphic
 
 	void Model::LoadMaterials(const aiScene * scene)
 	{
-
 		for (size_t i = 0; i < scene->mNumMaterials; i++)
 		{
 			aiMaterial* material = scene->mMaterials[i];
-
 			
 			if (material->GetTextureCount(aiTextureType_DIFFUSE))
 			{
@@ -113,6 +158,11 @@ namespace Graphic
 				}
 			}
 		}
+	}
+
+	float Model::GetMaxDistance()
+	{
+		return maxDistance;
 	}
 
 	void Model::AddTexture(std::string filename)

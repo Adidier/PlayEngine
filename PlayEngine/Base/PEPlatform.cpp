@@ -63,7 +63,7 @@ void Platform::init()
 
 	// Set the current context
 	glfwMakeContextCurrent(mainWindow);
-	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
 	// Allow modern extension access
 	glewExperimental = GL_TRUE;
 

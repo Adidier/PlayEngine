@@ -12,7 +12,7 @@
 class PLAYENGINE BaseModel 
 {
 public:
-	BaseModel(const std::string& name, const std::string& path = "./");
+	BaseModel();
 	virtual void Draw() = 0;
 	void SetTransform(Transform transform);
 	Mesh* GetMesh();

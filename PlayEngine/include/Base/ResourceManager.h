@@ -12,8 +12,8 @@ enum ResourceType
 {
 	Model3d,
 	Texture,
-	GUI_Image,
-	GUILine,
+	ImageUI,
+	LineUI,
 	Sound,
 	Music
 };
@@ -36,6 +36,7 @@ class PLAYENGINE ResourceManager
 		std::mutex mu;
 	private:
 		static size_t handleCount;
+		static unsigned long CounterImageUI;
 		std::list<std::thread*> pool;
 		std::map<size_t, Resource*>* resourceMap;
 		std::map<std::string, std::string> paths;
@@ -51,7 +52,7 @@ class PLAYENGINE ResourceManager
 		void ClearResources();
 		void GetSafeOpenIds(unsigned int& a);
 		size_t GetSize();
-		const Resource* GetElement(const std::string& name);
+		Resource* GetElement(const std::string& name);
 		void Wait();
 		void Load();
 		unsigned int Add(ResourceType type,const std::string& name);

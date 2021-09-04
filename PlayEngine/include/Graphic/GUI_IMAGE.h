@@ -9,16 +9,16 @@ namespace Graphic
 {
 	typedef unsigned char stbi_uc;
 
-	class PLAYENGINE GuiImage final : public IGUILayer
+	class PLAYENGINE ImageUI final : public IGUILayer
 	{
 	public:
-		GuiImage(const unsigned int handle, const std::string& name, const std::string& path = "./");
+		ImageUI(const unsigned int handle, const std::string& name, const std::string& path = "./");
 		void Draw() override;
 		bool ReadFile() override;
 		Resource* Load() override;
 		
 		void Clear();
-		~GuiImage();
+		~ImageUI();
 	private:
 		stbi_uc* texData;
 		GLuint GUI_IMAGE_ID;

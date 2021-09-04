@@ -4,7 +4,7 @@
 
 namespace Graphic
 {
-	GUILine::GUILine(const unsigned int handle) : IGUILayer(handle, "LINE", "line")
+	LineUI::LineUI(const unsigned int handle) : IGUILayer(handle, "LINE", "line")
 	{
 		GUI_IMAGE_ID = 0;
 		width = 1024;
@@ -13,7 +13,7 @@ namespace Graphic
 	}
 
 
-	bool GUILine::ReadFile()
+	bool LineUI::ReadFile()
 	{
 		for (int i = 0; i < width * height * bitDepth; i += 4)
 		{
@@ -25,7 +25,7 @@ namespace Graphic
 		return true;
 	}
 
-	void GUILine::PutPixel(GLubyte* buffer, const int& x, const int& y, const char& R, const char& G, const char& B, const char& A)
+	void LineUI::PutPixel(GLubyte* buffer, const int& x, const int& y, const char& R, const char& G, const char& B, const char& A)
 	{
 		int offset = (x + (y * width)) * bitDepth;
 		if (offset < 0 || offset > width * height * bitDepth)
@@ -38,12 +38,12 @@ namespace Graphic
 
 	}
 
-	void GUILine::PutPixel(const int& x, const int& y, const char& R, const char& G, const char& B, const char& A)
+	void LineUI::PutPixel(const int& x, const int& y, const char& R, const char& G, const char& B, const char& A)
 	{
 		PutPixel(Buffer, x, y, R, G, B, A);
 	}
 
-	Resource* GUILine::Load()
+	Resource* LineUI::Load()
 	{
 		ShaderManager::getPtr()->Activate("gui");
 
@@ -60,15 +60,13 @@ namespace Graphic
 		return this;
 	}
 
-	void GUILine::Draw()
+	void LineUI::Draw()
 	{
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
-
-		
 	}
 
-	void GUILine::Clear()
+	void LineUI::Clear()
 	{
 		glDeleteTextures(1, &GUI_IMAGE_ID);
 		GUI_IMAGE_ID = 0;
@@ -77,7 +75,7 @@ namespace Graphic
 		bitDepth = 0;
 	}
 
-	GUILine::~GUILine()
+	LineUI::~LineUI()
 	{
 		Clear();
 	}

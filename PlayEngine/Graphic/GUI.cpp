@@ -12,17 +12,17 @@ namespace Graphic
 		uniformProjection = shaderManager->GetUniformId("projection");
 		uniformView = shaderManager->GetUniformId("view");
 
-		unsigned int planeIndices[] = {
-			
+		unsigned int planeIndices[] = {			
 			2, 3, 0,
 			2, 1, 0,
 		};
 
 		std::vector<GLfloat> planeVertices = {
-			-1.0f, -1.0f, -1.0f,1,1,
-			1.0f, -1.0f, -1.0f,0,1,
-			1.0f, 1.0f, -1.0f,0,0,
-			-1.0f, 1.0f, -1.0f,1,0
+			//vector             and    uv
+			-1.0f, -1.0f, -1.0f,        1,1, 
+			 1.0f, -1.0f, -1.0f,        0,1,
+			 1.0f, 1.0f, -1.0f,         0,0,
+			-1.0f, 1.0f, -1.0f,         1,0
 		};
 
 		plane = new Mesh();
@@ -37,17 +37,7 @@ namespace Graphic
 
 	void GUI::Draw()
 	{
-		glm::mat4 viewMatrix = sm->GetViewMatrix(); glm::mat4 projectionMatrix = sm->GetProjectionMatrix();
-
-		sm->Activate("gui");
-		uniformView = sm->GetUniformId("view");
-		viewMatrix = glm::mat4(1);
-		sm->draw();
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
 		image->Draw();
-		glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(glm::mat4(1)));
 		plane->RenderMesh();
 	}
 }
