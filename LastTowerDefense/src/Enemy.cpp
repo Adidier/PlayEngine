@@ -10,9 +10,9 @@ Enemy::Enemy(Player* player)
 
 	model = (Graphic::Model *)ResourceManager::GetPtr()->GetElement("pina_pose");
 	model->AddTexture("pina");
-	transform.SetTranslation(0.0f, 0.0f, 0.0f);
+	transform.SetTranslation(0.0f, 10.0f, 0.0f);
 	glm::vec3 cornerModel = model->GetCorner();
-	rigidBody = new RigidBody(1.0, glm::vec3(0, 0, 0), cornerModel);
+	rigidBody = new RigidBody(1.0, glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));
 }
 
 void Enemy::Draw()
@@ -38,7 +38,7 @@ void Enemy::Update(unsigned int delta)
 	auto action =scriptEnemy->GetAction(distance);
 	if (action == "walk")
 	{
-		rigidBody->SetLinearVelocity(glm::vec3(200, 0, 0));
-		rigidBody->ApplyForce(glm::vec3(200, 0, 0));
+		//rigidBody->SetLinearVelocity(glm::vec3(200, 0, 0));
+		//rigidBody->ApplyForce(glm::vec3(200, 0, 0));
 	}
 }

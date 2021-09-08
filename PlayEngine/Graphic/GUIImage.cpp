@@ -11,7 +11,6 @@ namespace Graphic
 		bitDepth = 0;
 	}
 
-
 	bool ImageUI::ReadFile()
 	{
 		texData = stbi_load(path.c_str(), &width, &height, &bitDepth, 0);
@@ -26,24 +25,25 @@ namespace Graphic
 	Resource* ImageUI::Load()
 	{
 		auto sm = ShaderManager::getPtr();
-		sm->Activate("gui");
+		sm->Activate("gui");//adidier llamar cada ciclo
 
 		glGenTextures(1, &GUI_IMAGE_ID);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
-		glGenerateMipmap(GL_TEXTURE_2D);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glGenerateMipmap(GL_TEXTURE_2D);//adidier quitar
 
-		glBindTexture(GL_TEXTURE_2D, 0);
-		stbi_image_free(texData);
+		//glBindTexture(GL_TEXTURE_2D, 0);
+		//stbi_image_free(texData);
 		return this;
 	}
 
 	void ImageUI::Draw()
 	{
-		glActiveTexture(GL_TEXTURE0 + handle);
+		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
+		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
 	}
 

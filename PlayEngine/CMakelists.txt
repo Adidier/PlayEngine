@@ -16,6 +16,9 @@ include_directories("../ExternalLibs/Assimp/include"
                     "../ExternalLibs/SDL2-2.0.12/include"
                     "include/")
 
+set(CMAKE_BINARY_DIR "../")
+set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
+
 add_library(PlayEngine SHARED "Audio/AudioPlayer.cpp"
                               "Audio/MusicPlayer.cpp"
                               "Base/GameState.cpp"

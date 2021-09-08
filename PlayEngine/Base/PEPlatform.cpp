@@ -63,7 +63,7 @@ void Platform::init()
 
 	// Set the current context
 	glfwMakeContextCurrent(mainWindow);
-	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	// Allow modern extension access
 	glewExperimental = GL_TRUE;
 
@@ -81,6 +81,7 @@ void Platform::init()
 	// Create Viewport
 	glViewport(0, 0, bufferWidth, bufferHeight);
 }
+
 Platform::~Platform()
 {
 	glfwDestroyWindow(mainWindow);
@@ -117,6 +118,7 @@ void Platform::CheckEvent(GameState* obj, bool (GameState::* keyboard)(std::map<
 	glfwSetCursorPosCallback(mainWindow, HandleMousePosition);
 	glfwSetMouseButtonCallback(mainWindow, HandleMouseButton);
 }
+
 int Platform::GetWidth()
 {
 	return width;
@@ -154,7 +156,6 @@ void  Platform::HandleKeys(GLFWwindow* window, int key, int code, int action, in
 	(Platform::obj->*Platform::keyboard)(keys);
 }
 
-
 void Platform::HandleMousePosition(GLFWwindow* window, double x, double y)
 {
 	(Platform::obj->*Platform::mouse)(x, y, leftButtonMouse);
@@ -163,9 +164,9 @@ void Platform::HandleMousePosition(GLFWwindow* window, double x, double y)
 void Platform::HandleMouseButton(GLFWwindow* window, int button, int action, int mod)
 {
 	(Platform::obj->*Platform::mouse)(-1, -1, action);
-
 }
 
-bool Platform::shouldWindowClose() {
+bool Platform::shouldWindowClose() 
+{
 	return glfwWindowShouldClose(mainWindow);
 }

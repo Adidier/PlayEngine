@@ -177,7 +177,7 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 
 void ResourceManager::Load()
 {
-	for (auto i = resourceMap->begin(); i != resourceMap->end(); i++)
+	for (auto i = resourceMap->begin(); i != resourceMap->end(); ++i)
 	{
 		auto model = (i->second);
 		model->Load();

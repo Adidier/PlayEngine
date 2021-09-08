@@ -4,13 +4,12 @@
 #include "btBulletDynamicsCommon.h"
 
 Floor::Floor()
-{
-	
-	model = dynamic_cast<Graphic::Model*>(ResourceManager::GetPtr()->GetElement("floor3"));
+{	
+	model = dynamic_cast<Graphic::Model*>(ResourceManager::GetPtr()->GetElement("floor"));
 	model->AddTexture("brick");
 	glm::vec3 cornerModel = model->GetCorner();
 
-	btBoxShape* colShape = new btBoxShape(btVector3(abs(cornerModel.x), abs(cornerModel.y), abs(cornerModel.z)));
+	btBoxShape* colShape = new btBoxShape(btVector3(650, 0, 650));
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(

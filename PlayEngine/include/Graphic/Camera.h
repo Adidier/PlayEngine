@@ -30,7 +30,7 @@ private:
 	glm::vec3 worldUp;
 
 	GLfloat yaw;
-	//GLfloat pitch;
+	GLfloat pitch;
 
 	GLfloat moveSpeed;
 	GLfloat turnSpeed;

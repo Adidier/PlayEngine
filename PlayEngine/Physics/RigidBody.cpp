@@ -5,7 +5,7 @@
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& box)
 {
 	
-	btBoxShape* colShape = new btBoxShape(btVector3(abs(box.x), abs(box.y), abs(box.z)));//TODO arreglar tamanio de la caja de colision
+	btBoxShape* colShape = new btBoxShape(btVector3(box.x, box.y, box.z));//TODO arreglar tamanio de la caja de colision
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));

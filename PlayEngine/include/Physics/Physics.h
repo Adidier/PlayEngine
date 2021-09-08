@@ -7,6 +7,7 @@
 #include "BulletCollision/CollisionDispatch/btDefaultCollisionConfiguration.h"
 #include "BulletCollision/CollisionShapes/btCollisionShape.h"
 #include "BulletDynamics/Dynamics/btDiscreteDynamicsWorld.h"
+#include "examples/CommonGUIHelperInterface.h"
 #include "LinearMath/btTransform.h"
 #include "LinearMath/btHashMap.h"
 
@@ -19,6 +20,7 @@ private:
 	btConstraintSolver* m_solver;
 	btDefaultCollisionConfiguration* m_collisionConfiguration;
 	btDiscreteDynamicsWorld* m_dynamicsWorld;
+	GUIHelperInterface* m_guiHelper;
 	static Physics* ptr;
 public:
 	static Physics* GetPtr();

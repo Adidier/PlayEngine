@@ -36,8 +36,9 @@ void Game::Init()
 	resourceManager->Add(ResourceType::Music, "funnysong");
 	resourceManager->Add(ResourceType::Sound, "laser_shot");
 
-	resourceManager->Add(ResourceType::ImageUI, "PlayerWeapon");
-	resourceManager->Add(ResourceType::ImageUI, "PlayerState");
+	resourceManager->Add(ResourceType::ImageUI, "montanas");
+	resourceManager->Add(ResourceType::ImageUI, "montanas2");
+	resourceManager->Add(ResourceType::ImageUI, "montanas3");
 
 	resourceManager->Wait();
 
@@ -71,23 +72,24 @@ void Game::Init()
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_dn.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_bk.tga");
 	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
-	skybox = new Skybox(skyboxFaces);
+	skybox = new Skybox(skyboxFaces);		
 
-	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("PlayerWeapon"), player->GetCamera(), shaderManager);
-	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("PlayerState"), player->GetCamera(), shaderManager);
-	
+	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
+	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
+	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
 
 	std::vector<std::string> pathsEnemies = {
 		"Enemy1",
 		"Enemy2"
 	};
+
 	LoadEnemies(pathsEnemies);
 	LoadMusic();
 }
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<20;i++)
+	for (int i=0;i<10;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -108,7 +110,7 @@ void Game::Draw()
 {
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("toon-shader");
+	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
 	
 	DrawMap();

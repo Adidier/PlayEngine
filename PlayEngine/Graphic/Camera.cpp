@@ -1,6 +1,8 @@
 #include "Graphic/Camera.h"
 #include "Base/ResourceManager.h"
-Camera::Camera() {}
+Camera::Camera() 
+{
+}
 
 Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLfloat startPitch, GLfloat startMoveSpeed, GLfloat startTurnSpeed)
 {
@@ -59,7 +61,6 @@ glm::vec3 Camera::getCameraPosition()
 	return nextPosition;
 }
 
-
 glm::vec3 Camera::getFront()
 {
 	return front;
@@ -73,8 +74,6 @@ void Camera::mouseControl(GLfloat xChange, GLfloat yChange)
 		firstMove = false;
 	}
 
-
-
 	float xoffset = xChange - prevXPos;
 	float yoffset = yChange - prevYPos;
 
@@ -85,8 +84,6 @@ void Camera::mouseControl(GLfloat xChange, GLfloat yChange)
 	yoffset *= turnSpeed;
 
 	yaw += xoffset;
-	
-
 	update();
 }
 
@@ -99,14 +96,13 @@ glm::mat4 Camera::calculateViewMatrix()
 void Camera::update()
 {
 	front.x = cos(glm::radians(yaw));
-	front.y = 0;//sin(glm::radians(pitch));
+	//front.y = sin(glm::radians(pitch));
 	front.z = sin(glm::radians(yaw));
 	front = glm::normalize(front);
 	
 	right = glm::normalize(glm::cross(front, worldUp));
 	up = glm::normalize(glm::cross(right, front));
 }
-
 
 Camera::~Camera()
 {

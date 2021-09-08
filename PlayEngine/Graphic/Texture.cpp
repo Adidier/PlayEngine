@@ -3,7 +3,6 @@
 
 namespace Graphic
 {
-
 	Texture::Texture(const unsigned int handle, const std::string& name, const std::string& path) : Resource(handle, name, path)
 	{
 		textureID = 0;
@@ -11,7 +10,6 @@ namespace Graphic
 		height = 0;
 		bitDepth = 0;
 	}
-
 
 	bool Texture::ReadFile()
 	{
@@ -27,7 +25,6 @@ namespace Graphic
 	{
 		glGenTextures(1, &textureID);
 		glBindTexture(GL_TEXTURE_2D, textureID);
-
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, texData);
 		glGenerateMipmap(GL_TEXTURE_2D);
 		glBindTexture(GL_TEXTURE_2D, 0);
@@ -50,32 +47,8 @@ namespace Graphic
 		bitDepth = 0;
 	}
 
-
 	Texture::~Texture()
 	{
 		ClearTexture();
 	}
-
 }
-
-
-/*bool Texture::LoadTexture()
-{
-	unsigned char* texData = stbi_load(fileLocation.c_str(), &width, &height, &bitDepth, 0);
-	if (!texData)
-	{
-		printf("Failed to find: %s\n", fileLocation.c_str());
-		return false;
-	}
-
-	glGenTextures(1, &textureID);
-	glBindTexture(GL_TEXTURE_2D, textureID);
-
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, texData);
-	glGenerateMipmap(GL_TEXTURE_2D);
-
-	glBindTexture(GL_TEXTURE_2D, 0);
-
-	stbi_image_free(texData);
-	return true;
-}*/

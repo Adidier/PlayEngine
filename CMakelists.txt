@@ -4,5 +4,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 project(PlayEngine)
 
-add_subdirectory("LastTowerDefense")
+
 add_subdirectory("PlayEngine")
+
+add_subdirectory("LastTowerDefense")

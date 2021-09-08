@@ -27,8 +27,6 @@ ShaderManager* ShaderManager::getPtr()
 	return ptr;
 }
 
-
-
 GLint ShaderManager::GetColor1()
 {
 	return color1;
@@ -38,10 +36,12 @@ GLint ShaderManager::GetColor2()
 {
 	return color2;
 }
+
 GLint ShaderManager::GetSpecularIntensityLocation()
 {
 	return uniformSpecularIntensity;
 }
+
 glm::mat4 ShaderManager::GetViewMatrix()
 {
 	return camera->calculateViewMatrix();
@@ -56,18 +56,22 @@ GLuint ShaderManager::GetmainTex()
 {
 	return mainTex;
 }
+
 GLuint ShaderManager::GetrTex()
 {
 	return rTex;
 }
+
 GLuint ShaderManager::GetgTex()
 {
 	return gTex;
 }
+
 GLuint ShaderManager::GetbTex()
 {
 	return bTex;
 }
+
 GLuint ShaderManager::GetblendTexture()
 {
 	return blendTexture;
@@ -78,12 +82,11 @@ GLuint ShaderManager::GetNormalTexture()
 	return normalTexture;
 }
 
-
-
 GLint ShaderManager::GetShininessLocation()
 {
 	return uniformShininess;
 }
+
 void ShaderManager::draw()
 {
 	if (currentShader != nullptr)
@@ -118,10 +121,7 @@ void ShaderManager::initShader(Camera* camera)
 	{
 		this->camera = camera;
 		projection = glm::perspective(45.0f, (float)Platform::GetPtr()->GetWidth() / Platform::GetPtr()->GetHeight(), 0.1f, 1000.0f);
-
-
 	}
-
 }
 
 GLuint ShaderManager::GetUniformId(const std::string& id)
@@ -152,7 +152,3 @@ void ShaderManager::Activate(const std::string& name)
 		uniformShininess = currentShader->GetUniformId("material.shininess");
 	}
 }
-
-
-//ADSL lighting
-//TODO Forward Rendering -----

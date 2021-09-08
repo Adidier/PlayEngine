@@ -78,7 +78,6 @@ namespace Graphic
 		return center;
 	}
 
-
 	glm::vec3 Model::GetCenter()
 	{
 		return center;
@@ -136,7 +135,6 @@ namespace Graphic
 				indices.push_back(face.mIndices[j]);
 			}
 		}
-
 		Mesh* newMesh = new Mesh();
 		newMesh->CreateMesh(vertices, &indices[0], vertices.size(), indices.size(),11);
 		meshList.push_back(newMesh);
@@ -195,5 +193,4 @@ namespace Graphic
 	Model::~Model()
 	{
 	}
-
 }

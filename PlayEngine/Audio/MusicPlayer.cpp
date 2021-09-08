@@ -1,6 +1,7 @@
 #include "Audio/MusicPlayer.h"
 #include <SDL.h>
 #include <stdlib.h> 
+
 MusicPlayer::MusicPlayer(const unsigned int handle, const std::string& name, const std::string& path) : Resource(handle, name, path)
 {
     if (SDL_Init(SDL_INIT_AUDIO) < 0)
