@@ -99,7 +99,7 @@ void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 void Game::LoadMusic()
 {
 	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("funnysong");
-	asset->PlayMusic();
+	//asset->PlayMusic();
 }
 
 void Game::LoadShaders()
