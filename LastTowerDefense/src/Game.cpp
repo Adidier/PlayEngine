@@ -14,21 +14,16 @@ Game::~Game()
 {
 }
 
-void Game::Init()
+void Game::InitResources()
 {
-	physics = Physics::GetPtr();
-	physics->InitPhysics();
-	std::cout << " Menu Init" << std::endl;
-	this->platform = Platform::GetPtr();
-	this->manager = GameStateManager::GetPtr();
-	resourceManager = ResourceManager::GetPtr();
+	auto resourceManager = ResourceManager::GetPtr();
 	resourceManager->Add(ResourceType::Model3d, "floor");
 	resourceManager->Add(ResourceType::Model3d, "floor2");
 	resourceManager->Add(ResourceType::Model3d, "floor3");
 	resourceManager->Add(ResourceType::Model3d, "container");
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
-	
+
 	resourceManager->Add(ResourceType::Texture, "pina");
 	resourceManager->Add(ResourceType::Texture, "brick");
 	resourceManager->Add(ResourceType::Texture, "ContainerAlbedo");
@@ -36,13 +31,23 @@ void Game::Init()
 	resourceManager->Add(ResourceType::Music, "funnysong");
 	resourceManager->Add(ResourceType::Sound, "laser_shot");
 
-	resourceManager->Add(ResourceType::ImageUI, "montanas");
+	resourceManager->Add(ResourceType::ImageUI, "montanas1");
 	resourceManager->Add(ResourceType::ImageUI, "montanas2");
 	resourceManager->Add(ResourceType::ImageUI, "montanas3");
 
 	resourceManager->Wait();
 
 	resourceManager->Load();
+}
+
+void Game::Init()
+{
+	resourceManager = ResourceManager::GetPtr();
+	physics = Physics::GetPtr();
+	physics->InitPhysics();
+	std::cout << " Menu Init" << std::endl;
+	this->platform = Platform::GetPtr();
+	this->manager = GameStateManager::GetPtr();
 
 	player = new Player();
 	floor = new Floor();
@@ -75,7 +80,7 @@ void Game::Init()
 	skybox = new Skybox(skyboxFaces);		
 
 	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
-	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
+	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas1"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
 
 	std::vector<std::string> pathsEnemies = {
@@ -99,7 +104,7 @@ void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 void Game::LoadMusic()
 {
 	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("funnysong");
-	asset->PlayMusic();
+	//asset->PlayMusic();
 }
 
 void Game::LoadShaders()
@@ -145,6 +150,7 @@ void Game::DrawEnemies()
 
 void Game::Update(unsigned int delta)
 {
+	shaderManager->initShader(player->GetCamera());
 	floor->Update(delta);
 	level->Update(delta);
 	wall->Update(delta);
@@ -175,6 +181,16 @@ bool Game::Input(std::map<int, bool> keys)
 void Game::Close()
 {
 	std::cout << " Close Init" << std::endl;
+}
+
+ShaderManager* Game::GetShaderManagerPtr()
+{
+	return shaderManager;
+}
+
+Camera* Game::GetCameraPtr()
+{
+	return player->GetCamera();
 }
 /*
 

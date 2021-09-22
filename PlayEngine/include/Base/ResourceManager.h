@@ -1,5 +1,6 @@
 #pragma once
 #include "../Export.h"
+#include "Graphic/GUI_IMAGE.h"
 #include "Graphic/Model.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
@@ -37,6 +38,10 @@ class PLAYENGINE ResourceManager
 	private:
 		static size_t handleCount;
 		static unsigned long CounterImageUI;
+		size_t loadResourceKey;
+		Graphic::ImageUI* loadResource;
+		//bool loadFinish;
+		//std::thread* load;
 		std::list<std::thread*> pool;
 		std::map<size_t, Resource*>* resourceMap;
 		std::map<std::string, std::string> paths;
@@ -47,12 +52,14 @@ class PLAYENGINE ResourceManager
 		void PathsReader(std::string path, bool force = false);
 		std::string GetPath(ResourceType type,const std::string &name);
 	public:
-
+		bool const GetLoadFinish();
 		static ResourceManager* GetPtr();
+		void RemoveLoadResource();
 		void ClearResources();
 		void GetSafeOpenIds(unsigned int& a);
 		size_t GetSize();
 		Resource* GetElement(const std::string& name);
+		Graphic::ImageUI* GetLoadImage() { return loadResource; }
 		void Wait();
 		void Load();
 		unsigned int Add(ResourceType type,const std::string& name);

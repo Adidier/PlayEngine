@@ -26,8 +26,21 @@ ResourceManager* ResourceManager::GetPtr()
 	return ptr;
 }
 
+
+void ResourceManager::RemoveLoadResource()
+{
+	loadResource->~ImageUI();
+	resourceMap->erase(loadResourceKey);
+}
+
+//bool const ResourceManager::GetLoadFinish()
+//{
+//	return loadFinish;
+//}
+
 ResourceManager::ResourceManager()
 {
+	//loadFinish = false;
 	resourceMap = new std::map<size_t, Resource*>;
 }
 
@@ -83,13 +96,21 @@ Resource* ResourceManager::GetElement(const std::string& name)
 
 void ResourceManager::Wait()
 {
-	for (auto& th : pool)
+	//if (loadFinish)
 	{
-		if (th->joinable())
+		for (auto& th : pool)
 		{
-			th->join();
+			if (th->joinable())
+			{
+				th->join();
+			}
 		}
 	}
+	/*else if (load->joinable())
+	{
+		load->join();
+		loadFinish = true;
+	}*/
 }
 
 void ResourceManager::PathsReader(std::string path, bool force)
@@ -155,7 +176,14 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 	else if (type == ResourceType::ImageUI)
 	{
-		resource = new Graphic::ImageUI(CounterImageUI++, name, path);
+		Graphic::ImageUI* image = new Graphic::ImageUI(CounterImageUI++, name, path);
+		//resource = new Graphic::ImageUI(CounterImageUI++, name, path);
+		resource = image;
+		if (name == "LoadingScreen")
+		{
+			loadResourceKey = handleCount;
+			loadResource = image;
+		}
 	}
 	else if (type == ResourceType::LineUI)
 	{
@@ -171,6 +199,8 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 
 	std::thread* thr = new std::thread(&Resource::ReadFile, resource);
+	/*if (name == "LoadingScreen") { 
+		load = thr; }*/
 	pool.push_back(thr);
 	resourceMap->insert(std::make_pair(handleCount, resource));
 }

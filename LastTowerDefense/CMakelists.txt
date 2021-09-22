@@ -20,7 +20,8 @@ include_directories("../ExternalLibs/Assimp/include"
 set(CMAKE_BINARY_DIR "../")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
-add_executable(LastTowerDefense  "src/Enemy.cpp"
+add_executable(LastTowerDefense  "src/LoadScreen.cpp"
+				"src/Enemy.cpp"
                               "src/Floor.cpp"
                               "src/Game.cpp"
                               "src/GameObject.cpp"

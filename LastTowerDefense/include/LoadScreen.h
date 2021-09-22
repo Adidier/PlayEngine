@@ -19,44 +19,25 @@
 #include "Audio/MusicPlayer.h"
 #include<vector>
 
-class Game : public GameState
+class LoadScreen : public GameState
 {
 private:
+	static bool isFinish;
+	std::thread* load;
 	Platform* platform;
+	Camera* camera;
 	GameStateManager* manager;
 	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;
 	Skybox *skybox;
-	Player *player;
-	std::vector<Graphic::Model*> map;
-	Physics *physics;
-
-	Graphic::GUI* weaponUI;
-	Graphic::GUI* playerUI;
-
-	std::vector<Enemy*> enemies;
-	Level* level;
-	Wall* wall;
-	Wall* wall1;
-	Wall* wall2;
-	Wall* wall3;
-	Floor* floor;
 public:
-	Game();
-	~Game();
+	LoadScreen();
+	~LoadScreen();
+	static void Loading();
 	void Init() override;
 	void Draw() override;
-	void DrawMap();
-	void DrawEnemies();
 	bool Input(std::map<int, bool> keys) override;
 	bool MouseInput(int x, int y, bool leftbutton);
 	void Update(unsigned int delta) override;
 	void Close() override;
-	void LoadShaders();
-	void LoadModels(const std::map<std::string, std::string>& models);
-	void LoadEnemies(const std::vector<std::string>& pathFileModels);
-	void LoadMusic();
-	ShaderManager* GetShaderManagerPtr();
-	Camera* GetCameraPtr();
-	static void InitResources();
 };

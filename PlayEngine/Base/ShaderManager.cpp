@@ -7,6 +7,7 @@ ShaderManager* ShaderManager::ptr;
 
 ShaderManager::ShaderManager() : currentShader(nullptr)
 {
+	camera = nullptr;
 	LoadShaders("default", vShaderDefault, fShaderDefault);
 }
 
@@ -44,6 +45,10 @@ GLint ShaderManager::GetSpecularIntensityLocation()
 
 glm::mat4 ShaderManager::GetViewMatrix()
 {
+	if (!camera)
+	{
+		return glm::mat4(1);
+	}
 	return camera->calculateViewMatrix();
 }
 
