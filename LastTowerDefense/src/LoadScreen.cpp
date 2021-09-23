@@ -1,13 +1,12 @@
 #include "LoadScreen.h"
 #include "Game.h"
-#include<iostream>
+#include <iostream>
 #include <glm.hpp>
 #include <time.h>
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
 
 bool LoadScreen::isFinish = false;
-Graphic::GUI* loadGUI;
 LoadScreen::LoadScreen()
 {
 	
@@ -15,6 +14,7 @@ LoadScreen::LoadScreen()
 
 LoadScreen::~LoadScreen()
 {
+
 }
 
 void LoadScreen::Loading()
@@ -31,7 +31,6 @@ void LoadScreen::Init()
 	resourceManager->Add(ResourceType::ImageUI, "LoadingScreen");
 
 	resourceManager->Wait();
-
 	resourceManager->Load();
 
 	shaderManager = ShaderManager::getPtr();
@@ -42,29 +41,22 @@ void LoadScreen::Init()
 	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
 	loadGUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("LoadingScreen"), camera, shaderManager);
 
-	std::thread* thr = new std::thread(&LoadScreen::Loading);
+	load = new thread(&LoadScreen::Loading);
 }
 
 void LoadScreen::Draw()
 {
-	
+
 }
 
 void LoadScreen::Update(unsigned int delta)
 {
-	if (isFinish)
+	if (load->joinable() && isFinish)
 	{
-		ShaderManager* tmpSM = shaderManager;
 		resourceManager->RemoveLoadResource();
-		loadGUI->~GUI();
-		Game* game = new Game();
-		camera = game->GetCameraPtr();
-		shaderManager = game->GetShaderManagerPtr();
-		//delete camera;
-		//delete tmpSM;
 		manager->RealaseState();
-		manager->SetState(game);
-		isFinish = false;
+		manager->SetState(new Game());
+		load->join();
 	}
 }
 
@@ -80,5 +72,7 @@ bool LoadScreen::Input(std::map<int, bool> keys)
 
 void LoadScreen::Close()
 {
+	delete loadGUI;
+	//Graphic::GUIOverlay::GetPtr()->Remove(loadGUI); Error draro de Link...
 	std::cout << " Close Init" << std::endl;
 }

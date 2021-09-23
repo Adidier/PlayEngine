@@ -56,7 +56,5 @@ public:
 	void LoadModels(const std::map<std::string, std::string>& models);
 	void LoadEnemies(const std::vector<std::string>& pathFileModels);
 	void LoadMusic();
-	ShaderManager* GetShaderManagerPtr();
-	Camera* GetCameraPtr();
 	static void InitResources();
 };

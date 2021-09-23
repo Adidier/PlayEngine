@@ -36,8 +36,6 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::ImageUI, "montanas3");
 
 	resourceManager->Wait();
-
-	resourceManager->Load();
 }
 
 void Game::Init()
@@ -48,6 +46,8 @@ void Game::Init()
 	std::cout << " Menu Init" << std::endl;
 	this->platform = Platform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
+
+	resourceManager->Load();
 
 	player = new Player();
 	floor = new Floor();
@@ -181,16 +181,6 @@ bool Game::Input(std::map<int, bool> keys)
 void Game::Close()
 {
 	std::cout << " Close Init" << std::endl;
-}
-
-ShaderManager* Game::GetShaderManagerPtr()
-{
-	return shaderManager;
-}
-
-Camera* Game::GetCameraPtr()
-{
-	return player->GetCamera();
 }
 /*
 

@@ -17,13 +17,15 @@
 #include "Graphic/GUILine.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
-#include<vector>
+#include <vector>
+using std::thread;
 
 class LoadScreen : public GameState
 {
 private:
 	static bool isFinish;
-	std::thread* load;
+	thread* load;
+	Graphic::GUI* loadGUI;
 	Platform* platform;
 	Camera* camera;
 	GameStateManager* manager;

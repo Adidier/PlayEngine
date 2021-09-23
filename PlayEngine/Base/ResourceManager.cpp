@@ -14,6 +14,7 @@
 ResourceManager* ResourceManager::ptr = nullptr;
 unsigned long ResourceManager::CounterImageUI = 0;
 size_t ResourceManager::handleCount = 0;
+size_t ResourceManager::loadResourceKey = 0;
 
 ResourceManager* ResourceManager::GetPtr()
 {
@@ -29,18 +30,13 @@ ResourceManager* ResourceManager::GetPtr()
 
 void ResourceManager::RemoveLoadResource()
 {
-	loadResource->~ImageUI();
+	loadResource->Clear();
 	resourceMap->erase(loadResourceKey);
+	delete loadResource;
 }
-
-//bool const ResourceManager::GetLoadFinish()
-//{
-//	return loadFinish;
-//}
 
 ResourceManager::ResourceManager()
 {
-	//loadFinish = false;
 	resourceMap = new std::map<size_t, Resource*>;
 }
 
@@ -96,21 +92,13 @@ Resource* ResourceManager::GetElement(const std::string& name)
 
 void ResourceManager::Wait()
 {
-	//if (loadFinish)
+	for (auto& th : pool)
 	{
-		for (auto& th : pool)
+		if (th->joinable())
 		{
-			if (th->joinable())
-			{
-				th->join();
-			}
+			th->join();
 		}
 	}
-	/*else if (load->joinable())
-	{
-		load->join();
-		loadFinish = true;
-	}*/
 }
 
 void ResourceManager::PathsReader(std::string path, bool force)
@@ -176,8 +164,8 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 	else if (type == ResourceType::ImageUI)
 	{
-		Graphic::ImageUI* image = new Graphic::ImageUI(CounterImageUI++, name, path);
 		//resource = new Graphic::ImageUI(CounterImageUI++, name, path);
+		Graphic::ImageUI* image = new Graphic::ImageUI(CounterImageUI++, name, path);
 		resource = image;
 		if (name == "LoadingScreen")
 		{
@@ -199,8 +187,6 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 
 	std::thread* thr = new std::thread(&Resource::ReadFile, resource);
-	/*if (name == "LoadingScreen") { 
-		load = thr; }*/
 	pool.push_back(thr);
 	resourceMap->insert(std::make_pair(handleCount, resource));
 }
@@ -213,5 +199,3 @@ void ResourceManager::Load()
 		model->Load();
 	}
 }
-
-

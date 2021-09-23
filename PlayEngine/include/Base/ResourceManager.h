@@ -36,12 +36,10 @@ class PLAYENGINE ResourceManager
 	public:
 		std::mutex mu;
 	private:
-		static size_t handleCount;
 		static unsigned long CounterImageUI;
-		size_t loadResourceKey;
+		static size_t handleCount;
+		static size_t loadResourceKey;
 		Graphic::ImageUI* loadResource;
-		//bool loadFinish;
-		//std::thread* load;
 		std::list<std::thread*> pool;
 		std::map<size_t, Resource*>* resourceMap;
 		std::map<std::string, std::string> paths;
@@ -59,7 +57,6 @@ class PLAYENGINE ResourceManager
 		void GetSafeOpenIds(unsigned int& a);
 		size_t GetSize();
 		Resource* GetElement(const std::string& name);
-		Graphic::ImageUI* GetLoadImage() { return loadResource; }
 		void Wait();
 		void Load();
 		unsigned int Add(ResourceType type,const std::string& name);
