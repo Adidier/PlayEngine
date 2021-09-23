@@ -5,7 +5,7 @@
 #include <gtc\type_ptr.hpp>
 ShaderManager* ShaderManager::ptr;
 
-ShaderManager::ShaderManager() : currentShader(nullptr)
+ShaderManager::ShaderManager() : currentShader(nullptr), camera(nullptr)
 {
 	LoadShaders("default", vShaderDefault, fShaderDefault);
 }
@@ -44,7 +44,11 @@ GLint ShaderManager::GetSpecularIntensityLocation()
 
 glm::mat4 ShaderManager::GetViewMatrix()
 {
-	return camera->calculateViewMatrix();
+	if (camera != nullptr)
+	{
+		return camera->calculateViewMatrix();
+	}
+	return glm::mat4(1);
 }
 
 glm::mat4 ShaderManager::GetProjectionMatrix()
@@ -89,7 +93,7 @@ GLint ShaderManager::GetShininessLocation()
 
 void ShaderManager::draw()
 {
-	if (currentShader != nullptr)
+	if (currentShader != nullptr && camera != nullptr)
 	{
 		currentShader->UseShader();
 		glUniformMatrix4fv(currentShader->GetUniformId("projection"), 1, GL_FALSE, glm::value_ptr(projection));

@@ -14,21 +14,16 @@ Game::~Game()
 {
 }
 
-void Game::Init()
+void Game::InitResources()
 {
-	physics = Physics::GetPtr();
-	physics->InitPhysics();
-	std::cout << " Menu Init" << std::endl;
-	this->platform = Platform::GetPtr();
-	this->manager = GameStateManager::GetPtr();
-	resourceManager = ResourceManager::GetPtr();
+	auto resourceManager = ResourceManager::GetPtr();
 	resourceManager->Add(ResourceType::Model3d, "floor");
 	resourceManager->Add(ResourceType::Model3d, "floor2");
 	resourceManager->Add(ResourceType::Model3d, "floor3");
 	resourceManager->Add(ResourceType::Model3d, "container");
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
-	
+
 	resourceManager->Add(ResourceType::Texture, "pina");
 	resourceManager->Add(ResourceType::Texture, "brick");
 	resourceManager->Add(ResourceType::Texture, "ContainerAlbedo");
@@ -39,11 +34,21 @@ void Game::Init()
 	resourceManager->Add(ResourceType::ImageUI, "montanas");
 	resourceManager->Add(ResourceType::ImageUI, "montanas2");
 	resourceManager->Add(ResourceType::ImageUI, "montanas3");
-
 	resourceManager->Wait();
+	
+}
+
+void Game::Init()
+{
+	physics = Physics::GetPtr();
+	physics->InitPhysics();
+	std::cout << " Menu Init" << std::endl;
+	this->platform = Platform::GetPtr();
+	this->manager = GameStateManager::GetPtr();
+	resourceManager = ResourceManager::GetPtr();
+
 
 	resourceManager->Load();
-
 	player = new Player();
 	floor = new Floor();
 	level = new Level();
@@ -112,7 +117,7 @@ void Game::Draw()
 
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
-	
+	//
 	DrawMap();
 	DrawEnemies();
 	floor->Draw();
