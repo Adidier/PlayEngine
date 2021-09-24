@@ -7,6 +7,7 @@
 #include "Graphic/GUILine.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
+#include "Graphic/TextUI.h"
 
 #include <map>
 #include <filesystem>
@@ -159,7 +160,11 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 	else if (type == ResourceType::LineUI)
 	{
-		resource = new Graphic::LineUI(1);
+		resource = new Graphic::LineUI(1, name, path);
+	}
+	else if (type == ResourceType::TextUI)
+	{
+		resource = new Graphic::TextUI(1, name, path);
 	}
 	else if (type == ResourceType::Sound)
 	{

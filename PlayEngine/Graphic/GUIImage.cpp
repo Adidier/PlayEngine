@@ -14,6 +14,7 @@ namespace Graphic
 	bool ImageUI::ReadFile()
 	{
 		texData = stbi_load(path.c_str(), &width, &height, &bitDepth, 0);
+
 		if (!texData)
 		{
 			printf("Failed to find: %s\n", path.c_str());

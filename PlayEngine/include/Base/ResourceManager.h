@@ -15,10 +15,11 @@ enum ResourceType
 	ImageUI,
 	LineUI,
 	Sound,
-	Music
+	Music,
+	TextUI
 };
 
-const std::vector<std::vector<std::string>> ResourcesTypes = { {"obj","fbx"},{"png","jpg"},{"png"},{"png"},{"wav"} ,{"wav"} };
+const std::vector<std::vector<std::string>> ResourcesTypes = { {"obj","fbx"},{"png","jpg"},{"png"},{"png"},{"wav"} ,{"wav"}, {"ttf"} };
 
 /*
 cargar todos los archivos de capeta Assets en memoria
