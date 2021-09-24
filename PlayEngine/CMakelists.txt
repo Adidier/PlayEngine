@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
+#add_definitions(-D_ITERATOR_DEBUG_LEVEL=0)
 project(PlayEngine)
 
 #add_subdirectory("")
@@ -53,5 +53,9 @@ target_link_libraries(PlayEngine "../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2"
                                  "../ExternalLibs/Bullet/lib/Bullet3Dynamics_Debug"
                                  "../ExternalLibs/Bullet/lib/BulletCollision_Debug"
                                  "../ExternalLibs/Bullet/lib/LinearMath_Debug"
+				 "../ExternalLibs/Bullet/lib/BulletDynamics"
+                                 "../ExternalLibs/Bullet/lib/Bullet3Dynamics"
+                                 "../ExternalLibs/Bullet/lib/BulletCollision"
+                                 "../ExternalLibs/Bullet/lib/LinearMath"
                                  "Opengl32"
                                  )
