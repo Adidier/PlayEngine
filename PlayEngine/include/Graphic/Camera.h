@@ -19,6 +19,7 @@ public:
 	glm::mat4 calculateViewMatrix();
 	glm::vec3 getCameraPosition();
 	glm::vec3 getFront();
+	bool tab = false;
 	~Camera();
 
 private:
@@ -36,6 +37,7 @@ private:
 	GLfloat turnSpeed;
 	GLfloat prevXPos, prevYPos;
 	float firstMove;
+	
 
 	void update();
 

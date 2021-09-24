@@ -54,6 +54,15 @@ void Camera::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 	{
 		nextPosition += right * velocity;
 	}
+	if (keys[GLFW_KEY_TAB])
+	{
+		//Rodrigo Eguiza
+		/*Debido a que los controles estan en el player y este no tiene forma de acceder a las Gui se creo un booleano para que se pueda detectar en game */
+		tab = !tab;
+		if (tab) {
+			std::cout << "Texto" << std::endl;
+		}
+	}
 }
 
 glm::vec3 Camera::getCameraPosition()

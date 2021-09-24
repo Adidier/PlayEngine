@@ -40,4 +40,7 @@ namespace Graphic
 		image->Draw();
 		plane->RenderMesh();
 	}
+	void GUI::Update() {
+
+	}
 }

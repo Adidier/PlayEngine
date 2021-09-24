@@ -39,6 +39,14 @@ void Game::Init()
 	resourceManager->Add(ResourceType::ImageUI, "montanas");
 	resourceManager->Add(ResourceType::ImageUI, "montanas2");
 	resourceManager->Add(ResourceType::ImageUI, "montanas3");
+	resourceManager->Add(ResourceType::TextUI, "OpenSans"); 
+
+	//Rodrigo Eguiza
+	/*Se creo el tipo de recurso TextUI el cual convierte texto a una textura y lo envia a la tarjeta de video para ser cargada(el tipo de archivo que requiere
+	* es ttf el cual es un tipo de fuente por si en un futuro se requiere cambiar 
+	* y/o agregar diferentes tipos de fuentes
+	*/
+	
 
 	resourceManager->Wait();
 
@@ -77,6 +85,14 @@ void Game::Init()
 	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
 	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
+	TextoUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("OpenSans"), player->GetCamera(), shaderManager);
+	
+	//Rodrigo Eguiza
+	/*El IGUILayer nos genera conflicto devido a que si no recibe los parametros especificos deja nula la imagen a la hoora de crear la GUI
+	*IGUILayer esta diseñado para dibujar recursos ya creados que solo se cargan por el usuario
+	* Esto nos genera conflicto ya que damos nombres de relleno como el name y path para que se pueda efectuar correctamente
+	*/
+
 
 	std::vector<std::string> pathsEnemies = {
 		"Enemy1",
@@ -156,6 +172,7 @@ void Game::Update(unsigned int delta)
 		enemi->Update(delta);
 	}
 	physics->Update(delta);
+	
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
@@ -168,7 +185,15 @@ bool Game::MouseInput(int x, int y, bool leftbutton)
 bool Game::Input(std::map<int, bool> keys)
 {
 	player->GetCamera()->keyControl(keys, platform->GetDeltaTime());
-	
+	if (player->GetCamera()->tab) {
+		//Rodrigo Eguiza			
+		//delete TextoUI;
+		//Graphic::TextoUI::  No me reconoce el TextUI por lo cual no puedo acceder a sus funciones para actualizar el texto ADIDIER OJO :P
+		TextoUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("OpenSans"), player->GetCamera(), shaderManager);
+		player->GetCamera()->tab = false;
+
+		//Al no poder modificar el recurso que tiene la gui cargado en la tarjeta de video no pude actualizar el texto pero si podia refrescar la gui quitando he implementando otra; 
+	}
 	return false;
 }
 

@@ -154,7 +154,7 @@ void  Platform::HandleKeys(GLFWwindow* window, int key, int code, int action, in
 	if (keys[GLFW_KEY_ESCAPE])
 		glfwSetWindowShouldClose(window, 1);
 	(Platform::obj->*Platform::keyboard)(keys);
-}
+		}
 
 void Platform::HandleMousePosition(GLFWwindow* window, double x, double y)
 {

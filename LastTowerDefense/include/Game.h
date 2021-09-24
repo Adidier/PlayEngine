@@ -33,6 +33,7 @@ private:
 
 	Graphic::GUI* weaponUI;
 	Graphic::GUI* playerUI;
+	Graphic::GUI* TextoUI; //Rodrigo Eguiza
 
 	std::vector<Enemy*> enemies;
 	Level* level;

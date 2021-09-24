@@ -4,11 +4,11 @@
 
 namespace Graphic
 {
-	LineUI::LineUI(const unsigned int handle) : IGUILayer(handle, "LINE", "line")
+	LineUI::LineUI(const unsigned int counter, const std::string& name, const std::string& path) : IGUILayer(handle, name,path)
 	{
 		GUI_IMAGE_ID = 0;
-		width = 1024;
-		height = 1024;
+		width = 500;
+		height = 500;
 		bitDepth = 4;
 	}
 
@@ -62,6 +62,9 @@ namespace Graphic
 
 	void LineUI::Draw()
 	{
+		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
+
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, Buffer);
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);
 	}
@@ -79,4 +82,7 @@ namespace Graphic
 	{
 		Clear();
 	}
+
+	//Rodrigo Eguiza
+	/*Se tiene el mismo problema que con el TextUI ya que no respeta el espacio que le damos como ventana y planma lo que se busca dibujar en toda la pantalla*/
 }
