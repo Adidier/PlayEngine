@@ -85,7 +85,7 @@ void Game::Init()
 	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
 	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
-	TextoUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("OpenSans"), player->GetCamera(), shaderManager);
+	//TextoUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("OpenSans"), player->GetCamera(), shaderManager);
 	
 	//Rodrigo Eguiza
 	/*El IGUILayer nos genera conflicto devido a que si no recibe los parametros especificos deja nula la imagen a la hoora de crear la GUI
