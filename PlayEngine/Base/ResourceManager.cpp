@@ -14,6 +14,7 @@
 ResourceManager* ResourceManager::ptr = nullptr;
 unsigned long ResourceManager::CounterImageUI = 0;
 size_t ResourceManager::handleCount = 0;
+size_t ResourceManager::loadResourceKey = 0;
 
 ResourceManager* ResourceManager::GetPtr()
 {
@@ -24,6 +25,14 @@ ResourceManager* ResourceManager::GetPtr()
 		ptr->PathsReader("./Assets/");
 	}
 	return ptr;
+}
+
+
+void ResourceManager::RemoveLoadResource()
+{
+	loadResource->Clear();
+	resourceMap->erase(loadResourceKey);
+	delete loadResource;
 }
 
 ResourceManager::ResourceManager()
@@ -155,7 +164,14 @@ unsigned int ResourceManager::AddResource(ResourceType type, const std::string& 
 	}
 	else if (type == ResourceType::ImageUI)
 	{
-		resource = new Graphic::ImageUI(CounterImageUI++, name, path);
+		//resource = new Graphic::ImageUI(CounterImageUI++, name, path);
+		Graphic::ImageUI* image = new Graphic::ImageUI(CounterImageUI++, name, path);
+		resource = image;
+		if (name == "LoadingScreen")
+		{
+			loadResourceKey = handleCount;
+			loadResource = image;
+		}
 	}
 	else if (type == ResourceType::LineUI)
 	{
@@ -183,5 +199,3 @@ void ResourceManager::Load()
 		model->Load();
 	}
 }
-
-

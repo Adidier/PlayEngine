@@ -19,6 +19,7 @@ namespace Graphic
 			printf("Failed to find: %s\n", path.c_str());
 			return false;
 		}
+		return true;
 	}
 
 	Resource* Texture::Load()
