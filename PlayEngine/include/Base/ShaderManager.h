@@ -16,20 +16,10 @@ public:
 	static ShaderManager* getPtr();
 	void initShader(Camera* camera);
 	void draw();
-	GLint GetSpecularIntensityLocation();
-	GLint GetShininessLocation();
-	GLint GetColor1();
-	GLint GetColor2();
 	glm::mat4 GetViewMatrix();
 	glm::mat4 GetProjectionMatrix();
 	void Activate(const std::string& path);
-	GLuint GetUniformId(const std::string& id);
-	GLuint GetmainTex();
-	GLuint GetrTex();
-	GLuint GetgTex();
-	GLuint GetbTex();
-	GLuint GetblendTexture();
-	GLuint GetNormalTexture();
+	Shader* GetCurrentShader();
 
 private:
 	ShaderManager();

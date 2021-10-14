@@ -1,4 +1,7 @@
 #include "Graphic/Shader.h"
+#include <glm.hpp>
+#include <gtc\matrix_transform.hpp>
+#include <gtc\type_ptr.hpp>
 
 Shader::Shader()
 {
@@ -7,17 +10,14 @@ Shader::Shader()
 
 void Shader::CreateFromString(const char* vertexCode, const char* fragmentCode)
 {
-	CompileShader(vertexCode, fragmentCode);
+	Compile(vertexCode, fragmentCode);
 }
 
 void Shader::CreateFromFiles(const char* vertexLocation, const char* fragmentLocation)
 {
 	std::string vertexString = ReadFile(vertexLocation);
 	std::string fragmentString = ReadFile(fragmentLocation);
-	const char* vertexCode = vertexString.c_str();
-	const char* fragmentCode = fragmentString.c_str();
-
-	CompileShader(vertexCode, fragmentCode);
+	Compile(vertexString.c_str(), fragmentString.c_str());
 }
 
 std::string Shader::ReadFile(const char* fileLocation)
@@ -41,7 +41,7 @@ std::string Shader::ReadFile(const char* fileLocation)
 	return content;
 }
 
-void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
+void Shader::Compile(const char* vertexCode, const char* fragmentCode)
 {
 	shaderID = glCreateProgram();
 
@@ -51,8 +51,8 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
 		return;
 	}
 
-	AddShader(shaderID, vertexCode, GL_VERTEX_SHADER);
-	AddShader(shaderID, fragmentCode, GL_FRAGMENT_SHADER);
+	Add(shaderID, vertexCode, GL_VERTEX_SHADER);
+	Add(shaderID, fragmentCode, GL_FRAGMENT_SHADER);
 
 	GLint result = 0;
 	GLchar eLog[1024] = { 0 };
@@ -79,6 +79,7 @@ void Shader::CompileShader(const char* vertexCode, const char* fragmentCode)
 	ids["model"] = glGetUniformLocation(shaderID,"model");
 	ids["view"] = glGetUniformLocation(shaderID,"view");	
 	ids["color1"] = glGetUniformLocation(shaderID, "color1");
+	ids["cameraPosition"] = glGetUniformLocation(shaderID, "cameraPosition");
 	ids["color2"] = glGetUniformLocation(shaderID, "color2");
 	ids["myLightPosition"] = glGetUniformLocation(shaderID, "myLightPosition");//quitar adidier
 	ids["mainTex"] = glGetUniformLocation(shaderID, "mainTex");
@@ -145,11 +146,11 @@ void Shader::ClearShader()
 	}
 }
 
-void Shader::AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderType)
+void Shader::Add(GLuint theProgram, const char* shaderCode, GLenum shaderType)
 {
 	GLuint theShader = glCreateShader(shaderType);
 
-	const GLchar* theCode[1];
+	const GLchar* theCode[1];//Adidier regresar mejorar el manejo de este apuntador en  glShaderSource
 	theCode[0] = shaderCode;
 
 	GLint codeLength[1];
@@ -170,6 +171,7 @@ void Shader::AddShader(GLuint theProgram, const char* shaderCode, GLenum shaderT
 	}
 
 	glAttachShader(theProgram, theShader);
+	glDeleteShader(theShader);
 }
 
 Shader::~Shader()
@@ -211,4 +213,16 @@ GLuint Shader::GetDiffuseIntensityLocation()
 GLuint Shader::GetDirectionLocation()
 {
 	return uniformDirectionalLight.uniformDirection;
+}
+
+void Shader::SetUniform(std::string variable, glm::mat4 matrix)
+{
+	int id = GetUniformId(variable);
+	glUniformMatrix4fv(id, 1, GL_FALSE, glm::value_ptr(matrix));
+}
+
+void Shader::SetUniform(std::string variable, glm::vec3 vector)
+{
+	int id = GetUniformId(variable);
+	glUniform3f(id, vector.x, vector.y, vector.z);
 }

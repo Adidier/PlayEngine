@@ -6,17 +6,15 @@ namespace Graphic
 {
 	Model::Model(const std::string& name, const std::string& path) :
 		BaseModel(),
-		Resource(0,name, path)
+		Resource(0, name, path)
 	{
 		maxDistance = std::numeric_limits<float>::min();
 	}
 
 	void Model::Draw()
 	{
-		GLuint uniformModel = 0;
-		uniformModel = ShaderManager::getPtr()->GetUniformId("model");
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(transform.GetTransform()));
-
+		auto currentShader = ShaderManager::getPtr()->GetCurrentShader();
+		currentShader->SetUniform("model", transform.GetTransform());
 		for (size_t i = 0; i < meshList.size(); i++)
 		{
 			for (size_t j = 0; j < textureList.size(); j++)
