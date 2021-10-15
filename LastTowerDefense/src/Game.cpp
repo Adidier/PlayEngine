@@ -104,7 +104,7 @@ void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 void Game::LoadMusic()
 {
 	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("funnysong");
-	asset->PlayMusic();
+	//asset->PlayMusic();
 }
 
 void Game::LoadShaders()
@@ -115,8 +115,12 @@ void Game::Draw()
 {
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("phong-shader");
+	shaderManager->Activate("OneColor");
 	shaderManager->draw();
+	glm::vec3 position = player->GetCamera()->getCameraPosition();
+	auto currentShader = shaderManager->GetCurrentShader();
+	currentShader->SetUniform("cameraPosition", position);
+
 	//
 	DrawMap();
 	DrawEnemies();

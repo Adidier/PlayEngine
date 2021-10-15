@@ -9,8 +9,8 @@ namespace Graphic
 	{
 		GUIOverlay* overlay = GUIOverlay::GetPtr();
 		overlay->Add(this);
-		uniformProjection = shaderManager->GetUniformId("projection");
-		uniformView = shaderManager->GetUniformId("view");
+		uniformProjection = shaderManager->GetCurrentShader()->GetUniformId("projection");
+		uniformView = shaderManager->GetCurrentShader()->GetUniformId("view");
 
 		unsigned int planeIndices[] = {			
 			2, 3, 0,

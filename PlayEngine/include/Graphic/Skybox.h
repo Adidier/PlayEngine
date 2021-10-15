@@ -20,7 +20,6 @@
 	private:
 		Mesh* skyMesh;
 		GLuint textureId;
-		GLuint uniformProjection, uniformView;
 		ShaderManager *shaderManager;
 	};
 

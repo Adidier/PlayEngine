@@ -1,7 +1,5 @@
 #include "Graphic/Lights/PointLight.h"
 
-
-
 PointLight::PointLight() : Light()
 {
 	position = glm::vec3(0.0f, 0.0f, 0.0f);

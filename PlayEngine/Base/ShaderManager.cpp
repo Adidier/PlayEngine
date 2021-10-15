@@ -27,21 +27,6 @@ ShaderManager* ShaderManager::getPtr()
 	return ptr;
 }
 
-GLint ShaderManager::GetColor1()
-{
-	return color1;
-}
-
-GLint ShaderManager::GetColor2()
-{
-	return color2;
-}
-
-GLint ShaderManager::GetSpecularIntensityLocation()
-{
-	return uniformSpecularIntensity;
-}
-
 glm::mat4 ShaderManager::GetViewMatrix()
 {
 	if (camera != nullptr)
@@ -56,48 +41,13 @@ glm::mat4 ShaderManager::GetProjectionMatrix()
 	return projection;
 }
 
-GLuint ShaderManager::GetmainTex()
-{
-	return mainTex;
-}
-
-GLuint ShaderManager::GetrTex()
-{
-	return rTex;
-}
-
-GLuint ShaderManager::GetgTex()
-{
-	return gTex;
-}
-
-GLuint ShaderManager::GetbTex()
-{
-	return bTex;
-}
-
-GLuint ShaderManager::GetblendTexture()
-{
-	return blendTexture;
-}
-
-GLuint ShaderManager::GetNormalTexture()
-{
-	return normalTexture;
-}
-
-GLint ShaderManager::GetShininessLocation()
-{
-	return uniformShininess;
-}
-
 void ShaderManager::draw()
 {
 	if (currentShader != nullptr && camera != nullptr)
 	{
 		currentShader->UseShader();
-		glUniformMatrix4fv(currentShader->GetUniformId("projection"), 1, GL_FALSE, glm::value_ptr(projection));
-		glUniformMatrix4fv(currentShader->GetUniformId("view"), 1, GL_FALSE, glm::value_ptr(camera->calculateViewMatrix()));
+		currentShader->SetUniform("projection", projection);
+		currentShader->SetUniform("view", camera->calculateViewMatrix());
 
 		mainLight = DirectionalLight(0.5f, 0.5f, 0.5f,
 			1.0, 1.0f,
@@ -128,31 +78,20 @@ void ShaderManager::initShader(Camera* camera)
 	}
 }
 
-GLuint ShaderManager::GetUniformId(const std::string& id)
-{
-	return currentShader->GetUniformId(id);
-}
-
 void ShaderManager::Activate(const std::string& name)
 {
 	if (shaderList.find(name) != shaderList.end())
 	{
 		currentShader = &shaderList[name];
-		color1 = currentShader->GetUniformId("color1");
-		color2 = currentShader->GetUniformId("color2");
-
-		mainTex = currentShader->GetUniformId("mainTex");
-		rTex = currentShader->GetUniformId("rTex");
-		gTex = currentShader->GetUniformId("gTex");
-		bTex = currentShader->GetUniformId("bTex");
-		blendTexture = currentShader->GetUniformId("blendTex");
-		normalTexture = currentShader->GetUniformId("normalMap");
-
+		
 		uniformAmbientColour = currentShader->GetAmbientColourLocation();
 		uniformAmbientIntensity = currentShader->GetAmbientIntensityLocation();
 		uniformDirection = currentShader->GetDirectionLocation();
 		uniformDiffuseIntensity = currentShader->GetDiffuseIntensityLocation();
-		uniformSpecularIntensity = currentShader->GetUniformId("material.specularIntensity"); 
-		uniformShininess = currentShader->GetUniformId("material.shininess");
 	}
+}
+
+Shader* ShaderManager::GetCurrentShader()
+{
+	return currentShader;
 }

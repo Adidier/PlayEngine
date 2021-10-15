@@ -7,9 +7,6 @@ Skybox::Skybox(std::vector<std::string> faceLocations)
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->LoadShaders("skybox", "Assets/Shaders/skybox.vert", "Assets/Shaders/skybox.frag");
 
-	uniformProjection = shaderManager->GetUniformId("projection");
-	uniformView = shaderManager->GetUniformId("view");
-
 	// Texture Setup
 	glGenTextures(1, &textureId);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureId);
@@ -78,10 +75,11 @@ void Skybox::Draw(glm::mat4 viewMatrix, glm::mat4 projectionMatrix)
 {
 	shaderManager->Activate("skybox");
 	shaderManager->draw();
+	auto currentShader = shaderManager->GetCurrentShader();
 	viewMatrix = glm::mat4(glm::mat3(viewMatrix));
 	glDepthMask(GL_FALSE);
-	glUniformMatrix4fv(uniformProjection, 1, GL_FALSE, glm::value_ptr(projectionMatrix));
-	glUniformMatrix4fv(uniformView, 1, GL_FALSE, glm::value_ptr(viewMatrix));
+	currentShader->SetUniform("projection", projectionMatrix);
+	currentShader->SetUniform("view", viewMatrix);
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_CUBE_MAP, textureId);
 	skyMesh->RenderMesh();
