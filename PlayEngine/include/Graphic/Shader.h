@@ -13,25 +13,6 @@ const int MAX_POINT_LIGHTS = 3;
 
 class PLAYENGINE Shader
 {
-private:
-	
-	struct {
-		GLuint uniformColour;
-		GLuint uniformAmbientIntensity;
-		GLuint uniformDiffuseIntensity;
-
-		GLuint uniformPosition;
-		GLuint uniformConstant;
-		GLuint uniformLinear;
-		GLuint uniformExponent;
-	} uniformPointLight[MAX_POINT_LIGHTS];
-	struct {
-		GLuint uniformColour;
-		GLuint uniformAmbientIntensity;
-		GLuint uniformDiffuseIntensity;
-
-		GLuint uniformDirection;
-	} uniformDirectionalLight;
 public:
 	Shader();
 	void CreateFromString(const char* vertexCode, const char* fragmentCode);
@@ -39,14 +20,9 @@ public:
 	std::string ReadFile(const char* fileLocation);
 	void UseShader();
 	void ClearShader();
-	////Material
-	GLuint GetAmbientIntensityLocation();
-	GLuint GetAmbientColourLocation();
-	GLuint GetDiffuseIntensityLocation();
-	GLuint GetDirectionLocation();
 	~Shader();
-	void SetDirectionalLight(DirectionalLight* dLight);
-	void SetPointLights(PointLight* pLight, unsigned int lightCount);
+	////Material
+
 	void SetUniform(std::string variable, glm::mat4 matrix);
 	void SetUniform(std::string variable, glm::vec3 vector);
 
@@ -58,3 +34,29 @@ private:
 	void Add(GLuint theProgram, const char* shaderCode, GLenum shaderType);	
 };
 
+
+
+/*struct {
+	GLuint uniformColour;
+	GLuint uniformAmbientIntensity;
+	GLuint uniformDiffuseIntensity;
+
+	GLuint uniformPosition;
+	GLuint uniformConstant;
+	GLuint uniformLinear;
+	GLuint uniformExponent;
+} uniformPointLight[MAX_POINT_LIGHTS];
+struct {
+	GLuint uniformColour;
+	GLuint uniformAmbientIntensity;
+	GLuint uniformDiffuseIntensity;
+
+	GLuint uniformDirection;
+} uniformDirectionalLight;
+
+	GLuint GetAmbientIntensityLocation();
+GLuint GetAmbientColourLocation();
+GLuint GetDiffuseIntensityLocation();
+GLuint GetDirectionLocation();
+void SetDirectionalLight(DirectionalLight* dLight);
+void SetPointLights(PointLight* pLight, unsigned int lightCount);*/

@@ -63,7 +63,7 @@ void Game::Init()
 
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(player->GetCamera());
-	shaderManager->LoadShaders("OneColor", "Assets/Shaders/OneColor.vert", "Assets/Shaders/OneColor.frag");
+	shaderManager->LoadShaders("ADSL", "Assets/Shaders/ADSL.vert", "Assets/Shaders/ADSL.frag");
 	shaderManager->LoadShaders("gouraud-shader", "Assets/Shaders/gouraud-shader.vert", "Assets/Shaders/gouraud-shader.frag");
 	shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
 	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
@@ -113,15 +113,15 @@ void Game::LoadShaders()
 
 void Game::Draw()
 {
-	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
+	//skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("OneColor");
+	shaderManager->Activate("ADSL");
 	shaderManager->draw();
-	glm::vec3 position = player->GetCamera()->getCameraPosition();
+	glm::vec3 position (50*cos(theta), 10, 50 * sin(theta));
 	auto currentShader = shaderManager->GetCurrentShader();
-	currentShader->SetUniform("cameraPosition", position);
+	currentShader->SetUniform("lightPosition", position);
 
-	//
+	theta += 0.01;
 	DrawMap();
 	DrawEnemies();
 	floor->Draw();

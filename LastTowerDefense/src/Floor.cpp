@@ -5,7 +5,7 @@
 
 Floor::Floor()
 {	
-	model = dynamic_cast<Graphic::Model*>(ResourceManager::GetPtr()->GetElement("floor"));
+	model = dynamic_cast<Graphic::Model*>(ResourceManager::GetPtr()->GetElement("wall"));
 	model->AddTexture("brick");
 	glm::vec3 cornerModel = model->GetCorner();
 

@@ -65,8 +65,8 @@ void ShaderManager::draw()
 			1.0f, 0.2f, 0.1f);
 		pointLightCount++;
 
-		currentShader->SetDirectionalLight(&mainLight);
-		currentShader->SetPointLights(pointLights, pointLightCount);
+	//	currentShader->SetDirectionalLight(&mainLight);
+	//	currentShader->SetPointLights(pointLights, pointLightCount);
 	}
 }
 void ShaderManager::initShader(Camera* camera)
@@ -74,7 +74,7 @@ void ShaderManager::initShader(Camera* camera)
 	if (currentShader != nullptr)
 	{
 		this->camera = camera;
-		projection = glm::perspective(45.0f, (float)Platform::GetPtr()->GetWidth() / Platform::GetPtr()->GetHeight(), 0.1f, 1000.0f);
+		projection = glm::perspective(45.0f, (float)Platform::GetPtr()->GetWidth() / Platform::GetPtr()->GetHeight(), 0.1f, 1000.0f);//Adidier parametrizar el FOV
 	}
 }
 
@@ -84,10 +84,10 @@ void ShaderManager::Activate(const std::string& name)
 	{
 		currentShader = &shaderList[name];
 		
-		uniformAmbientColour = currentShader->GetAmbientColourLocation();
-		uniformAmbientIntensity = currentShader->GetAmbientIntensityLocation();
-		uniformDirection = currentShader->GetDirectionLocation();
-		uniformDiffuseIntensity = currentShader->GetDiffuseIntensityLocation();
+		//uniformAmbientColour = currentShader->GetAmbientColourLocation();
+		//uniformAmbientIntensity = currentShader->GetAmbientIntensityLocation();
+		//uniformDirection = currentShader->GetDirectionLocation();
+		//uniformDiffuseIntensity = currentShader->GetDiffuseIntensityLocation();
 	}
 }
 

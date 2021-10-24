@@ -37,7 +37,11 @@ namespace Graphic
 
 	void GUI::Draw()
 	{
-		image->Draw();
+		if (image != nullptr)
+		{
+			image->Draw();
+		}
+
 		plane->RenderMesh();
 	}
 }

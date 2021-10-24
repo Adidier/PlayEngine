@@ -22,6 +22,7 @@
 class Game : public GameState
 {
 private:
+	float theta = 0;
 	Platform* platform;
 	GameStateManager* manager;
 	ResourceManager* resourceManager;
