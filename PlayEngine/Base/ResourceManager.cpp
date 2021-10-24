@@ -15,13 +15,12 @@ ResourceManager* ResourceManager::ptr = nullptr;
 unsigned long ResourceManager::CounterImageUI = 0;
 size_t ResourceManager::handleCount = 0;
 
-ResourceManager* ResourceManager::GetPtr()
+ResourceManager* ResourceManager::GetPtr(const std::string &path)
 {
 	if (ptr == nullptr)
 	{
 		ptr = new ResourceManager();
-		//adidier llamar platform contiene la configuracion inicial del engine
-		ptr->PathsReader("./Assets/");
+		ptr->PathsReader(path);
 	}
 	return ptr;
 }

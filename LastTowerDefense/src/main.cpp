@@ -7,7 +7,9 @@
 
 int main(int argc, char* argv[])
 {
+	ResourceManager::GetPtr("../../Resources/Assets");
 	GameStateManager* manager = GameStateManager::GetPtr();
+	
 
 	manager->SetState(new LoadScreen());
 

@@ -15,26 +15,19 @@ enum ResourceType
 	ImageUI,
 	LineUI,
 	Sound,
-	Music
+	Music,
+	VertexShader,
+	FragmentShader,
+	Configuration,
 };
 
-const std::vector<std::vector<std::string>> ResourcesTypes = { {"obj","fbx"},{"png","jpg"},{"png"},{"png"},{"wav"} ,{"wav"} };
+const std::vector<std::vector<std::string>> ResourcesTypes = { {"obj","fbx"},{"png","jpg"},{"png"},{"png"},{"wav"} ,{"wav"} ,{"vert"}, {"frag"} ,{"lua"} };
 
-/*
-cargar todos los archivos de capeta Assets en memoria
-configuracion se va a asignar el directorio a cargar si no esta definido sera Assets
-
-map<nombre,path> assets;
-addAsset agrega archivos al mapa
-getPath obtiene los paths de los assets
-
-*/
 
 class PLAYENGINE ResourceManager
 {
-	public:
-		std::mutex mu;
 	private:
+		std::mutex mu;
 		static size_t handleCount;
 		static unsigned long CounterImageUI;
 		std::list<std::thread*> pool;
@@ -45,10 +38,9 @@ class PLAYENGINE ResourceManager
 		static ResourceManager* ptr;
 		unsigned int AddResource(ResourceType type, const std::string& name, const  std::string& path);
 		void PathsReader(std::string path, bool force = false);
-		std::string GetPath(ResourceType type,const std::string &name);
 	public:
-
-		static ResourceManager* GetPtr();
+		std::string GetPath(ResourceType type, const std::string& name);
+		static ResourceManager* GetPtr(const std::string& path = "");
 		void ClearResources();
 		void GetSafeOpenIds(unsigned int& a);
 		size_t GetSize();

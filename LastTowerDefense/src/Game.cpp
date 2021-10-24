@@ -63,11 +63,11 @@ void Game::Init()
 
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(player->GetCamera());
-	shaderManager->LoadShaders("ADSL", "Assets/Shaders/ADSL.vert", "Assets/Shaders/ADSL.frag");
-	shaderManager->LoadShaders("gouraud-shader", "Assets/Shaders/gouraud-shader.vert", "Assets/Shaders/gouraud-shader.frag");
-	shaderManager->LoadShaders("phong-shader", "Assets/Shaders/phong-shader.vert", "Assets/Shaders/phong-shader.frag");
-	shaderManager->LoadShaders("toon-shader", "Assets/Shaders/toon-shader.vert", "Assets/Shaders/toon-shader.frag");
-	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
+	shaderManager->LoadShaders("ADSL");
+	shaderManager->LoadShaders("gouraud-shader");
+	shaderManager->LoadShaders("phong-shader");
+	shaderManager->LoadShaders("toon-shader");
+	shaderManager->LoadShaders("gui");
 
 	
 	std::vector<std::string> skyboxFaces;

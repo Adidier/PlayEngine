@@ -1,5 +1,6 @@
 #include "Base/ShaderManager.h"
 #include "Base/PEPlatform.h"
+#include "Base/ResourceManager.h"
 #include <glm.hpp>
 #include <gtc\matrix_transform.hpp>
 #include <gtc\type_ptr.hpp>
@@ -7,13 +8,25 @@ ShaderManager* ShaderManager::ptr;
 
 ShaderManager::ShaderManager() : currentShader(nullptr), camera(nullptr)
 {
-	LoadShaders("default", vShaderDefault, fShaderDefault);
+	LoadShaders("default");
 }
 
 void ShaderManager::LoadShaders(const std::string& name, const std::string& pathV, const std::string& pathF)
 {
 	Shader* shader1 = new Shader();
 	shader1->CreateFromFiles(pathV.c_str(), pathF.c_str());
+	shaderList[name] = (*shader1);
+	Activate(name);
+}
+
+
+void ShaderManager::LoadShaders(const std::string& name)
+{
+	Shader* shader1 = new Shader();
+	auto resourceManager = ResourceManager::GetPtr();
+	std::string vertexShaderPath = resourceManager->GetPath(ResourceType::VertexShader, name );
+	std::string fragmentShaderPath = resourceManager->GetPath(ResourceType::FragmentShader, name);
+	shader1->CreateFromFiles(vertexShaderPath.c_str(), fragmentShaderPath.c_str());
 	shaderList[name] = (*shader1);
 	Activate(name);
 }

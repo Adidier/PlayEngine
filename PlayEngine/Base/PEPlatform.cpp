@@ -1,5 +1,5 @@
 #include "Base/PEPlatform.h"
-
+#include "Base/ResourceManager.h"
 
 #include <iostream>
 
@@ -14,7 +14,9 @@ bool Platform::leftButtonMouse;
 Platform::Platform(std::string name)
 {
 	serviceConfiguration = ServiceConfiguration::getptr();
-	serviceConfiguration->load("Assets/Config/Config.lua");
+	// Assets/Config/Config.lua: 
+	auto resourceManager = ResourceManager::GetPtr();
+	serviceConfiguration->load(resourceManager->GetPath(ResourceType::Configuration, "Config"));
 
 	serviceConfiguration->getEntry("ScreenHeight", height);
 	serviceConfiguration->getEntry("ScreenWidth", width);

@@ -10,9 +10,8 @@
 class PLAYENGINE ShaderManager
 {
 public:
+	void LoadShaders(const std::string& name);
 	void LoadShaders(const std::string& name, const std::string& pathV, const std::string& pathF);
-	const char* vShaderDefault = "Assets/Shaders/Default/default.vert";
-	const char* fShaderDefault = "Assets/Shaders/Default/default.frag";
 	static ShaderManager* getPtr();
 	void initShader(Camera* camera);
 	void draw();
@@ -38,13 +37,5 @@ private:
 
 	DirectionalLight mainLight;
 	PointLight pointLights[MAX_POINT_LIGHTS];
-
-	GLuint mainTex;
-	GLuint rTex;
-	GLuint gTex;
-	GLuint bTex;
-	GLuint blendTexture;
-	GLuint normalTexture;
-
 };
 

@@ -28,6 +28,7 @@ void LoadScreen::Init()
 {
 	this->platform = Platform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
+	
 	resourceManager = ResourceManager::GetPtr();
 	resourceManager->Add(ResourceType::ImageUI, "LoadingScreen");
 
@@ -38,7 +39,7 @@ void LoadScreen::Init()
 
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(camera);
-	shaderManager->LoadShaders("gui", "Assets/Shaders/gui.vert", "Assets/Shaders/gui.frag");
+	shaderManager->LoadShaders("gui");
 
 	loadGUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("LoadingScreen"), camera, shaderManager);
 	load = new std::thread(&LoadScreen::Loading);
