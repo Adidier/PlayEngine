@@ -5,7 +5,7 @@ Skybox::Skybox(std::vector<std::string> faceLocations)
 {
 	// Shader Setup
 	shaderManager = ShaderManager::getPtr();
-	shaderManager->LoadShaders("skybox", "Assets/Shaders/skybox.vert", "Assets/Shaders/skybox.frag");
+	shaderManager->LoadShaders("skybox");
 
 	// Texture Setup
 	glGenTextures(1, &textureId);

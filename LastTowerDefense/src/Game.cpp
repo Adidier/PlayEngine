@@ -71,12 +71,12 @@ void Game::Init()
 
 	
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_rt.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_lf.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_up.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_dn.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_bk.tga");
-	skyboxFaces.push_back("Assets/Textures/Skybox/cupertin-lake_ft.tga");
+	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_rt.tga");
+	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_lf.tga");
+	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_up.tga");
+	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_dn.tga");
+	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_bk.tga");
+	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);		
 
 	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
@@ -113,7 +113,7 @@ void Game::LoadShaders()
 
 void Game::Draw()
 {
-	//skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
+	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
 	shaderManager->Activate("ADSL");
 	shaderManager->draw();
