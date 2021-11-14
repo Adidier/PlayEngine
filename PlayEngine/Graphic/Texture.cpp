@@ -34,7 +34,7 @@ namespace Graphic
 
 	void Texture::UseTexture(unsigned int i)
 	{
-		glActiveTexture(i);
+		glActiveTexture(GL_TEXTURE0 + i);
 		glBindTexture(GL_TEXTURE_2D, textureID);
 	}
 

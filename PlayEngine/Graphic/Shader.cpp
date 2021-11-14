@@ -148,6 +148,11 @@ void Shader::SetUniform(std::string variable, glm::vec3 vector)
 	glUniform3f(id, vector.x, vector.y, vector.z);
 }
 
+void Shader::SetUniform(std::string variable, int value)
+{
+	int id = GetUniformId(variable);
+	glUniform1i(id, value);
+}
 
 /*
 void Shader::SetDirectionalLight(DirectionalLight* dLight)

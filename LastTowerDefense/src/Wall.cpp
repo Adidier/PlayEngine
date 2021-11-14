@@ -4,7 +4,8 @@
 #include "btBulletDynamicsCommon.h"
 Wall::Wall() {
 	wall = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("wall");
-	wall->AddTexture("brick");
+	wall->AddTexture("brick2");
+	wall->AddTexture("bricknormal");
 
 	/*btBoxShape* colShape = new btBoxShape(btVector3(1000.1, 0.1, 1000.1));
 	btTransform startTransform;

@@ -10,6 +10,7 @@ Enemy::Enemy(Player* player)
 
 	model = (Graphic::Model *)ResourceManager::GetPtr()->GetElement("pina_pose");
 	model->AddTexture("pina");
+	model->AddTexture("pina_normal");
 	transform.SetTranslation(0.0f, 10.0f, 0.0f);
 	glm::vec3 cornerModel = model->GetCorner();
 	rigidBody = new RigidBody(1.0, glm::vec3(0, 0, 0), glm::vec3(1, 1, 1));

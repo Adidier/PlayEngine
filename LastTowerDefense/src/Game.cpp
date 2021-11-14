@@ -24,9 +24,12 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
 
+	resourceManager->Add(ResourceType::Texture, "pina_normal");
 	resourceManager->Add(ResourceType::Texture, "pina");
 	resourceManager->Add(ResourceType::Texture, "brick");
+	resourceManager->Add(ResourceType::Texture, "brick2");
 	resourceManager->Add(ResourceType::Texture, "ContainerAlbedo");
+	resourceManager->Add(ResourceType::Texture, "bricknormal");
 
 	resourceManager->Add(ResourceType::Music, "funnysong");
 	resourceManager->Add(ResourceType::Sound, "laser_shot");
@@ -34,6 +37,7 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::ImageUI, "montanas");
 	resourceManager->Add(ResourceType::ImageUI, "montanas2");
 	resourceManager->Add(ResourceType::ImageUI, "montanas3");
+	
 	resourceManager->Wait();
 	
 }
@@ -61,14 +65,7 @@ void Game::Init()
 	wall3 = new Wall();
 	wall3->setTransform(-600, 50, 0, 1.57f);
 
-	shaderManager = ShaderManager::getPtr();
-	shaderManager->initShader(player->GetCamera());
-	shaderManager->LoadShaders("ADSL");
-	shaderManager->LoadShaders("gouraud-shader");
-	shaderManager->LoadShaders("phong-shader");
-	shaderManager->LoadShaders("toon-shader");
-	shaderManager->LoadShaders("gui");
-
+	LoadShaders();
 	
 	std::vector<std::string> skyboxFaces;
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_rt.tga");
@@ -78,7 +75,7 @@ void Game::Init()
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_bk.tga");
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);		
-
+	shaderManager = ShaderManager::getPtr();
 	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
 	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
@@ -90,11 +87,13 @@ void Game::Init()
 
 	LoadEnemies(pathsEnemies);
 	LoadMusic();
+
+
 }
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<10;i++)
+	for (int i=0;i<1;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -109,27 +108,38 @@ void Game::LoadMusic()
 
 void Game::LoadShaders()
 {
+	shaderManager = ShaderManager::getPtr();
+	shaderManager->initShader(player->GetCamera());
+	//shaderManager->LoadShaders("ADSL");
+	//shaderManager->LoadShaders("gouraud-shader");
+	shaderManager->LoadShaders("bumpmapping");
+	//shaderManager->LoadShaders("toon-shader");
+	//shaderManager->LoadShaders("gui");
+	//shaderManager->LoadShaders("ADSLFragment");
+	shaderManager->LoadShaders("Sobel");
 }
 
 void Game::Draw()
 {
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("ADSL");
+	shaderManager->Activate("bumpmapping");
 	shaderManager->draw();
 	glm::vec3 position (50*cos(theta), 10, 50 * sin(theta));
 	auto currentShader = shaderManager->GetCurrentShader();
+	currentShader->SetUniform("diffuseMap", 0);
+	currentShader->SetUniform("normalMap", 1);
 	currentShader->SetUniform("lightPosition", position);
 
 	theta += 0.01;
 	DrawMap();
 	DrawEnemies();
-	floor->Draw();
+	floor->Draw();/*
 	level->Draw();
 	wall->Draw();
 	wall1->Draw();
 	wall2->Draw();
-	wall3->Draw();
+	wall3->Draw();*/
 }
 void Game::DrawMap()
 {
@@ -170,7 +180,9 @@ void Game::Update(unsigned int delta)
 bool Game::MouseInput(int x, int y, bool leftbutton)
 {
 	if (x != -1 || y != -1)
+	{
 		player->GetCamera()->mouseControl(x, y);
+	}		
 	return false;
 }
 
@@ -185,13 +197,3 @@ void Game::Close()
 {
 	std::cout << " Close Init" << std::endl;
 }
-/*
-
-render de una imagen sobre el contexto de OpenGL HUD-- Max
-arreglar box colliders ---- Walter
-agregar biblioteca sonido ---- Alfredo
-cargar un conjunto de modelos para hacer un mapa basico con box colliders --Pao 
-
-2 parcial
-
-*/

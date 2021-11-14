@@ -19,7 +19,7 @@ namespace Graphic
 		{
 			for (size_t j = 0; j < textureList.size(); j++)
 			{
-				textureList[j]->UseTexture(GL_TEXTURE0+j);
+				textureList[j]->UseTexture(j);
 			}
 			meshList[i]->RenderMesh();
 		}
