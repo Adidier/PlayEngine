@@ -111,25 +111,40 @@ void Game::LoadShaders()
 	shaderManager = ShaderManager::getPtr();
 	shaderManager->initShader(player->GetCamera());
 	//shaderManager->LoadShaders("ADSL");
-	//shaderManager->LoadShaders("gouraud-shader");
-	shaderManager->LoadShaders("bumpmapping");
+	shaderManager->LoadShaders("phong-shader-lighting");
+	//shaderManager->LoadShaders("bumpmapping");
 	//shaderManager->LoadShaders("toon-shader");
 	//shaderManager->LoadShaders("gui");
-	//shaderManager->LoadShaders("ADSLFragment");
-	shaderManager->LoadShaders("Sobel");
+	//shaderManager->LoadShaders("ADSL");
+	//shaderManager->LoadShaders("Sobel");
 }
 
 void Game::Draw()
 {
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("bumpmapping");
+	shaderManager->Activate("phong-shader-lighting");
 	shaderManager->draw();
 	glm::vec3 position (50*cos(theta), 10, 50 * sin(theta));
 	auto currentShader = shaderManager->GetCurrentShader();
-	currentShader->SetUniform("diffuseMap", 0);
+	/*currentShader->SetUniform("diffuseMap", 0);
 	currentShader->SetUniform("normalMap", 1);
 	currentShader->SetUniform("lightPosition", position);
+	*/
+
+	currentShader->SetUniform("directionalLight.base.ambientColor", glm::vec3(0.8, 0.8, 0.8));
+	currentShader->SetUniform("directionalLight.base.diffuseColor", glm::vec3(1, 0.94, 0.0));
+	currentShader->SetUniform("directionalLight.base.specularColor", glm::vec3(1, 1, 1));
+
+	currentShader->SetUniform("directionalLight.direction", position);
+	currentShader->SetUniform("directionalLight.intensity", 1.0f);
+
+	currentShader->SetUniform("material.difuse", 0);
+	currentShader->SetUniform("material.specular", 1);
+	currentShader->SetUniform("material.shininess", 400.0f);
+
+	currentShader->SetUniform("eyePosition", player->GetCamera()->getCameraPosition());
+
 
 	theta += 0.01;
 	DrawMap();

@@ -26,6 +26,7 @@ public:
 	void SetUniform(std::string variable, glm::mat4 matrix);
 	void SetUniform(std::string variable, glm::vec3 vector);
 	void SetUniform(std::string variable, int value);
+	void SetUniform(std::string variable, float value);
 
 	GLuint GetUniformId(const std::string& id);//adidier moverla a privada en futuro 
 private:

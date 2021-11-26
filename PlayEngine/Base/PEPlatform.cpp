@@ -22,8 +22,8 @@ Platform::Platform(std::string name)
 	serviceConfiguration->getEntry("ScreenWidth", width);
 	serviceConfiguration->getEntry("Name", this->name);
 	init();
-	for (size_t i = 0; i < 1024; i++)
-	{
+
+	for (size_t i = 0; i < 1024; ++i) {
 		keys[i] = 0;
 	}
 }
