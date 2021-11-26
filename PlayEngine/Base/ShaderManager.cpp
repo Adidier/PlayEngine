@@ -62,11 +62,10 @@ void ShaderManager::draw()
 		currentShader->SetUniform("projection", projection);
 		currentShader->SetUniform("view", camera->calculateViewMatrix());
 
-		mainLight = DirectionalLight(0.5f, 0.5f, 0.5f,
-			1.0, 1.0f,
-			0.0f, 0.0f, -1.0f);
+		//mainLight = DirectionalLight(glm::vec3(10,10,10), glm::vec3(0, 0, 10),
+		//	glm::vec3(0, 0, 10), glm::vec3(0, 0, 10), 0.01f);
 
-		unsigned int pointLightCount = 0;
+		/*unsigned int pointLightCount = 0;
 		pointLights[0] = PointLight(0.0f, 1.0f, 0.0f,
 			0.7f, 1.2f,
 			0.0f, 0.0f, 0.0f,
@@ -76,7 +75,7 @@ void ShaderManager::draw()
 			.7f, .7f,
 			-1.0f, 0.0f, 0.0f,
 			1.0f, 0.2f, 0.1f);
-		pointLightCount++;
+		pointLightCount++;*/
 
 	//	currentShader->SetDirectionalLight(&mainLight);
 	//	currentShader->SetPointLights(pointLights, pointLightCount);

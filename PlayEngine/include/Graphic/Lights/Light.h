@@ -4,15 +4,14 @@
 #include <glm.hpp>
 
 
-		class PLAYENGINE Light
-		{
-		public:
-			Light();
-			Light(GLfloat red, GLfloat green, GLfloat blue,
-				GLfloat aIntensity, GLfloat dIntensity);
-			~Light();
-		protected:
-			glm::vec3 colour;
-			GLfloat ambientIntensity;
-			GLfloat diffuseIntensity;
-		};
+class PLAYENGINE Light
+{
+public:
+	Light();
+	Light(glm::vec3 ambientColor, glm::vec3 diffuseColor, glm::vec3 specularColor);
+	~Light();
+protected:
+	glm::vec3 ambientColor;
+	glm::vec3 diffuseColor;
+	glm::vec3 specularColor;
+};

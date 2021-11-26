@@ -15,6 +15,7 @@
 #include "Physics/Physics.h"
 #include "Graphic/GUI.h"
 #include "Graphic/GUILine.h"
+#include "Graphic/Lights/DirectionalLight.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
 #include<vector>
@@ -42,6 +43,8 @@ private:
 	Wall* wall2;
 	Wall* wall3;
 	Floor* floor;
+
+	DirectionalLight directionalLight;
 public:
 	Game();
 	~Game();

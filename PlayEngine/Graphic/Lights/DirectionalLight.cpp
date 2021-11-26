@@ -1,26 +1,35 @@
 #include "Graphic/Lights/DirectionalLight.h"
+#include "Base/ShaderManager.h"
 
 DirectionalLight::DirectionalLight() : Light()
 {
-	direction = glm::vec3(0.0f, -1.0f, 0.0f);
+	intensity = 1.0;
+	direction = glm::vec3(0,0,0);
 }
 
-DirectionalLight::DirectionalLight(GLfloat red, GLfloat green, GLfloat blue,
-	GLfloat aIntensity, GLfloat dIntensity,
-	GLfloat xDir, GLfloat yDir, GLfloat zDir) : Light(red, green, blue, aIntensity, dIntensity)
+DirectionalLight::DirectionalLight(glm::vec3 _direction, glm::vec3 _ambient,
+	glm::vec3 _difuse, glm::vec3 _specular , float _intensity) : Light(_ambient, _difuse, _specular)
 {
-	direction = glm::vec3(xDir, yDir, zDir);
+	direction = _direction;
+	intensity = _intensity;
 }
 
-void DirectionalLight::UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation,
-	GLfloat diffuseIntensityLocation, GLfloat directionLocation)
+void DirectionalLight::UseLight(bool activate)
 {
-	glUniform3f(ambientColourLocation, colour.x, colour.y, colour.z);
-	glUniform1f(ambientIntensityLocation, ambientIntensity);
+	ShaderManager::getPtr()->Activate("phong-shader-lighting");
+	auto currentShader = ShaderManager::getPtr()->GetCurrentShader();
+	
+	currentShader->SetUniform("directionalLight.base.ambientColor", glm::vec3(0.8, 0.8, 0.8));
+	currentShader->SetUniform("directionalLight.base.diffuseColor", glm::vec3(1, 0.94, 0.0));
+	currentShader->SetUniform("directionalLight.base.specularColor", glm::vec3(1, 1, 1));
 
-	glUniform3f(directionLocation, direction.x, direction.y, direction.z);
-	glUniform1f(diffuseIntensityLocation, diffuseIntensity);
+	currentShader->SetUniform("directionalLight.direction", glm::vec3(0, 0, 0));
+	currentShader->SetUniform("directionalLight.intensity", 40.01f);
+
 }
+
+
+
 
 DirectionalLight::~DirectionalLight()
 {

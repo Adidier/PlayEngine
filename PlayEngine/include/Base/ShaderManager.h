@@ -27,15 +27,5 @@ private:
 	static ShaderManager* ptr;
 	Camera* camera;
 	glm::mat4 projection;
-	
-	GLuint color1, color2;
-	GLuint  uniformEyePosition = 0,
-		uniformAmbientIntensity = 0, uniformAmbientColour = 0, uniformDirection = 0, uniformDiffuseIntensity = 0,
-		uniformSpecularIntensity = 0, uniformShininess = 0,
-		myMaterialAmbient = 0, myLightAmbient = 0;
-
-
-	DirectionalLight mainLight;
-	PointLight pointLights[MAX_POINT_LIGHTS];
 };
 
