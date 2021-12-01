@@ -16,9 +16,10 @@
 #include "Graphic/GUI.h"
 #include "Graphic/GUILine.h"
 #include "Graphic/Lights/DirectionalLight.h"
+#include "Graphic/Lights/PointLight.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
-#include<vector>
+#include <vector>
 
 class Game : public GameState
 {
@@ -45,6 +46,9 @@ private:
 	Floor* floor;
 
 	DirectionalLight directionalLight;
+	PointLight point1;
+	PointLight point2;
+	PointLight point3;
 public:
 	Game();
 	~Game();

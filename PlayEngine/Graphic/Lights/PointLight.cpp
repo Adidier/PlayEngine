@@ -1,38 +1,39 @@
-//#include "Graphic/Lights/PointLight.h"
-//
-//PointLight::PointLight() : Light()
-//{
-//	position = glm::vec3(0.0f, 0.0f, 0.0f);
-//	constant = 1.0f;
-//	linear = 0.0f;
-//	exponent = 0.0f;
-//}
-//
-//PointLight::PointLight(GLfloat red, GLfloat green, GLfloat blue,
-//	GLfloat aIntensity, GLfloat dIntensity,
-//	GLfloat xPos, GLfloat yPos, GLfloat zPos,
-//	GLfloat con, GLfloat lin, GLfloat exp) : Light(red, green, blue, aIntensity, dIntensity)
-//{
-//	position = glm::vec3(xPos, yPos, zPos);
-//	constant = con;
-//	linear = lin;
-//	exponent = exp;
-//}
-//
-//void PointLight::UseLight(GLfloat ambientIntensityLocation, GLfloat ambientColourLocation,
-//	GLfloat diffuseIntensityLocation, GLfloat positionLocation,
-//	GLfloat constantLocation, GLfloat linearLocation, GLfloat exponentLocation)
-//{
-//	glUniform3f(ambientColourLocation, colour.x, colour.y, colour.z);
-//	glUniform1f(ambientIntensityLocation, ambientIntensity);
-//	glUniform1f(diffuseIntensityLocation, diffuseIntensity);
-//
-//	glUniform3f(positionLocation, position.x, position.y, position.z);
-//	glUniform1f(constantLocation, constant);
-//	glUniform1f(linearLocation, linear);
-//	glUniform1f(exponentLocation, exponent);
-//}
-//
-//PointLight::~PointLight()
-//{
-//}
+#include "Graphic/Lights/PointLight.h"
+#include "Base/ShaderManager.h"
+
+PointLight::PointLight(int _index) : Light()
+{
+	index = _index;
+	position = glm::vec3(0, 0, 0);
+}
+
+PointLight::PointLight(int _index, glm::vec3 _position, glm::vec3 _ambient,
+	glm::vec3 _difuse, glm::vec3 _specular,
+	float _constant, float _linear, float _exponent) : Light(_ambient, _difuse, _specular)
+{
+	index = _index;
+	position = _position;
+	constant = _constant;
+	linear = _linear;
+	exponent = _exponent;
+}
+
+void PointLight::UseLight()
+{
+	ShaderManager::getPtr()->Activate("phong-shader-lighting");
+	auto currentShader = ShaderManager::getPtr()->GetCurrentShader();
+	std::string light = "pointLights[" + std::to_string(index) + "]";
+	currentShader->SetUniform(light+".base.ambientColor", ambientColor);
+	currentShader->SetUniform(light + ".base.diffuseColor", diffuseColor);
+	currentShader->SetUniform(light + ".base.specularColor", specularColor);
+
+	currentShader->SetUniform(light + ".position", position);
+	currentShader->SetUniform(light + ".constant", constant);
+	currentShader->SetUniform(light + ".linear", linear);
+	currentShader->SetUniform(light + ".exponent", exponent);
+}
+
+PointLight::~PointLight()
+{
+
+}

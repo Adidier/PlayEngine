@@ -7,7 +7,13 @@
 
 
 Game::Game() : directionalLight(glm::vec3(20, 10, 0), glm::vec3(0, 1, 0),
-					glm::vec3(0, 1, 0), glm::vec3(0, 1, 0), 40)
+					glm::vec3(0, 1, 0), glm::vec3(0, 1, 0), 40),
+			  point1(0, glm::vec3(0,0,0), glm::vec3(0, 0, 1),
+				  glm::vec3(0, 0, 1), glm::vec3(0, 0, 1),.01f,.009f,.005f),
+	point2(1, glm::vec3(-1, 1, -1), glm::vec3(1, 0, 1),
+		glm::vec3(1, 0, 1), glm::vec3(1, 0, 1), .01f, .09f, .05f),
+	point3(2, glm::vec3(1, 1, 1), glm::vec3(0, 1, 0),
+		glm::vec3(0, 1, 0), glm::vec3(0, 1, 0), .01f, .009f, .005f)
 {
 }
 
@@ -127,52 +133,20 @@ void Game::Draw()
 	shaderManager->Activate("phong-shader-lighting");
 	shaderManager->draw();
 	glm::vec3 position (30*cos(theta), 10, 30 * sin(theta));
-	directionalLight.UseLight();
+	//directionalLight.UseLight();
 	auto currentShader = shaderManager->GetCurrentShader();
 	/*currentShader->SetUniform("diffuseMap", 0);
 	currentShader->SetUniform("normalMap", 1);
 	currentShader->SetUniform("lightPosition", position);
 	*/
 
-	//currentShader->SetUniform("directionalLight.base.ambientColor", glm::vec3(0.8, 0.8, 0.8));
-	//currentShader->SetUniform("directionalLight.base.diffuseColor", glm::vec3(1, 0.94, 0.0));
-	//currentShader->SetUniform("directionalLight.base.specularColor", glm::vec3(1, 1, 1));
-
-	//currentShader->SetUniform("directionalLight.direction", glm::vec3(0, 0, 0));
-	//currentShader->SetUniform("directionalLight.intensity", 40.01f);
-
 	currentShader->SetUniform("material.difuse", 0);
 	currentShader->SetUniform("material.specular", 1);
 	currentShader->SetUniform("material.shininess", 400.0f);
 
-	currentShader->SetUniform("pointLights[0].base.ambientColor", glm::vec3(0, 0, 1));
-	currentShader->SetUniform("pointLights[0].base.diffuseColor", glm::vec3(1, 0.94, 0.0));
-	currentShader->SetUniform("pointLights[0].base.specularColor", glm::vec3(1, 1, 1));
-
-	currentShader->SetUniform("pointLights[0].position", glm::vec3(0.8, 0.8, 0.8));
-	currentShader->SetUniform("pointLights[0].constant", 0.01f);
-	currentShader->SetUniform("pointLights[0].linear", 0.09f);
-	currentShader->SetUniform("pointLights[0].exponent", 0.05f);
-
-	currentShader->SetUniform("pointLights[1].base.ambientColor", glm::vec3(0, 10, 0));
-	currentShader->SetUniform("pointLights[1].base.diffuseColor", glm::vec3(1, 0.94, 0.0));
-	currentShader->SetUniform("pointLights[1].base.specularColor", glm::vec3(1, 1, 1));
-
-	currentShader->SetUniform("pointLights[1].position", glm::vec3(0, 30, 0));
-	currentShader->SetUniform("pointLights[1].constant", .01f);
-	currentShader->SetUniform("pointLights[1].linear", 0.09f);
-	currentShader->SetUniform("pointLights[1].exponent", 0.03f);
-
-
-	currentShader->SetUniform("pointLights[2].base.ambientColor", glm::vec3(1, 0, 0));
-	currentShader->SetUniform("pointLights[2].base.diffuseColor", glm::vec3(1, 0, 0));
-	currentShader->SetUniform("pointLights[2].base.specularColor", glm::vec3(1, 0, 0));
-
-	currentShader->SetUniform("pointLights[2].position", -position);
-	currentShader->SetUniform("pointLights[2].constant", 0.01f);
-	currentShader->SetUniform("pointLights[2].linear", 0.09f);
-	currentShader->SetUniform("pointLights[2].exponent", 0.03f);
-
+	point1.UseLight();
+	point2.UseLight();
+	point3.UseLight();
 
 	currentShader->SetUniform("eyePosition", player->GetCamera()->getCameraPosition());
 

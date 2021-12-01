@@ -14,7 +14,7 @@ DirectionalLight::DirectionalLight(glm::vec3 _direction, glm::vec3 _ambient,
 	intensity = _intensity;
 }
 
-void DirectionalLight::UseLight(bool activate)
+void DirectionalLight::UseLight()
 {
 	ShaderManager::getPtr()->Activate("phong-shader-lighting");
 	auto currentShader = ShaderManager::getPtr()->GetCurrentShader();

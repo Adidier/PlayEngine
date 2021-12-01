@@ -1,6 +1,5 @@
 #include "Graphic/Lights/Light.h"
 
-
 Light::Light()
 {
 	ambientColor = glm::vec3(1.0f, 1.0f, 1.0f);
