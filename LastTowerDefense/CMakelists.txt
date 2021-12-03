@@ -20,15 +20,12 @@ include_directories("../ExternalLibs/Assimp/include"
 set(CMAKE_BINARY_DIR "../")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
-add_executable(LastTowerDefense  "src/Enemy.cpp"
-                              "src/Floor.cpp"
-                              "src/Game.cpp"
-                              "src/LoadScreen.cpp"
-                              "src/GameObject.cpp"
-                              "src/Level.cpp"
-                              "src/main.cpp"
-                              "src/Player.cpp"
-                              "src/ScriptEnemy.cpp"
-                              "src/Wall.cpp")       
+
+file(GLOB LastTowerDefenseSrc
+     "include/*.h"
+     "src/*.cpp"
+)
+
+add_executable(LastTowerDefense ${LastTowerDefenseSrc})       
 
 target_link_libraries(LastTowerDefense "PlayEngine")

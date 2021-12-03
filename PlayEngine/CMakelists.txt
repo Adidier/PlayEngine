@@ -18,32 +18,20 @@ include_directories("../ExternalLibs/Assimp/include"
 set(CMAKE_BINARY_DIR "../")
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
-add_library(PlayEngine SHARED "Audio/AudioPlayer.cpp"
-                              "Audio/MusicPlayer.cpp"
-                              "Base/GameState.cpp"
-                              "Base/GameStateManager.cpp"
-                              "Base/PEPlatform.cpp"
-                              "Base/Resource.cpp"
-                              "Base/ResourceManager.cpp"
-                              "Base/ServiceConfiguration.cpp"
-                              "Base/ShaderManager.cpp"
-                              "Base/Transform.cpp"
-                              "Physics/Physics.cpp"
-                              "Physics/RigidBody.cpp"
-                              "Graphic/Texture.cpp"
-                              "Graphic/Skybox.cpp"
-                              "Graphic/Shader.cpp"
-                              "Graphic/Model.cpp"
-                              "Graphic/Mesh.cpp"
-                              "Graphic/GUIOverlay.cpp"
-                              "Graphic/GUILine.cpp"
-                              "Graphic/Lights/DirectionalLight.cpp"
-                              "Graphic/Lights/Light.cpp"
-                              "Graphic/Lights/PointLight.cpp"
-                              "Graphic/BaseModel.cpp"
-                              "Graphic/Camera.cpp"
-                              "Graphic/GUI.cpp"
-                              "Graphic/GUIImage.cpp")       
+file(GLOB PlayEngineSrc
+                              "Audio/*.cpp"
+                              "Base/*.cpp"
+                              "Physics/*.cpp"
+                              "Graphic/*.cpp"
+                              "Graphic/Lights/*.cpp"
+                              "include/Audio/*.h"
+                              "include/Base/*.h"
+                              "include/Physics/*.h"
+                              "include/Graphic/*.h"
+                              "include/Graphic/Lights/*.h"
+)
+
+add_library(PlayEngine SHARED ${PlayEngineSrc})
 
 target_link_libraries(PlayEngine "../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2"
                                  "../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer"
