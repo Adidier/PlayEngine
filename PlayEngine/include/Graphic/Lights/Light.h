@@ -3,7 +3,6 @@
 #include <GL\glew.h>
 #include <glm.hpp>
 
-
 class PLAYENGINE Light
 {
 public:

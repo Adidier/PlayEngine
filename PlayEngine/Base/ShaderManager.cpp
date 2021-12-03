@@ -19,7 +19,6 @@ void ShaderManager::LoadShaders(const std::string& name, const std::string& path
 	Activate(name);
 }
 
-
 void ShaderManager::LoadShaders(const std::string& name)
 {
 	Shader* shader1 = new Shader();
@@ -61,24 +60,7 @@ void ShaderManager::draw()
 		currentShader->UseShader();
 		currentShader->SetUniform("projection", projection);
 		currentShader->SetUniform("view", camera->calculateViewMatrix());
-
-		//mainLight = DirectionalLight(glm::vec3(10,10,10), glm::vec3(0, 0, 10),
-		//	glm::vec3(0, 0, 10), glm::vec3(0, 0, 10), 0.01f);
-
-		/*unsigned int pointLightCount = 0;
-		pointLights[0] = PointLight(0.0f, 1.0f, 0.0f,
-			0.7f, 1.2f,
-			0.0f, 0.0f, 0.0f,
-			1.0f, 0.2f, 0.1f);
-		pointLightCount++;
-		pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
-			.7f, .7f,
-			-1.0f, 0.0f, 0.0f,
-			1.0f, 0.2f, 0.1f);
-		pointLightCount++;*/
-
-	//	currentShader->SetDirectionalLight(&mainLight);
-	//	currentShader->SetPointLights(pointLights, pointLightCount);
+		currentShader->SetUniform("cameraPosition", camera->getCameraPosition());
 	}
 }
 void ShaderManager::initShader(Camera* camera)
@@ -95,11 +77,6 @@ void ShaderManager::Activate(const std::string& name)
 	if (shaderList.find(name) != shaderList.end())
 	{
 		currentShader = &shaderList[name];
-		
-		//uniformAmbientColour = currentShader->GetAmbientColourLocation();
-		//uniformAmbientIntensity = currentShader->GetAmbientIntensityLocation();
-		//uniformDirection = currentShader->GetDirectionLocation();
-		//uniformDiffuseIntensity = currentShader->GetDiffuseIntensityLocation();
 	}
 }
 

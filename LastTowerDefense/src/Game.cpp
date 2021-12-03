@@ -148,9 +148,6 @@ void Game::Draw()
 	point2.UseLight();
 	point3.UseLight();
 
-	currentShader->SetUniform("cameraPosition", player->GetCamera()->getCameraPosition());
-
-
 	theta += 0.01;
 	DrawMap();
 	DrawEnemies();
