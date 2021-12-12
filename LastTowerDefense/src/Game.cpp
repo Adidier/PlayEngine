@@ -128,7 +128,7 @@ void Game::LoadShaders()
 
 void Game::Draw()
 {
-	//skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
+	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
 	shaderManager->Activate("phong-shader-lighting");
 	shaderManager->draw();
@@ -139,6 +139,10 @@ void Game::Draw()
 	currentShader->SetUniform("normalMap", 1);
 	currentShader->SetUniform("lightPosition", position);
 	*/
+
+	currentShader->SetUniform("Fog.maxDist", 100.0f);
+	currentShader->SetUniform("Fog.minDist", 10.0f);
+	currentShader->SetUniform("Fog.color", glm::vec3(0.7,0.72,0.69));
 
 	currentShader->SetUniform("material.difuse", 0);
 	currentShader->SetUniform("material.specular", 1);
