@@ -25,6 +25,8 @@ namespace Graphic
 		GUI(IGUILayer* m_image, Camera*, ShaderManager*);
 		~GUI();
 		void Draw();
+		unsigned int gbuffer;
+		unsigned int textureColorbuffer;
 	};
 }
 

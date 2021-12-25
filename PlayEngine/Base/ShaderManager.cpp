@@ -30,7 +30,7 @@ void ShaderManager::LoadShaders(const std::string& name)
 	Activate(name);
 }
 
-ShaderManager* ShaderManager::getPtr()
+ShaderManager* ShaderManager::GetPtr()
 {
 	if (ptr == nullptr)
 	{
@@ -63,7 +63,8 @@ void ShaderManager::draw()
 		currentShader->SetUniform("cameraPosition", camera->getCameraPosition());
 	}
 }
-void ShaderManager::initShader(Camera* camera)
+
+void ShaderManager::InitShader(Camera* camera)
 {
 	if (currentShader != nullptr)
 	{
