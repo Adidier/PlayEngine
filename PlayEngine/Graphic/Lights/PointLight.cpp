@@ -20,8 +20,8 @@ PointLight::PointLight(int _index, glm::vec3 _position, glm::vec3 _ambient,
 
 void PointLight::UseLight()
 {
-	ShaderManager::getPtr()->Activate("phong-shader-lighting");
-	auto currentShader = ShaderManager::getPtr()->GetCurrentShader();
+	ShaderManager::GetPtr()->Activate("phong-shader-lighting");
+	auto currentShader = ShaderManager::GetPtr()->GetCurrentShader();
 	std::string light = "pointLights[" + std::to_string(index) + "]";
 	currentShader->SetUniform(light+".base.ambientColor", ambientColor);
 	currentShader->SetUniform(light + ".base.diffuseColor", diffuseColor);

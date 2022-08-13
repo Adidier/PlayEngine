@@ -82,7 +82,7 @@ void Game::Init()
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_bk.tga");
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);		
-	shaderManager = ShaderManager::getPtr();
+	shaderManager = ShaderManager::GetPtr();
 	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
 	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
@@ -115,8 +115,8 @@ void Game::LoadMusic()
 
 void Game::LoadShaders()
 {
-	shaderManager = ShaderManager::getPtr();
-	shaderManager->initShader(player->GetCamera());
+	shaderManager = ShaderManager::GetPtr();
+	shaderManager->InitShader(player->GetCamera());
 	//shaderManager->LoadShaders("ADSL");
 	shaderManager->LoadShaders("phong-shader-lighting");
 	//shaderManager->LoadShaders("bumpmapping");

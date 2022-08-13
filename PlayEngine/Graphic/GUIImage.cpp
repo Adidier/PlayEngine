@@ -24,7 +24,7 @@ namespace Graphic
 
 	Resource* ImageUI::Load()
 	{
-		auto sm = ShaderManager::getPtr();
+		auto sm = ShaderManager::GetPtr();
 		sm->Activate("gui");//adidier llamar cada ciclo
 
 		glGenTextures(1, &GUI_IMAGE_ID);

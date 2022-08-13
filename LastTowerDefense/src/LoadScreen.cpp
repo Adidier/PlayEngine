@@ -37,8 +37,8 @@ void LoadScreen::Init()
 
 	camera = new Camera(glm::vec3(10, 10.7, 100.6f), glm::vec3(0.0f, 1.0f, 0.0f), 3.0f, 3.0f, 355.0f, 0.1f);
 
-	shaderManager = ShaderManager::getPtr();
-	shaderManager->initShader(camera);
+	shaderManager = ShaderManager::GetPtr();
+	shaderManager->InitShader(camera);
 	shaderManager->LoadShaders("gui");
 
 	loadGUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("LoadingScreen"), camera, shaderManager);

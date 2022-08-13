@@ -45,7 +45,7 @@ namespace Graphic
 
 	Resource* LineUI::Load()
 	{
-		ShaderManager::getPtr()->Activate("gui");
+		ShaderManager::GetPtr()->Activate("gui");
 
 		glGenTextures(1, &GUI_IMAGE_ID);
 		glBindTexture(GL_TEXTURE_2D, GUI_IMAGE_ID);

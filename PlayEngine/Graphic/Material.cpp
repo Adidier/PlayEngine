@@ -13,7 +13,7 @@
 //
 //	void Model::Draw()
 //	{
-//		auto currentShader = ShaderManager::getPtr()->GetCurrentShader();
+//		auto currentShader = ShaderManager::GetPtr()->GetCurrentShader();
 //		currentShader->SetUniform("model", transform.GetTransform());
 //		for (size_t i = 0; i < meshList.size(); i++)
 //		{

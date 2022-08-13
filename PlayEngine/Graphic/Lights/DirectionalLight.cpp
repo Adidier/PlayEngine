@@ -16,8 +16,8 @@ DirectionalLight::DirectionalLight(glm::vec3 _direction, glm::vec3 _ambient,
 
 void DirectionalLight::UseLight()
 {
-	ShaderManager::getPtr()->Activate("phong-shader-lighting");
-	auto currentShader = ShaderManager::getPtr()->GetCurrentShader();
+	ShaderManager::GetPtr()->Activate("phong-shader-lighting");
+	auto currentShader = ShaderManager::GetPtr()->GetCurrentShader();
 	
 	currentShader->SetUniform("directionalLight.base.ambientColor", glm::vec3(0.8, 0.8, 0.8));
 	currentShader->SetUniform("directionalLight.base.diffuseColor", glm::vec3(1, 0.94, 0.0));

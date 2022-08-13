@@ -21,7 +21,7 @@ namespace Graphic
 
 	void GUIOverlay::Draw()
 	{
-		auto sm = ShaderManager::getPtr(); //Adidier revisar salida de variables uniform
+		auto sm = ShaderManager::GetPtr(); //Adidier revisar salida de variables uniform
 		glm::mat4 viewMatrix = sm->GetViewMatrix();
 		glm::mat4 projectionMatrix = sm->GetProjectionMatrix();
 		sm->Activate("gui");

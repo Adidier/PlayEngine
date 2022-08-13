@@ -12,8 +12,8 @@ class PLAYENGINE ShaderManager
 public:
 	void LoadShaders(const std::string& name);
 	void LoadShaders(const std::string& name, const std::string& pathV, const std::string& pathF);
-	static ShaderManager* getPtr();
-	void initShader(Camera* camera);
+	static ShaderManager* GetPtr();
+	void InitShader(Camera* camera);
 	void draw();
 	glm::mat4 GetViewMatrix();
 	glm::mat4 GetProjectionMatrix();
