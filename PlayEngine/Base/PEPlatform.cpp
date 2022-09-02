@@ -21,14 +21,14 @@ Platform::Platform(std::string name)
 	serviceConfiguration->getEntry("ScreenHeight", height);
 	serviceConfiguration->getEntry("ScreenWidth", width);
 	serviceConfiguration->getEntry("Name", this->name);
-	init();
+	Init();
 
 	for (size_t i = 0; i < 1024; ++i) {
 		keys[i] = 0;
 	}
 }
 
-void Platform::init()
+void Platform::Init()
 {
 	if (!glfwInit())
 	{
@@ -141,7 +141,7 @@ Platform* Platform::GetPtr()
 	return ptr;
 }
 
-void  Platform::HandleKeys(GLFWwindow* window, int key, int code, int action, int mode)
+void Platform::HandleKeys(GLFWwindow* window, int key, int code, int action, int mode)
 {
 	if (key >= 0 && key < 1024)
 	{

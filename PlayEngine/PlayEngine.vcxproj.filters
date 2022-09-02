@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Audio\AudioPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Audio\MusicPlayer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\GameState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\GameStateManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\PEPlatform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\Resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\ResourceManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\ServiceConfiguration.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\ShaderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Base\Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\BaseModel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Camera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\GUIImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\GUILine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\GUIOverlay.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Lights\DirectionalLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Lights\Light.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Lights\PointLight.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Material.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Mesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Shader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Skybox.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Graphic\Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Physics\Physics.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\PlayEngine\Physics\RigidBody.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Audio\AudioPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Audio\MusicPlayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\GameState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\GameStateManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\PEPlatform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\Resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\ResourceManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\ServiceConfiguration.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\ShaderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Base\Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\BaseModel.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Camera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\GUI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\GUILine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\GUI_IMAGE.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\GUI_Overlay.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\IGUILayer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Lights\DirectionalLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Lights\Light.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Lights\PointLight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Material.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Mesh.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Model.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Shader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Skybox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Graphic\Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Physics\Physics.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\PlayEngine\include\Physics\RigidBody.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Dev2022\PlayEngine\PlayEngine\CMakelists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B886B404-C99A-34C7-9F16-5F8A995C7212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{98218257-8A4B-3BBC-B306-98698CAF9EBD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

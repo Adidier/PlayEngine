@@ -1,10 +1,8 @@
 #include "Physics/RigidBody.h"
 #include "Physics/Physics.h"
 
-
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& box)
 {
-	
 	btBoxShape* colShape = new btBoxShape(btVector3(box.x, box.y, box.z));//TODO arreglar tamanio de la caja de colision
 	btTransform startTransform;
 	startTransform.setIdentity();

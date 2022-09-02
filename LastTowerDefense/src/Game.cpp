@@ -8,8 +8,8 @@
 
 Game::Game() : directionalLight(glm::vec3(20, 10, 0), glm::vec3(0, 1, 0),
 					glm::vec3(0, 1, 0), glm::vec3(0, 1, 0), 40),
-			  point1(0, glm::vec3(0,0,0), glm::vec3(0, 0, 1),
-				  glm::vec3(0, 0, 1), glm::vec3(0, 0, 1),.01f,.009f,.005f),
+			  point1(0, glm::vec3(0,0,0), glm::vec3(1, 1, 1),
+				  glm::vec3(0, 0, 1), glm::vec3(1, 1, 1),.1f,.009f,.005f),
 	point2(1, glm::vec3(-1, 1, -1), glm::vec3(1, 0, 1),
 		glm::vec3(1, 0, 1), glm::vec3(1, 0, 1), .01f, .09f, .05f),
 	point3(2, glm::vec3(1, 1, 1), glm::vec3(0, 1, 0),
@@ -58,7 +58,6 @@ void Game::Init()
 	this->manager = GameStateManager::GetPtr();
 	resourceManager = ResourceManager::GetPtr();
 
-
 	resourceManager->Load();
 	player = new Player();
 	floor = new Floor();
@@ -94,13 +93,11 @@ void Game::Init()
 
 	LoadEnemies(pathsEnemies);
 	LoadMusic();
-
-
 }
 
 void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
 {
-	for (int i=0;i<1;i++)
+	for (int i=0;i<5;i++)
 	{
 		Enemy* enemy = new Enemy(player);
 		enemies.push_back(enemy);
@@ -117,46 +114,17 @@ void Game::LoadShaders()
 {
 	shaderManager = ShaderManager::GetPtr();
 	shaderManager->InitShader(player->GetCamera());
-	//shaderManager->LoadShaders("ADSL");
-	shaderManager->LoadShaders("phong-shader-lighting");
-	//shaderManager->LoadShaders("bumpmapping");
-	//shaderManager->LoadShaders("toon-shader");
-	//shaderManager->LoadShaders("gui");
-	//shaderManager->LoadShaders("ADSL");
-	//shaderManager->LoadShaders("Sobel");
+	shaderManager->LoadShaders("phong-shader");
 }
 
 void Game::Draw()
 {
-	//skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
+	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 
-	shaderManager->Activate("phong-shader-lighting");
+	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
-	glm::vec3 position (30*cos(theta), 10, 30 * sin(theta));
-	//directionalLight.UseLight();
-	auto currentShader = shaderManager->GetCurrentShader();
-	/*currentShader->SetUniform("diffuseMap", 0);
-	currentShader->SetUniform("normalMap", 1);
-	currentShader->SetUniform("lightPosition", position);
-	*/
-
-	currentShader->SetUniform("material.difuse", 0);
-	currentShader->SetUniform("material.specular", 1);
-	currentShader->SetUniform("material.shininess", 400.0f);
-
-	point1.UseLight();
-	point2.UseLight();
-	point3.UseLight();
-
-	theta += 0.01;
-	DrawMap();
 	DrawEnemies();
-	floor->Draw();/*
-	level->Draw();
-	wall->Draw();
-	wall1->Draw();
-	wall2->Draw();
-	wall3->Draw();*/
+	floor->Draw();
 }
 void Game::DrawMap()
 {

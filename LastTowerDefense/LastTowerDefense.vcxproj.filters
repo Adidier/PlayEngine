@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Enemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Floor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Game.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Level.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\LoadScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Player.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\ScriptEnemy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Wall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Enemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Floor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Game.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\GameObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Level.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\LoadScreen.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Player.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\ScriptEnemy.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Wall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Dev2022\PlayEngine\LastTowerDefense\CMakelists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{B886B404-C99A-34C7-9F16-5F8A995C7212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{98218257-8A4B-3BBC-B306-98698CAF9EBD}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <PreferredToolArchitecture>x64</PreferredToolArchitecture>
+  </PropertyGroup>
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|win32">
+      <Configuration>Debug</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|win32">
+      <Configuration>Release</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="MinSizeRel|win32">
+      <Configuration>MinSizeRel</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="RelWithDebInfo|win32">
+      <Configuration>RelWithDebInfo</Configuration>
+      <Platform>win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C7D808EF-E6D0-3A4E-AEEA-41B0F5A07D95}</ProjectGuid>
+    <WindowsTargetPlatformVersion>10.0.19041.0</WindowsTargetPlatformVersion>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>win32</Platform>
+    <ProjectName>LastTowerDefense</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v142</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">F:\Dev2022\PlayEngine\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">LastTowerDefense.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">LastTowerDefense</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">F:\Dev2022\PlayEngine\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|win32'">LastTowerDefense.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|win32'">LastTowerDefense</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">F:\Dev2022\PlayEngine\MinSizeRel\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">LastTowerDefense.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">LastTowerDefense</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">true</GenerateManifest>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">F:\Dev2022\PlayEngine\RelWithDebInfo\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">LastTowerDefense.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">LastTowerDefense</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">true</GenerateManifest>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Debug\PlayEngine.lib;../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2.lib;../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer.lib;../../ExternalLibs/lua/lib/lua51.lib;../../ExternalLibs/glfw-3.3.bin.WIN32/lib-vc2019/glfw3.lib;../../ExternalLibs/glew-2.1.0/lib/Release/Win32/glew32.lib;../../ExternalLibs/Assimp/assimp-vc142-mtd.lib;../../ExternalLibs/Bullet/lib/BulletDynamics_Debug.lib;../../ExternalLibs/Bullet/lib/Bullet3Dynamics_Debug.lib;../../ExternalLibs/Bullet/lib/BulletCollision_Debug.lib;../../ExternalLibs/Bullet/lib/LinearMath_Debug.lib;Opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/Dev2022/PlayEngine/Debug/LastTowerDefense.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/Dev2022/PlayEngine/Debug/LastTowerDefense.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\Release\PlayEngine.lib;../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2.lib;../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer.lib;../../ExternalLibs/lua/lib/lua51.lib;../../ExternalLibs/glfw-3.3.bin.WIN32/lib-vc2019/glfw3.lib;../../ExternalLibs/glew-2.1.0/lib/Release/Win32/glew32.lib;../../ExternalLibs/Assimp/assimp-vc142-mtd.lib;../../ExternalLibs/Bullet/lib/BulletDynamics_Debug.lib;../../ExternalLibs/Bullet/lib/Bullet3Dynamics_Debug.lib;../../ExternalLibs/Bullet/lib/BulletCollision_Debug.lib;../../ExternalLibs/Bullet/lib/LinearMath_Debug.lib;Opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/Dev2022/PlayEngine/Release/LastTowerDefense.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/Dev2022/PlayEngine/Release/LastTowerDefense.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MinSpace</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="MinSizeRel";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\MinSizeRel\PlayEngine.lib;../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2.lib;../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer.lib;../../ExternalLibs/lua/lib/lua51.lib;../../ExternalLibs/glfw-3.3.bin.WIN32/lib-vc2019/glfw3.lib;../../ExternalLibs/glew-2.1.0/lib/Release/Win32/glew32.lib;../../ExternalLibs/Assimp/assimp-vc142-mtd.lib;../../ExternalLibs/Bullet/lib/BulletDynamics_Debug.lib;../../ExternalLibs/Bullet/lib/Bullet3Dynamics_Debug.lib;../../ExternalLibs/Bullet/lib/BulletCollision_Debug.lib;../../ExternalLibs/Bullet/lib/LinearMath_Debug.lib;Opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/Dev2022/PlayEngine/MinSizeRel/LastTowerDefense.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/Dev2022/PlayEngine/MinSizeRel/LastTowerDefense.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR="RelWithDebInfo";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>F:\Dev2022\PlayEngine\LastTowerDefense\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\PlayEngine\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Assimp\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\Bullet\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glew-2.1.0\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glfw-3.3.bin.WIN32\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\glm\glm;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\lua\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2_mixer-2.0.4\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\std_image\include;F:\Dev2022\PlayEngine\LastTowerDefense\..\ExternalLibs\SDL2-2.0.12\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Link>
+      <AdditionalDependencies>..\RelWithDebInfo\PlayEngine.lib;../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2.lib;../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer.lib;../../ExternalLibs/lua/lib/lua51.lib;../../ExternalLibs/glfw-3.3.bin.WIN32/lib-vc2019/glfw3.lib;../../ExternalLibs/glew-2.1.0/lib/Release/Win32/glew32.lib;../../ExternalLibs/Assimp/assimp-vc142-mtd.lib;../../ExternalLibs/Bullet/lib/BulletDynamics_Debug.lib;../../ExternalLibs/Bullet/lib/Bullet3Dynamics_Debug.lib;../../ExternalLibs/Bullet/lib/BulletCollision_Debug.lib;../../ExternalLibs/Bullet/lib/LinearMath_Debug.lib;Opengl32.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalOptions>%(AdditionalOptions) /machine:X86</AdditionalOptions>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>F:/Dev2022/PlayEngine/RelWithDebInfo/LastTowerDefense.lib</ImportLibrary>
+      <ProgramDataBaseFile>F:/Dev2022/PlayEngine/RelWithDebInfo/LastTowerDefense.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <CustomBuild Include="F:\Dev2022\PlayEngine\LastTowerDefense\CMakelists.txt">
+      <StdOutEncoding>UTF-8</StdOutEncoding>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">Building Custom Rule F:/Dev2022/PlayEngine/LastTowerDefense/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -SF:/Dev2022/PlayEngine -BF:/Dev2022/PlayEngine --check-stamp-file F:/Dev2022/PlayEngine/LastTowerDefense/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">F:\Dev2022\PlayEngine\LastTowerDefense\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Debug|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|win32'">Building Custom Rule F:/Dev2022/PlayEngine/LastTowerDefense/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -SF:/Dev2022/PlayEngine -BF:/Dev2022/PlayEngine --check-stamp-file F:/Dev2022/PlayEngine/LastTowerDefense/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|win32'">F:\Dev2022\PlayEngine\LastTowerDefense\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='Release|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">Building Custom Rule F:/Dev2022/PlayEngine/LastTowerDefense/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -SF:/Dev2022/PlayEngine -BF:/Dev2022/PlayEngine --check-stamp-file F:/Dev2022/PlayEngine/LastTowerDefense/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">F:\Dev2022\PlayEngine\LastTowerDefense\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|win32'">false</LinkObjects>
+      <Message Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">Building Custom Rule F:/Dev2022/PlayEngine/LastTowerDefense/CMakeLists.txt</Message>
+      <Command Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">setlocal
+"F:\Program Files\CMake\bin\cmake.exe" -SF:/Dev2022/PlayEngine -BF:/Dev2022/PlayEngine --check-stamp-file F:/Dev2022/PlayEngine/LastTowerDefense/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal &amp; call :cmErrorLevel %errorlevel% &amp; goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">%(AdditionalInputs)</AdditionalInputs>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">F:\Dev2022\PlayEngine\LastTowerDefense\CMakeFiles\generate.stamp</Outputs>
+      <LinkObjects Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|win32'">false</LinkObjects>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Enemy.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Floor.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Game.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\GameObject.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Level.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\LoadScreen.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Player.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\ScriptEnemy.h" />
+    <ClInclude Include="F:\Dev2022\PlayEngine\LastTowerDefense\include\Wall.h" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Enemy.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Floor.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Game.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\GameObject.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Level.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\LoadScreen.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Player.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\ScriptEnemy.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\Wall.cpp" />
+    <ClCompile Include="F:\Dev2022\PlayEngine\LastTowerDefense\src\main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="F:\Dev2022\PlayEngine\ZERO_CHECK.vcxproj">
+      <Project>{A2F0BF3C-B831-3696-BC72-8F9B0FBE530D}</Project>
+      <Name>ZERO_CHECK</Name>
+      <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="F:\Dev2022\PlayEngine\PlayEngine\PlayEngine.vcxproj">
+      <Project>{85AD598F-A7E5-37F0-905A-5BED7EE201A3}</Project>
+      <Name>PlayEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

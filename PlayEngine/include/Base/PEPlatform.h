@@ -20,7 +20,7 @@ private:
 	float lastTime{ 0 };
 	ServiceConfiguration *serviceConfiguration;
 private:
-	void init();
+	void Init();
 	Platform(std::string name);
 	~Platform();
 	static Platform* ptr;

@@ -13,7 +13,6 @@ uniform vec3 color2;
 
 void main()
 {
-
 	gl_Position = projection * view * model * vec4(pos, 1.0);
 
 	if (gl_Position.z > 0.5f)

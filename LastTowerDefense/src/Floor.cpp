@@ -31,12 +31,11 @@ void Floor::Draw()
 
 void Floor::Update(unsigned int delta)
 {
-
 	btVector3 pos = rigidBody->getWorldTransform().getOrigin();
 	btQuaternion rot = rigidBody->getWorldTransform().getRotation();
-	transform.SetTranslation(pos.getX(), pos.getY()+50, pos.getZ());
+	transform.SetTranslation(pos.getX(), pos.getY(), pos.getZ());
 	glm::vec3 _rotation;
 	rot.getEulerZYX(_rotation.z, _rotation.y, _rotation.x);
-	transform.SetRotation(90, _rotation.y, _rotation.z);
-	transform.SetScale(.01, .01, .01);
+	transform.SetRotation(_rotation.x, _rotation.y, _rotation.z);
+	transform.SetScale(.1, .1, .1);
 }

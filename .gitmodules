@@ -1,3 +1,6 @@
 [submodule "Resources"]
 	path = Resources
 	url = https://github.com/Adidier/PlayEngineResources.git
+[submodule "ExternalLibs/bullet3"]
+	path = ExternalLibs/bullet3
+	url = https://github.com/bulletphysics/bullet3.git
