@@ -3,13 +3,39 @@
 
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& box)
 {
-	btBoxShape* colShape = new btBoxShape(btVector3(box.x, box.y, box.z));//TODO arreglar tamanio de la caja de colision
+	btBoxShape* colShape = new btBoxShape(btVector3(box.x, box.y, box.z));
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
 	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
 	rigidBody->setRollingFriction(0);
 }
+
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos, float ratio)
+{
+	btSphereShape* colShape = new btSphereShape(ratio);
+	btTransform startTransform;
+	btVector3 localInertia(0, -10, 0);
+	colShape->calculateLocalInertia(mass, localInertia);
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
+	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
+//	rigidBody->setRollingFriction(1000);
+}
+
+
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos,float w, float h, float ratio)
+{
+	btVector3 size(w, h, h);
+	btCylinderShape* colShape = new btCylinderShape(size);
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
+	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
+	rigidBody->setRollingFriction(0);
+
+}
+
 
 glm::vec3 RigidBody::GetObjectPosition()
 {

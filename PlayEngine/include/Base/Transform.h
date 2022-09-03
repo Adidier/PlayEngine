@@ -10,6 +10,7 @@ public:
 	void SetTranslation(float x, float y, float z);
 	void SetRotation(float x, float y, float z);
 	void SetScale(float x, float y, float z);
+	glm::vec3 GetScale();
 	glm::vec3 GetTranslation();
 	glm::mat4 GetTransform();
 	Transform();

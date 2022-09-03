@@ -1,7 +1,28 @@
 #include "Physics/Physics.h"
+#include <map>
 #include "btBulletDynamicsCommon.h"
 
 Physics *Physics::ptr = nullptr;
+
+
+std::map<const btCollisionObject*, std::vector<btManifoldPoint*>> objectsCollisions;
+void myTickCallback(btDynamicsWorld* dynamicsWorld, btScalar timeStep) {
+	objectsCollisions.clear();
+	int numManifolds = dynamicsWorld->getDispatcher()->getNumManifolds();
+	for (int i = 0; i < numManifolds; i++) {
+		btPersistentManifold* contactManifold = dynamicsWorld->getDispatcher()->getManifoldByIndexInternal(i);
+		auto* objA = contactManifold->getBody0();
+		auto* objB = contactManifold->getBody1();
+		auto& collisionsA = objectsCollisions[objA];
+		auto& collisionsB = objectsCollisions[objB];
+		int numContacts = contactManifold->getNumContacts();
+		for (int j = 0; j < numContacts; j++) {
+			btManifoldPoint& pt = contactManifold->getContactPoint(j);
+			collisionsA.push_back(&pt);
+			collisionsB.push_back(&pt);
+		}
+	}
+}
 
 void Physics::InitPhysics()
 {
@@ -21,6 +42,8 @@ void Physics::InitPhysics()
 	m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
 
 	m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
+
+	m_dynamicsWorld->setInternalTickCallback(myTickCallback);
 }
 
 void Physics::Update(unsigned int delta)

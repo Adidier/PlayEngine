@@ -8,6 +8,8 @@
 #include "Graphic/Model.h"
 #include "Graphic/Skybox.h"
 #include "Player.h"
+#include "Cube.h"
+#include "Sphere.h"
 #include "Enemy.h"
 #include "Floor.h"
 #include "Level.h"
@@ -30,6 +32,8 @@ private:
 	ShaderManager* shaderManager;
 	Skybox *skybox;
 	Player *player;
+	Cube* cube;
+	Sphere* sphere;
 	std::vector<Graphic::Model*> map;
 	Physics *physics;
 

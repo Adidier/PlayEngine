@@ -24,6 +24,11 @@ void Transform::SetScale(float x, float y, float z)
 	_scale.z = z;
 }
 
+glm::vec3 Transform::GetScale()
+{
+	return _scale;
+}
+
 glm::vec3 Transform::GetTranslation()
 {
 	return _translation;
