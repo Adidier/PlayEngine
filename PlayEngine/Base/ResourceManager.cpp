@@ -27,7 +27,7 @@ ResourceManager* ResourceManager::GetPtr(const std::string &path)
 
 ResourceManager::ResourceManager()
 {
-	resourceMap = new std::map<size_t, Resource*>;
+	resourceMap = new std::unordered_map<size_t, Resource*>;
 }
 
 ResourceManager::~ResourceManager()
@@ -57,7 +57,7 @@ void ResourceManager::ClearResources()
 size_t ResourceManager::GetSize()
 {
 	_ASSERT(resourceMap, "log");
-	return resourceMap->size();//adidier revisar validaciones
+	return resourceMap->size();//TODO adidier revisar validaciones
 }
 
 Resource* ResourceManager::GetElement(const std::string& name)

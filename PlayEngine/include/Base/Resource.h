@@ -21,5 +21,5 @@ public:
 	unsigned int GetHandle();
 
 	virtual bool ReadFile() = 0;
-	virtual Resource* Load() =0;
+	virtual Resource* Load() = 0;
 };

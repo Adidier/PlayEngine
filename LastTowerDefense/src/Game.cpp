@@ -30,6 +30,7 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Model3d, "container");
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
+	resourceManager->Add(ResourceType::Model3d, "cube");
 
 	resourceManager->Add(ResourceType::Texture, "pina_normal");
 	resourceManager->Add(ResourceType::Texture, "pina");
@@ -71,6 +72,8 @@ void Game::Init()
 	wall3 = new Wall();
 	wall3->setTransform(-600, 50, 0, 1.57f);
 
+	cube = new Cube();
+
 	LoadShaders();
 	
 	std::vector<std::string> skyboxFaces;
@@ -91,17 +94,7 @@ void Game::Init()
 		"Enemy2"
 	};
 
-	LoadEnemies(pathsEnemies);
 	LoadMusic();
-}
-
-void Game::LoadEnemies(const std::vector<std::string>& pathFileModels)
-{
-	for (int i=0;i<5;i++)
-	{
-		Enemy* enemy = new Enemy(player);
-		enemies.push_back(enemy);
-	}
 }
 
 void Game::LoadMusic()
@@ -125,6 +118,7 @@ void Game::Draw()
 	shaderManager->draw();
 	DrawEnemies();
 	floor->Draw();
+	cube->Draw();
 }
 void Game::DrawMap()
 {
@@ -159,6 +153,8 @@ void Game::Update(unsigned int delta)
 	{
 		enemi->Update(delta);
 	}
+
+	cube->Update(delta);
 	physics->Update(delta);
 }
 

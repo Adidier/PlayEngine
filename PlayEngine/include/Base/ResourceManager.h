@@ -3,7 +3,7 @@
 #include "Graphic/Model.h"
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
-#include <map>
+#include <unordered_map>
 #include <thread> 
 #include <list> 
 #include <mutex>
@@ -31,8 +31,8 @@ class PLAYENGINE ResourceManager
 		static size_t handleCount;
 		static unsigned long CounterImageUI;
 		std::list<std::thread*> pool;
-		std::map<size_t, Resource*>* resourceMap;
-		std::map<std::string, std::string> paths;
+		std::unordered_map<size_t, Resource*>* resourceMap;
+		std::unordered_map<std::string, std::string> paths;
 		ResourceManager();
 		~ResourceManager();
 		static ResourceManager* ptr;

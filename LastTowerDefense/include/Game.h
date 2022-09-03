@@ -9,6 +9,7 @@
 #include "Graphic/Skybox.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Cube.h"
 #include "Floor.h"
 #include "Level.h"
 #include "Wall.h"
@@ -43,6 +44,7 @@ private:
 	Wall* wall2;
 	Wall* wall3;
 	Floor* floor;
+	Cube* cube;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
@@ -61,7 +63,6 @@ public:
 	void Close() override;
 	void LoadShaders();
 	void LoadModels(const std::map<std::string, std::string>& models);
-	void LoadEnemies(const std::vector<std::string>& pathFileModels);
 	void LoadMusic();
 	static void InitResources();
 };
