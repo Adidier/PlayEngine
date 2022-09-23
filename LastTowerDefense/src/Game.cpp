@@ -31,6 +31,7 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
 	resourceManager->Add(ResourceType::Model3d, "cube");
+	resourceManager->Add(ResourceType::Model3d, "sphere");
 
 	resourceManager->Add(ResourceType::Texture, "pina_normal");
 	resourceManager->Add(ResourceType::Texture, "pina");
@@ -73,6 +74,7 @@ void Game::Init()
 	wall3->setTransform(-600, 50, 0, 1.57f);
 
 	cube = new Cube();
+	sphere = new Sphere();
 
 	LoadShaders();
 	
@@ -119,6 +121,7 @@ void Game::Draw()
 	DrawEnemies();
 	floor->Draw();
 	cube->Draw();
+	sphere->Draw();
 }
 void Game::DrawMap()
 {
@@ -155,6 +158,7 @@ void Game::Update(unsigned int delta)
 	}
 
 	cube->Update(delta);
+	sphere->Update(delta);
 	physics->Update(delta);
 }
 

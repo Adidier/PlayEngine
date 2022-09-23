@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Cube.h"
+#include "Sphere.h"
 #include "Floor.h"
 #include "Level.h"
 #include "Wall.h"
@@ -45,6 +46,7 @@ private:
 	Wall* wall3;
 	Floor* floor;
 	Cube* cube;
+	Sphere* sphere;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
