@@ -11,6 +11,16 @@ RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& b
 	rigidBody->setRollingFriction(0);
 }
 
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float radio)
+{
+	btSphereShape* colShape = new btSphereShape(radio);//TODO arreglar tamanio de la caja de colision
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
+	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
+	rigidBody->setRollingFriction(0);
+}
+
 glm::vec3 RigidBody::GetObjectPosition()
 {
 	auto pos = rigidBody->getWorldTransform().getOrigin();
