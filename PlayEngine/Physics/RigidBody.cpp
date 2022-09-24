@@ -1,14 +1,19 @@
 #include "Physics/RigidBody.h"
 #include "Physics/Physics.h"
-
+static int a;
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& box)
 {
 	btBoxShape* colShape = new btBoxShape(btVector3(box.x, box.y, box.z));
 	btTransform startTransform;
 	startTransform.setIdentity();
+	colShape->setUserIndex(101);
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
 	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
 	rigidBody->setRollingFriction(0);
+	rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	rigidBody->setHitFraction(102);
+	rigidBody->setUserIndex(1);
+	rigidBody->setUserPointer(this);
 }
 
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos, float ratio)
@@ -19,23 +24,30 @@ RigidBody::RigidBody(const float& mass, const glm::vec3& pos, float ratio)
 	colShape->calculateLocalInertia(mass, localInertia);
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
-	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
-//	rigidBody->setRollingFriction(1000);
-}
 
+
+	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
+	rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	rigidBody->setHitFraction(101);
+	rigidBody->setUserIndex(101);
+	rigidBody->setUserPointer(this);
+}
 
 RigidBody::RigidBody(const float& mass, const glm::vec3& pos,float w, float h, float ratio)
 {
 	btVector3 size(w, h, h);
 	btCylinderShape* colShape = new btCylinderShape(size);
+	colShape->setUserIndex(101);
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
 	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
 	rigidBody->setRollingFriction(0);
-
+	rigidBody->setCollisionFlags(rigidBody->getCollisionFlags() | btCollisionObject::CF_CUSTOM_MATERIAL_CALLBACK);
+	rigidBody->setHitFraction(100);
+	rigidBody->setUserPointer(this);
+	rigidBody->setUserIndex(121);
 }
-
 
 glm::vec3 RigidBody::GetObjectPosition()
 {

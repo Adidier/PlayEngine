@@ -169,6 +169,7 @@ void Game::Update(unsigned int delta)
 	}
 	cube->Update(delta);
 	sphere->Update(delta);
+	physics->GetPickObject(player->GetCamera()->getCameraPosition());
 	physics->Update(delta);
 }
 
