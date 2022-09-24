@@ -39,11 +39,6 @@ private:
 	Graphic::GUI* playerUI;
 
 	std::vector<Enemy*> enemies;
-	Level* level;
-	Wall* wall;
-	Wall* wall1;
-	Wall* wall2;
-	Wall* wall3;
 	Floor* floor;
 	Cube* cube;
 	Sphere* sphere;

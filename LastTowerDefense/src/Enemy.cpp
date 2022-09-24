@@ -13,7 +13,7 @@ Enemy::Enemy(Player* player)
 	model->AddTexture("pina_normal");
 	transform.SetTranslation(0.0f, 0.0f, 0.0f);
 	glm::vec3 cornerModel = model->GetCorner();
-	rigidBody = new RigidBody(0.6, glm::vec3(rand()%10, 50+rand() % 90, 0), glm::vec3(5, 5, 5));
+	rigidBody = new RigidBody(0.6, glm::vec3(rand()%10, 50+rand() % 90, 0), glm::vec3(5, 5, 5),this);
 }
 
 void Enemy::Draw()
@@ -34,12 +34,15 @@ void Enemy::Update(unsigned int delta)
 	float normals = glm::length(front) * glm::length(player->GetCamera()->getCameraPosition());
 	float angle = glm::acos(dot/normals);
 	float distance = glm::distance(player->GetCamera()->getCameraPosition(), pos);
-	
-	//std::cout << distance << std::endl;
 	auto action =scriptEnemy->GetAction(distance);
 	if (distance<50)
 	{
 		rigidBody->SetLinearVelocity(glm::vec3(0, 0, 0));
 		rigidBody->ApplyForce(glm::vec3(rand()%50, rand() % 50, rand() % 50));
 	}
+}
+
+void Enemy::OnTriggerEnter(void *ptr)
+{
+
 }

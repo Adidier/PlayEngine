@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "Base/GameObject.h"
 #include "Graphic/Model.h"
 #include "Physics/RigidBody.h"
 class Wall: public GameObject

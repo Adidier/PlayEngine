@@ -63,16 +63,6 @@ void Game::Init()
 	resourceManager->Load();
 	player = new Player();
 	floor = new Floor();
-	level = new Level();
-	wall = new Wall();
-	wall->setTransform(0, 50, -600, 0);
-	wall1 = new Wall();
-	wall1->setTransform(0, 50, 600, 0);
-	wall2 = new Wall();
-	wall2->setTransform(600, 50, 0, -1.57f );
-	wall3 = new Wall();
-	wall3->setTransform(-600, 50, 0, 1.57f);
-
 	cube = new Cube();
 	sphere = new Sphere();
 
@@ -147,11 +137,6 @@ void Game::DrawEnemies()
 void Game::Update(unsigned int delta)
 {
 	floor->Update(delta);
-	level->Update(delta);
-	wall->Update(delta);
-	wall1->Update(delta);
-	wall2->Update(delta);
-	wall3->Update(delta);
 	for (auto enemi : enemies)
 	{
 		enemi->Update(delta);

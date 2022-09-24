@@ -1,5 +1,7 @@
 #include "Physics/Physics.h"
 #include "btBulletDynamicsCommon.h"
+#include "Base/GameObject.h"
+#include <iostream>
 
 Physics *Physics::ptr = nullptr;
 
@@ -21,6 +23,8 @@ void Physics::InitPhysics()
 	m_dynamicsWorld = new btDiscreteDynamicsWorld(m_dispatcher, m_broadphase, m_solver, m_collisionConfiguration);
 
 	m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
+
+	gContactProcessedCallback = &Physics::callbackFunc;
 }
 
 void Physics::Update(unsigned int delta)
@@ -42,21 +46,13 @@ btRigidBody* Physics::createRigidBody(float mass, const btTransform& startTransf
 	if (isDynamic)
 		shape->calculateLocalInertia(mass, localInertia);
 
-	//using motionstate is recommended, it provides interpolation capabilities, and only synchronizes 'active' objects
-
-#define USE_MOTIONSTATE 1
-#ifdef USE_MOTIONSTATE
 	btDefaultMotionState* myMotionState = new btDefaultMotionState(startTransform);
 
 	btRigidBody::btRigidBodyConstructionInfo cInfo(mass, myMotionState, shape, localInertia);
 
 	btRigidBody* body = new btRigidBody(cInfo);
-	//body->setContactProcessingThreshold(m_defaultContactProcessingThreshold);
 
-#else
-	btRigidBody* body = new btRigidBody(mass, 0, shape, localInertia);
-	body->setWorldTransform(startTransform);
-#endif  //
+
 
 	body->setUserIndex(-1);
 	m_dynamicsWorld->addRigidBody(body);
@@ -71,4 +67,18 @@ Physics* Physics::GetPtr()
 		ptr = new Physics();
 	}
 	return ptr;
+}
+
+bool Physics::callbackFunc(btManifoldPoint& cp, void* body0, void* body1) 
+{
+	auto ptr0 = static_cast<btCollisionObject*>(body0)->getUserPointer();
+	auto ptr1 = static_cast<btCollisionObject*>(body1)->getUserPointer();
+	auto obj0 = static_cast<GameObject*>(ptr0);
+	auto obj1 = static_cast<GameObject*>(ptr1);
+	if (obj0 && obj1)
+	{
+		obj0->OnTriggerEnter(ptr1);
+		obj1->OnTriggerEnter(ptr0);
+	}
+	return false;
 }

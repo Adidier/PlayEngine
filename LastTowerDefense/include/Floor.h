@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "Base/GameObject.h"
 #include "Player.h"
 #include "Graphic/Model.h"
 #include "btBulletDynamicsCommon.h"
@@ -16,5 +16,6 @@ public:
 	Floor();
 	void Draw() override;
 	void Update(unsigned int delta) override;
+	void OnTriggerEnter(void *ptr) override;
 };
 

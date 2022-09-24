@@ -1,5 +1,5 @@
 #pragma once
-#include "GameObject.h"
+#include "Base/GameObject.h"
 #include "Player.h"
 #include "Graphic/Model.h"
 #include "Physics/RigidBody.h"
@@ -17,6 +17,7 @@ public:
 	Enemy(Player* player);
 	void Draw() override;
 	void Update(unsigned int delta) override; 
+	void OnTriggerEnter(void *ptr) override;
 };
 
 

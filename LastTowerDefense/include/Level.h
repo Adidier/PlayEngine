@@ -1,21 +1,10 @@
 #pragma once
-#include "GameObject.h"
+#include "Base/GameObject.h"
 #include "Graphic/Model.h"
 #include "Physics/RigidBody.h"
 
-class Level: public GameObject
+class Level
 {
-private:
-	Graphic::Model* container;
-	Graphic::Model* robot;
-	Transform Containertransform;
-	Transform RobotTransform;
-	btRigidBody* rigidBody;
-	float angle = 0;
-public:
-	Level();
-	void Draw() override;
-	void Update(unsigned int delta) override;
 
 };
 

@@ -39,3 +39,7 @@ void Floor::Update(unsigned int delta)
 	transform.SetRotation(_rotation.x, _rotation.y, _rotation.z);
 	transform.SetScale(.1, .1, .1);
 }
+void Floor::OnTriggerEnter(void* ptr)
+{
+
+}
