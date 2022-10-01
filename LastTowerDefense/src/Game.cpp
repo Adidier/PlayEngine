@@ -149,17 +149,17 @@ void Game::Update(unsigned int delta)
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
 {
-	if (x != -1 || y != -1)
+	if (x != -1 || y != -1)//TODO fix
 	{
 		player->GetCamera()->mouseControl(x, y);
-	}		
+	}
+	physics->RaycastScreen(x, y, player->GetCamera()->getCameraPosition());
 	return false;
 }
 
 bool Game::Input(std::map<int, bool> keys)
 {
 	player->GetCamera()->keyControl(keys, platform->GetDeltaTime());
-	
 	return false;
 }
 

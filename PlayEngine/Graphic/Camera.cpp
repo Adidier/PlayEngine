@@ -84,7 +84,9 @@ void Camera::mouseControl(GLfloat xChange, GLfloat yChange)
 	xoffset *= turnSpeed;
 	yoffset *= turnSpeed;
 
+
 	yaw += xoffset;
+	pitch += yoffset;
 	update();
 }
 
@@ -97,7 +99,7 @@ glm::mat4 Camera::calculateViewMatrix()
 void Camera::update()
 {
 	front.x = cos(glm::radians(-yaw));
-	front.y = sin(glm::radians(pitch));
+	front.y = sin(glm::radians(-pitch));
 	front.z = sin(glm::radians(-yaw));
 	front = glm::normalize(front);
 	

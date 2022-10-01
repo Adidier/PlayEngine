@@ -1,6 +1,8 @@
 #include "Physics/Physics.h"
 #include "btBulletDynamicsCommon.h"
 #include "Base/GameObject.h"
+#include "Base/PEPlatform.h"
+#include "Base/ShaderManager.h"
 #include <iostream>
 
 Physics *Physics::ptr = nullptr;
@@ -25,6 +27,47 @@ void Physics::InitPhysics()
 	m_dynamicsWorld->setGravity(btVector3(0, -10, 0));
 
 	gContactProcessedCallback = &Physics::callbackFunc;
+}
+
+bool Physics::RaycastScreen(int mouseScreenX, int mouseScreenY, glm::vec3 cameraPosition)
+{
+	glm::vec3 rayFrom = cameraPosition;
+	glm::vec3 rayTo = cameraPosition + CreateRay(mouseScreenX, mouseScreenY)*100000.0f;
+
+	auto btRayFrom = btVector3(rayFrom.x, rayFrom.y, rayFrom.z);
+	auto btRayTo = btVector3(rayTo.x, rayTo.y, rayTo.z);
+	btCollisionWorld::ClosestRayResultCallback ray(btRayFrom, btRayTo);
+	m_dynamicsWorld->rayTest(btRayFrom, btRayTo, ray);
+	if (ray.hasHit())
+	{
+		auto obj = (static_cast<const btCollisionObject*>(ray.m_collisionObject))->getUserPointer();
+		if (obj) 
+		{
+			auto gameObject = static_cast<GameObject*>(obj);
+			std::cout << "Hit with:" << gameObject->id << std::endl;
+		}
+	}
+	return false;
+}
+
+glm::vec3 Physics::CreateRay(int mouseScreenX, int mouseScreenY)
+{
+	Platform* ptr = Platform::GetPtr();
+	float mouseX = mouseScreenX / (ptr->GetWidth() * 0.5f) - 1;
+	float mouseY = mouseScreenY / (ptr->GetHeight() * 0.5f) - 1;
+
+	glm::vec4 startRay(mouseX, mouseY, -1, 1);
+	glm::vec4 endRay(mouseX, mouseY, 0, 1);
+
+	ShaderManager* ptrShaderManager = ShaderManager::GetPtr();
+	glm::mat4 proj = ptrShaderManager->GetProjectionMatrix();
+	glm::mat4 view = ptrShaderManager->GetViewMatrix();
+	glm::mat4 impv = glm::inverse(proj * view);
+
+	startRay = impv * startRay; startRay /= startRay.w;
+	endRay = impv * endRay; endRay /= endRay.w;
+	glm::vec3 rayWorld = endRay - startRay;
+	return rayWorld;
 }
 
 void Physics::Update(unsigned int delta)

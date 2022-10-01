@@ -65,7 +65,7 @@ void Platform::Init()
 
 	// Set the current context
 	glfwMakeContextCurrent(mainWindow);
-	glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+	//glfwSetInputMode(mainWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
 	// Allow modern extension access
 	glewExperimental = GL_TRUE;
 
@@ -166,7 +166,7 @@ void Platform::HandleMousePosition(GLFWwindow* window, double x, double y)
 
 void Platform::HandleMouseButton(GLFWwindow* window, int button, int action, int mod)
 {
-	(Platform::obj->*Platform::mouse)(-1, -1, action);
+	(Platform::obj->*Platform::mouse)(-1, -1, action);//TODO
 }
 
 bool Platform::shouldWindowClose() 

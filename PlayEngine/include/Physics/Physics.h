@@ -30,6 +30,8 @@ public:
 	btRigidBody* createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color = btVector4(1, 0, 0, 1));
 	static bool callbackFunc(btManifoldPoint& cp, void* body0, void* body1);
 	void Update(unsigned int delta);
+	bool RaycastScreen(int mouseX, int mouseY, glm::vec3 cameraPosition);
+	glm::vec3 CreateRay(int mouseScreenX, int mouseScreenY);
 private:
 	Physics() {};
 };
