@@ -30,6 +30,8 @@ public:
 	btRigidBody* createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color = btVector4(1, 0, 0, 1));
 	static bool callbackFunc(btManifoldPoint& cp, void* body0, void* body1);
 	void Update(unsigned int delta);
+	void GetPickObject(glm::vec3 positionCamera);
+		
 private:
 	Physics() {};
 };

@@ -39,6 +39,8 @@ public:
 	static bool (GameState::* mouse)(int, int, bool);
 	static std::map<int, bool> keys;
 	static bool leftButtonMouse;
+	static int mouseX;
+	static int mouseY;
 private:
 	static void HandleKeys(GLFWwindow* window, int key, int code, int action, int mode);
 	static void HandleMousePosition(GLFWwindow* window, double x, double y);
