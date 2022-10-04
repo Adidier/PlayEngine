@@ -7,7 +7,7 @@ Sphere::Sphere()
 	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("sphere");
 	transform.SetTranslation(-2.5f, 210.0f, 0.0f);
 	transform.SetScale(2.0f, 2.0f, 2.0f);
-	rigidbody = new RigidBody(0.6, transform.GetTranslation(), transform.GetScale(),this);
+	rigidbody = new RigidBody(2.0f, transform.GetTranslation(), 2.0f, this);
 }
 
 Sphere::~Sphere()
