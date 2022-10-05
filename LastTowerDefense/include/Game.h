@@ -11,6 +11,7 @@
 #include "Enemy.h"
 #include "Cube.h"
 #include "Sphere.h"
+#include "Cylinder.h"
 #include "Floor.h"
 #include "Level.h"
 #include "Wall.h"
@@ -42,6 +43,7 @@ private:
 	Floor* floor;
 	Cube* cube;
 	Sphere* sphere;
+	Cylinder* cylinder;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
