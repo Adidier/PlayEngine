@@ -23,9 +23,9 @@ RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float& radio
 	rigidBody->setUserPointer(this);
 }
 
-RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float& heightCylinder, const float& radioCylinder, GameObject* obj)
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float& heightCylinder, const float& diameterCylinder, GameObject* obj)
 {
-	btCylinderShape* colShape = new btCylinderShape(btVector3(radioCylinder, heightCylinder, radioCylinder));//TODO arreglar tamanio de la caja de colision
+	btCylinderShape* colShape = new btCylinderShape(btVector3(diameterCylinder, heightCylinder, diameterCylinder));//TODO arreglar tamanio de la caja de colision
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
