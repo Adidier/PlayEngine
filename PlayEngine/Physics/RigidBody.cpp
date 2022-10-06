@@ -20,7 +20,18 @@ RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float radio,
 	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
 	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
 	rigidBody->setRollingFriction(0);
-	rigidBody->setUserPointer(this);
+	rigidBody->setUserPointer(obj);
+}
+
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float height, const float radio1, const float radio2,  GameObject* obj)
+{
+	btCylinderShape* colShape = new btCylinderShape(radio1, height, radio2 );//TODO arreglar tamanio de la caja de colision
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
+	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
+	rigidBody->setRollingFriction(0);
+	rigidBody->setUserPointer(obj);
 }
 
 glm::vec3 RigidBody::GetObjectPosition()
