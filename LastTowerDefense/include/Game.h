@@ -14,6 +14,7 @@
 #include "Floor.h"
 #include "Level.h"
 #include "Wall.h"
+#include "Cylinder.h"
 #include "Physics/Physics.h"
 #include "Graphic/GUI.h"
 #include "Graphic/GUILine.h"
@@ -42,6 +43,7 @@ private:
 	Floor* floor;
 	Cube* cube;
 	Sphere* sphere;
+	Cylinder* cylinder;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
