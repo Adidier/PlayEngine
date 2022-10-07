@@ -31,7 +31,6 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Model3d, "pina_pose");
 	resourceManager->Add(ResourceType::Model3d, "wall");
 	resourceManager->Add(ResourceType::Model3d, "cube");
-	resourceManager->Add(ResourceType::Model3d, "cylinder");
 	resourceManager->Add(ResourceType::Model3d, "sphere");
 
 	resourceManager->Add(ResourceType::Texture, "pina_normal");
@@ -65,7 +64,6 @@ void Game::Init()
 	player = new Player();
 	floor = new Floor();
 	cube = new Cube();
-	cylinder = new Cylinder();
 	sphere = new Sphere();
 
 	LoadShaders();
@@ -113,7 +111,6 @@ void Game::Draw()
 	DrawEnemies();
 	floor->Draw();
 	cube->Draw();
-	cylinder->Draw();
 	sphere->Draw();
 }
 void Game::DrawMap()
@@ -146,7 +143,6 @@ void Game::Update(unsigned int delta)
 	}
 
 	cube->Update(delta);
-	cylinder->Update(delta);
 	sphere->Update(delta);
 	physics->Update(delta);
 }
