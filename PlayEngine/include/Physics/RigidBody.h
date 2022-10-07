@@ -9,8 +9,7 @@ class PLAYENGINE RigidBody
 {
 public:
 	RigidBody(const float &mass,const glm::vec3 &pos, const glm::vec3 &box, GameObject* obj);
-	RigidBody(const float& mass, const glm::vec3& pos, const float& radio, GameObject* obj);
-	RigidBody(const float& mass, const glm::vec3& pos, const float& upRadio, const float& downRadio, const float& height, GameObject* obj);
+	RigidBody(const float& mass, const glm::vec3& pos, const float radio, GameObject* obj);
 
 	glm::vec3 GetObjectPosition();
 	glm::vec3 GetObjectRotation();
