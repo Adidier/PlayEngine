@@ -35,13 +35,8 @@ private:
 	std::vector<Graphic::Model*> map;
 	Physics *physics;
 
-	Graphic::GUI* weaponUI;
-	Graphic::GUI* playerUI;
-
 	std::vector<Enemy*> enemies;
-	Floor* floor;
 	Cube* cube;
-	Sphere* sphere;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
@@ -52,14 +47,11 @@ public:
 	~Game();
 	void Init() override;
 	void Draw() override;
-	void DrawMap();
-	void DrawEnemies();
 	bool Input(std::map<int, bool> keys) override;
 	bool MouseInput(int x, int y, bool leftbutton);
 	void Update(unsigned int delta) override;
 	void Close() override;
 	void LoadShaders();
 	void LoadModels(const std::map<std::string, std::string>& models);
-	void LoadMusic();
 	static void InitResources();
 };

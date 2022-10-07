@@ -45,10 +45,8 @@ void Game::InitResources()
 
 	resourceManager->Add(ResourceType::ImageUI, "montanas");
 	resourceManager->Add(ResourceType::ImageUI, "montanas2");
-	resourceManager->Add(ResourceType::ImageUI, "montanas3");
-	
-	resourceManager->Wait();
-	
+	resourceManager->Add(ResourceType::ImageUI, "montanas3");	
+	resourceManager->Wait();	
 }
 
 void Game::Init()
@@ -62,9 +60,7 @@ void Game::Init()
 
 	resourceManager->Load();
 	player = new Player();
-	floor = new Floor();
 	cube = new Cube();
-	sphere = new Sphere();
 
 	LoadShaders();
 	
@@ -77,22 +73,12 @@ void Game::Init()
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);		
 	shaderManager = ShaderManager::GetPtr();
-	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
-	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
 
 	std::vector<std::string> pathsEnemies = {
 		"Enemy1",
 		"Enemy2"
 	};
-
-	LoadMusic();
-}
-
-void Game::LoadMusic()
-{
-	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("funnysong");
-	//asset->PlayMusic();
 }
 
 void Game::LoadShaders()
@@ -105,45 +91,14 @@ void Game::LoadShaders()
 void Game::Draw()
 {
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
-
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
-	DrawEnemies();
-	floor->Draw();
 	cube->Draw();
-	sphere->Draw();
-}
-void Game::DrawMap()
-{
-	for (auto model : map)
-	{
-		Transform transform;
-		transform.SetTranslation(0.0f, 0.0f, 0.0f);
-		transform.SetScale(1.0f, 1.0f, 1.0f);
-		transform.SetRotation(0, 0, 0);
-		model->SetTransform(transform);
-		model->Draw();
-	}
-}
-
-void Game::DrawEnemies()
-{
-	for (auto enemi : enemies)
-	{
-		enemi->Draw();
-	}
 }
 
 void Game::Update(unsigned int delta)
 {
-	floor->Update(delta);
-	for (auto enemi : enemies)
-	{
-		enemi->Update(delta);
-	}
-
 	cube->Update(delta);
-	sphere->Update(delta);
 	physics->Update(delta);
 }
 
