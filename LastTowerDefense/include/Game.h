@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Cube.h"
+#include "Cylinder.h"
 #include "Sphere.h"
 #include "Floor.h"
 #include "Level.h"
@@ -41,6 +42,7 @@ private:
 	std::vector<Enemy*> enemies;
 	Floor* floor;
 	Cube* cube;
+	Cylinder* cylinder;
 	Sphere* sphere;
 
 	DirectionalLight directionalLight;
