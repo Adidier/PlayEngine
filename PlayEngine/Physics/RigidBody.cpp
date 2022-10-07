@@ -12,7 +12,7 @@ RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const glm::vec3& b
 	rigidBody->setUserPointer(obj);
 }
 
-RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float radio, GameObject* obj)
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float& radio, GameObject* obj)
 {
 	btSphereShape* colShape = new btSphereShape(radio);//TODO arreglar tamanio de la caja de colision
 	btTransform startTransform;
@@ -21,8 +21,19 @@ RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float radio,
 	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
 	rigidBody->setRollingFriction(0);
 	rigidBody->setUserPointer(this);
+	rigidBody->setUserPointer(obj);
 }
-
+RigidBody::RigidBody(const float& mass, const glm::vec3& pos, const float& upRadio, const float& downRadio, const float& height, GameObject* obj)
+{
+	btCylinderShapeX* colShape = new btCylinderShapeX(btVector3(upRadio, height, downRadio));
+	btTransform startTransform;
+	startTransform.setIdentity();
+	startTransform.setOrigin(btVector3(pos.x, pos.y, pos.z));
+	rigidBody = Physics::GetPtr()->createRigidBody(mass, startTransform, colShape);
+	rigidBody->setRollingFriction(0);
+	rigidBody->setUserPointer(this);
+	rigidBody->setUserPointer(obj);
+}
 glm::vec3 RigidBody::GetObjectPosition()
 {
 	auto pos = rigidBody->getWorldTransform().getOrigin();
