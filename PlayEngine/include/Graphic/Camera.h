@@ -38,7 +38,5 @@ private:
 	float firstMove;
 
 	void update();
-
-	AudioPlayer* audioPlayer;
 };
 

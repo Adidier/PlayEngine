@@ -17,19 +17,12 @@ Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLf
 	moveSpeed = startMoveSpeed;
 	turnSpeed = startTurnSpeed;
 
-	audioPlayer = (AudioPlayer*)ResourceManager::GetPtr()->GetElement("laser_shot");
-
 	update();
 }
 
 void Camera::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 {
 	GLfloat velocity = moveSpeed * deltaTime;
-
-	if (keys[GLFW_KEY_J])
-	{
-		audioPlayer->PlaySoundEfect();
-	}
 
 	if (keys[GLFW_KEY_W])
 	{
@@ -84,7 +77,6 @@ void Camera::mouseControl(GLfloat xChange, GLfloat yChange)
 	xoffset *= turnSpeed;
 	yoffset *= turnSpeed;
 
-
 	yaw += xoffset;
 	pitch += yoffset;
 	update();
@@ -101,6 +93,7 @@ void Camera::update()
 	front.x = cos(glm::radians(-yaw));
 	front.y = sin(glm::radians(-pitch));
 	front.z = sin(glm::radians(-yaw));
+	std::cout <<"yaw "<< - yaw <<"pitch  "<< -pitch;
 	front = glm::normalize(front);
 	
 	right = glm::normalize(glm::cross(front, worldUp));

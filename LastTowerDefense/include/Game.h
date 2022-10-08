@@ -22,6 +22,7 @@
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
 #include <vector>
+#include <list>
 
 class Game : public GameState
 {
@@ -31,17 +32,18 @@ private:
 	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;
 	Skybox *skybox;
-	Player *player;
-	std::vector<Graphic::Model*> map;
 	Physics *physics;
-
-	std::vector<Enemy*> enemies;
-	Cube* cube;
+	
+	Player* player;
+	std::list<Cube*> boxes;
+	Floor* floor;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
 	PointLight point2;
 	PointLight point3;
+
+	float sec = 0;
 public:
 	Game();
 	~Game();

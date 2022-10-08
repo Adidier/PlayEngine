@@ -19,17 +19,14 @@ Game::Game() : directionalLight(glm::vec3(20, 10, 0), glm::vec3(0, 1, 0),
 
 Game::~Game()
 {
+	delete floor;
+	delete player;
 }
 
 void Game::InitResources()
 {
 	auto resourceManager = ResourceManager::GetPtr();
 	resourceManager->Add(ResourceType::Model3d, "floor");
-	resourceManager->Add(ResourceType::Model3d, "floor2");
-	resourceManager->Add(ResourceType::Model3d, "floor3");
-	resourceManager->Add(ResourceType::Model3d, "container");
-	resourceManager->Add(ResourceType::Model3d, "pina_pose");
-	resourceManager->Add(ResourceType::Model3d, "wall");
 	resourceManager->Add(ResourceType::Model3d, "cube");
 	resourceManager->Add(ResourceType::Model3d, "sphere");
 
@@ -40,12 +37,6 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Texture, "ContainerAlbedo");
 	resourceManager->Add(ResourceType::Texture, "bricknormal");
 
-	resourceManager->Add(ResourceType::Music, "funnysong");
-	resourceManager->Add(ResourceType::Sound, "laser_shot");
-
-	resourceManager->Add(ResourceType::ImageUI, "montanas");
-	resourceManager->Add(ResourceType::ImageUI, "montanas2");
-	resourceManager->Add(ResourceType::ImageUI, "montanas3");	
 	resourceManager->Wait();	
 }
 
@@ -53,14 +44,17 @@ void Game::Init()
 {
 	physics = Physics::GetPtr();
 	physics->InitPhysics();
-	std::cout << " Menu Init" << std::endl;
+	std::cout << " Game Init" << std::endl;
 	this->platform = Platform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
 	resourceManager = ResourceManager::GetPtr();
 
 	resourceManager->Load();
+
 	player = new Player();
-	cube = new Cube();
+	floor = new Floor();
+	boxes.push_back(new Cube());
+	boxes.push_back(new Cube(0));
 
 	LoadShaders();
 	
@@ -74,11 +68,6 @@ void Game::Init()
 	skybox = new Skybox(skyboxFaces);		
 	shaderManager = ShaderManager::GetPtr();
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
-
-	std::vector<std::string> pathsEnemies = {
-		"Enemy1",
-		"Enemy2"
-	};
 }
 
 void Game::LoadShaders()
@@ -93,13 +82,23 @@ void Game::Draw()
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
-	cube->Draw();
+	for (const auto box : boxes)
+	{
+		box->Draw();
+	}
+	floor->Draw();
 }
 
 void Game::Update(unsigned int delta)
 {
-	cube->Update(delta);
+	floor->Update(delta);
+	for (const auto box : boxes)
+	{
+		box->Update(delta);
+	}	
 	physics->Update(delta);
+	sec += delta;
+	std::cout << "sec " << sec << std::endl;
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
@@ -114,7 +113,12 @@ bool Game::MouseInput(int x, int y, bool leftbutton)
 
 bool Game::Input(std::map<int, bool> keys)
 {
-	player->GetCamera()->keyControl(keys, platform->GetDeltaTime());
+	if (keys[GLFW_KEY_S])
+	{
+		auto top = boxes.back();
+		top->InitRigidBody(1);
+		boxes.push_back(new Cube(0));
+	}
 	return false;
 }
 

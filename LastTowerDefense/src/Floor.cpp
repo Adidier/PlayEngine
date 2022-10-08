@@ -7,10 +7,8 @@ Floor::Floor()
 {	
 	model = dynamic_cast<Graphic::Model*>(ResourceManager::GetPtr()->GetElement("floor"));
 	model->AddTexture("brick2");
-	model->AddTexture("bricknormal");
 	glm::vec3 cornerModel = model->GetCorner();
-
-	btBoxShape* colShape = new btBoxShape(btVector3(650, 0, 650));
+	btBoxShape* colShape = new btBoxShape(btVector3(1000, 0, 1000));
 	btTransform startTransform;
 	startTransform.setIdentity();
 	startTransform.setOrigin(btVector3(
@@ -21,6 +19,9 @@ Floor::Floor()
 	rot.setEuler(0, 0, 0);
 	startTransform.setRotation(rot);
 	rigidBody = Physics::GetPtr()->createRigidBody(0.0f, startTransform, colShape);	
+	transform.SetTranslation(0, 0, 0);
+	transform.SetRotation(0, 0, 0);
+	transform.SetScale(1, .1, 1);
 }
 
 void Floor::Draw()
@@ -31,14 +32,8 @@ void Floor::Draw()
 
 void Floor::Update(unsigned int delta)
 {
-	btVector3 pos = rigidBody->getWorldTransform().getOrigin();
-	btQuaternion rot = rigidBody->getWorldTransform().getRotation();
-	transform.SetTranslation(pos.getX(), pos.getY(), pos.getZ());
-	glm::vec3 _rotation;
-	rot.getEulerZYX(_rotation.z, _rotation.y, _rotation.x);
-	transform.SetRotation(_rotation.x, _rotation.y, _rotation.z);
-	transform.SetScale(.1, .1, .1);
 }
+
 void Floor::OnTriggerEnter(void* ptr)
 {
 
