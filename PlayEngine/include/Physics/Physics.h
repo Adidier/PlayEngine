@@ -32,6 +32,7 @@ public:
 	void Update(unsigned int delta);
 	bool RaycastScreen(int mouseX, int mouseY, glm::vec3 cameraPosition);
 	glm::vec3 CreateRay(int mouseScreenX, int mouseScreenY);
+	void RemoveRigidBody(btRigidBody* rid);
 private:
 	Physics() {};
 };

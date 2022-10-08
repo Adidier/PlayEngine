@@ -1,10 +1,12 @@
 #include "Cube.h"
 #include "Base/ResourceManager.h"
 
-Cube::Cube(float mass) : rigidbody(nullptr), dir(1)
+Cube::Cube(long long _id,float mass) : rigidbody(nullptr)
 {
-	id = 101;
+	id = _id;
+	dir = rand() % 10 > 5 ? 1 : -1;
 	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("cube");
+	model->AddTexture("brick2");
 	transform.SetTranslation(0.0f, 100.0f, 0.0f);
 	transform.SetScale(8.0f, 4.0f, 3.0f);
 	InitRigidBody(mass);
@@ -38,7 +40,7 @@ void Cube::Update(unsigned int delta)
 	}
 	else {
 		auto position = transform.GetTranslation();
-		position += glm::vec3(0.1, 0, 0) * dir;
+		position += glm::vec3(0.1, 0, 0) * dir ;
 		if ( position.x >70 || position.x < -70) {
 			dir *= -1;
 		}

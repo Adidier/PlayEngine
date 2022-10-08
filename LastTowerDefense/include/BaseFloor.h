@@ -1,21 +1,20 @@
 #pragma once
-
 #include "Base/GameObject.h"
+#include "Player.h"
 #include "Graphic/Model.h"
-#include "Physics/RigidBody.h"
+#include "btBulletDynamicsCommon.h"
+#include "Bullet3Common\b3Transform.h"
 
-class Cube : public GameObject
+class BaseFloor : public GameObject
 {
 private:
-	Transform transform;
 	Graphic::Model* model;
-	float dir;
+	Transform transform;
+	btRigidBody* rigidBody;
 public:
-	RigidBody* rigidbody;
-	Cube(long long _id ,float mass = 1);
-	virtual ~Cube();
+	BaseFloor();
 	void Draw() override;
 	void Update(unsigned int delta) override;
 	void OnTriggerEnter(void *ptr) override;
-	void InitRigidBody(float mass);
 };
+

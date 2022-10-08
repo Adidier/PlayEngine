@@ -12,6 +12,7 @@
 #include "Cube.h"
 #include "Sphere.h"
 #include "Floor.h"
+#include "BaseFloor.h"
 #include "Level.h"
 #include "Wall.h"
 #include "Physics/Physics.h"
@@ -37,13 +38,16 @@ private:
 	Player* player;
 	std::list<Cube*> boxes;
 	Floor* floor;
+	BaseFloor* baseFloor;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
 	PointLight point2;
 	PointLight point3;
-
-	float sec = 0;
+	const int timeToSpawn = 1500;
+	float timerNextCube = timeToSpawn;
+	long long timestamp = 0;
+	bool spawnCube = false;
 public:
 	Game();
 	~Game();

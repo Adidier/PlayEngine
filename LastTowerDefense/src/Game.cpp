@@ -21,6 +21,7 @@ Game::~Game()
 {
 	delete floor;
 	delete player;
+	delete baseFloor;
 }
 
 void Game::InitResources()
@@ -52,9 +53,10 @@ void Game::Init()
 	resourceManager->Load();
 
 	player = new Player();
-	floor = new Floor();
-	boxes.push_back(new Cube());
+	floor = new Floor(&boxes);
+	baseFloor = new BaseFloor();
 	boxes.push_back(new Cube(0));
+	boxes.push_back(new Cube(1,0));
 
 	LoadShaders();
 	
@@ -87,6 +89,7 @@ void Game::Draw()
 		box->Draw();
 	}
 	floor->Draw();
+	baseFloor->Draw();
 }
 
 void Game::Update(unsigned int delta)
@@ -96,9 +99,22 @@ void Game::Update(unsigned int delta)
 	{
 		box->Update(delta);
 	}	
+	
 	physics->Update(delta);
-	sec += delta;
-	std::cout << "sec " << sec << std::endl;
+	
+	if (spawnCube) 
+	{
+		timerNextCube -= delta;
+	}
+
+	timestamp += delta;
+
+	if (timerNextCube < 0) {
+		boxes.push_back(new Cube(timestamp, 0));
+		timerNextCube = timeToSpawn;
+		spawnCube = false;
+	}	
+	std::cout << "timerNextCube " << timerNextCube << std::endl;
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
@@ -117,7 +133,7 @@ bool Game::Input(std::map<int, bool> keys)
 	{
 		auto top = boxes.back();
 		top->InitRigidBody(1);
-		boxes.push_back(new Cube(0));
+		spawnCube = true;
 	}
 	return false;
 }
