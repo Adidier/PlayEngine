@@ -78,6 +78,12 @@ void Physics::Update(unsigned int delta)
 	}
 }
 
+void Physics::RemoveRigidBody(btRigidBody* rid) {
+	if (rid) {
+		m_dynamicsWorld->removeRigidBody(rid);
+	}	
+}
+
 btRigidBody* Physics::createRigidBody(float mass, const btTransform& startTransform, btCollisionShape* shape, const btVector4& color)
 {
 	btAssert((!shape || shape->getShapeType() != INVALID_SHAPE_PROXYTYPE));
@@ -99,6 +105,7 @@ btRigidBody* Physics::createRigidBody(float mass, const btTransform& startTransf
 
 	body->setUserIndex(-1);
 	m_dynamicsWorld->addRigidBody(body);
+	
 	return body;
 }
 
@@ -121,7 +128,7 @@ bool Physics::callbackFunc(btManifoldPoint& cp, void* body0, void* body1)
 	if (obj0 && obj1)
 	{
 		obj0->OnTriggerEnter(ptr1);
-		obj1->OnTriggerEnter(ptr0);
+		//obj1->OnTriggerEnter(ptr0);
 	}
 	return false;
 }

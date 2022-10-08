@@ -19,17 +19,15 @@ Game::Game() : directionalLight(glm::vec3(20, 10, 0), glm::vec3(0, 1, 0),
 
 Game::~Game()
 {
+	delete floor;
+	delete player;
+	delete baseFloor;
 }
 
 void Game::InitResources()
 {
 	auto resourceManager = ResourceManager::GetPtr();
 	resourceManager->Add(ResourceType::Model3d, "floor");
-	resourceManager->Add(ResourceType::Model3d, "floor2");
-	resourceManager->Add(ResourceType::Model3d, "floor3");
-	resourceManager->Add(ResourceType::Model3d, "container");
-	resourceManager->Add(ResourceType::Model3d, "pina_pose");
-	resourceManager->Add(ResourceType::Model3d, "wall");
 	resourceManager->Add(ResourceType::Model3d, "cube");
 	resourceManager->Add(ResourceType::Model3d, "sphere");
 
@@ -40,31 +38,25 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Texture, "ContainerAlbedo");
 	resourceManager->Add(ResourceType::Texture, "bricknormal");
 
-	resourceManager->Add(ResourceType::Music, "funnysong");
-	resourceManager->Add(ResourceType::Sound, "laser_shot");
-
-	resourceManager->Add(ResourceType::ImageUI, "montanas");
-	resourceManager->Add(ResourceType::ImageUI, "montanas2");
-	resourceManager->Add(ResourceType::ImageUI, "montanas3");
-	
-	resourceManager->Wait();
-	
+	resourceManager->Wait();	
 }
 
 void Game::Init()
 {
 	physics = Physics::GetPtr();
 	physics->InitPhysics();
-	std::cout << " Menu Init" << std::endl;
+	std::cout << " Game Init" << std::endl;
 	this->platform = Platform::GetPtr();
 	this->manager = GameStateManager::GetPtr();
 	resourceManager = ResourceManager::GetPtr();
 
 	resourceManager->Load();
+
 	player = new Player();
-	floor = new Floor();
-	cube = new Cube();
-	sphere = new Sphere();
+	floor = new Floor(&boxes);
+	baseFloor = new BaseFloor();
+	boxes.push_back(new Cube(0));
+	boxes.push_back(new Cube(1,0));
 
 	LoadShaders();
 	
@@ -77,22 +69,7 @@ void Game::Init()
 	skyboxFaces.push_back("../../Resources/Assets/Textures/Skybox/cupertin-lake_ft.tga");
 	skybox = new Skybox(skyboxFaces);		
 	shaderManager = ShaderManager::GetPtr();
-	weaponUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas2"), player->GetCamera(), shaderManager);
-	playerUI = new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas"), player->GetCamera(), shaderManager);
 	new Graphic::GUI((Graphic::IGUILayer*)resourceManager->GetElement("montanas3"), player->GetCamera(), shaderManager);
-
-	std::vector<std::string> pathsEnemies = {
-		"Enemy1",
-		"Enemy2"
-	};
-
-	LoadMusic();
-}
-
-void Game::LoadMusic()
-{
-	auto asset = (MusicPlayer*)ResourceManager::GetPtr()->GetElement("funnysong");
-	//asset->PlayMusic();
 }
 
 void Game::LoadShaders()
@@ -105,46 +82,39 @@ void Game::LoadShaders()
 void Game::Draw()
 {
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
-
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
-	DrawEnemies();
+	for (const auto box : boxes)
+	{
+		box->Draw();
+	}
 	floor->Draw();
-	cube->Draw();
-	sphere->Draw();
-}
-void Game::DrawMap()
-{
-	for (auto model : map)
-	{
-		Transform transform;
-		transform.SetTranslation(0.0f, 0.0f, 0.0f);
-		transform.SetScale(1.0f, 1.0f, 1.0f);
-		transform.SetRotation(0, 0, 0);
-		model->SetTransform(transform);
-		model->Draw();
-	}
-}
-
-void Game::DrawEnemies()
-{
-	for (auto enemi : enemies)
-	{
-		enemi->Draw();
-	}
+	baseFloor->Draw();
 }
 
 void Game::Update(unsigned int delta)
 {
 	floor->Update(delta);
-	for (auto enemi : enemies)
+	for (const auto box : boxes)
 	{
-		enemi->Update(delta);
+		box->Update(delta);
+	}	
+	
+	physics->Update(delta);
+	
+	if (spawnCube) 
+	{
+		timerNextCube -= delta;
 	}
 
-	cube->Update(delta);
-	sphere->Update(delta);
-	physics->Update(delta);
+	timestamp += delta;
+
+	if (timerNextCube < 0) {
+		boxes.push_back(new Cube(timestamp, 0));
+		timerNextCube = timeToSpawn;
+		spawnCube = false;
+	}	
+	std::cout << "timerNextCube " << timerNextCube << std::endl;
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)
@@ -159,7 +129,12 @@ bool Game::MouseInput(int x, int y, bool leftbutton)
 
 bool Game::Input(std::map<int, bool> keys)
 {
-	player->GetCamera()->keyControl(keys, platform->GetDeltaTime());
+	if (keys[GLFW_KEY_S])
+	{
+		auto top = boxes.back();
+		top->InitRigidBody(1);
+		spawnCube = true;
+	}
 	return false;
 }
 
