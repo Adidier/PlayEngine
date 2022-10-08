@@ -1,18 +1,29 @@
 #include "Cube.h"
 #include "Base/ResourceManager.h"
 
-Cube::Cube()
+Cube::Cube(long long _id,float mass) : rigidbody(nullptr)
 {
-	id = 101;
+	id = _id;
+	dir = rand() % 10 > 5 ? 1 : -1;
 	model = (Graphic::Model*)ResourceManager::GetPtr()->GetElement("cube");
-	transform.SetTranslation(0.0f, 200.0f, 0.0f);
-	transform.SetScale(2.0f, 2.0f, 2.0f);
-	rigidbody = new RigidBody(0.6, transform.GetTranslation(), transform.GetScale(),this);
+	model->AddTexture("brick2");
+	transform.SetTranslation(0.0f, 100.0f, 0.0f);
+	transform.SetScale(8.0f, 4.0f, 3.0f);
+	InitRigidBody(mass);
+}
+
+void Cube::InitRigidBody(float mass) 
+{
+	if (mass > 0 && !rigidbody)
+	{
+		rigidbody = new RigidBody(mass, transform.GetTranslation(), transform.GetScale(), this);
+	}
 }
 
 Cube::~Cube()
 {
-	//TODO 
+	delete rigidbody;
+	delete model;
 }
 
 void Cube::Draw()
@@ -23,8 +34,18 @@ void Cube::Draw()
 
 void Cube::Update(unsigned int delta)
 {
-	transform.SetTranslation(rigidbody->GetObjectPosition());
-	transform.SetRotation(rigidbody->GetObjectRotation());
+	if (rigidbody) {
+		transform.SetTranslation(rigidbody->GetObjectPosition());
+		transform.SetRotation(rigidbody->GetObjectRotation());
+	}
+	else {
+		auto position = transform.GetTranslation();
+		position += glm::vec3(0.1, 0, 0) * dir ;
+		if ( position.x >70 || position.x < -70) {
+			dir *= -1;
+		}
+		transform.SetTranslation(position);
+	}
 }
 
 void Cube::OnTriggerEnter(void *ptr)

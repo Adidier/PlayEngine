@@ -13,6 +13,7 @@
 #include "Cylinder.h"
 #include "Sphere.h"
 #include "Floor.h"
+#include "BaseFloor.h"
 #include "Level.h"
 #include "Wall.h"
 #include "Physics/Physics.h"
@@ -23,6 +24,7 @@
 #include "Audio/AudioPlayer.h"
 #include "Audio/MusicPlayer.h"
 #include <vector>
+#include <list>
 
 class Game : public GameState
 {
@@ -32,36 +34,32 @@ private:
 	ResourceManager* resourceManager;
 	ShaderManager* shaderManager;
 	Skybox *skybox;
-	Player *player;
-	std::vector<Graphic::Model*> map;
 	Physics *physics;
-
-	Graphic::GUI* weaponUI;
-	Graphic::GUI* playerUI;
-
-	std::vector<Enemy*> enemies;
+	
+	Player* player;
+	std::list<Cube*> boxes;
 	Floor* floor;
-	Cube* cube;
-	Sphere* sphere;
 	Cylinder* cylinder;
+	BaseFloor* baseFloor;
 
 	DirectionalLight directionalLight;
 	PointLight point1;
 	PointLight point2;
 	PointLight point3;
+	const int timeToSpawn = 1500;
+	float timerNextCube = timeToSpawn;
+	long long timestamp = 0;
+	bool spawnCube = false;
 public:
 	Game();
 	~Game();
 	void Init() override;
 	void Draw() override;
-	void DrawMap();
-	void DrawEnemies();
 	bool Input(std::map<int, bool> keys) override;
 	bool MouseInput(int x, int y, bool leftbutton);
 	void Update(unsigned int delta) override;
 	void Close() override;
 	void LoadShaders();
 	void LoadModels(const std::map<std::string, std::string>& models);
-	void LoadMusic();
 	static void InitResources();
 };
