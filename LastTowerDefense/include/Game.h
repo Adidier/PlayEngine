@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Cube.h"
+#include "Cylinder.h"
 #include "Sphere.h"
 #include "Floor.h"
 #include "BaseFloor.h"
@@ -38,6 +39,7 @@ private:
 	Player* player;
 	std::list<Cube*> boxes;
 	Floor* floor;
+	Cylinder* cylinder;
 	BaseFloor* baseFloor;
 
 	DirectionalLight directionalLight;

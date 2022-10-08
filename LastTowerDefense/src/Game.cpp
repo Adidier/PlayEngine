@@ -30,6 +30,7 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Model3d, "floor");
 	resourceManager->Add(ResourceType::Model3d, "cube");
 	resourceManager->Add(ResourceType::Model3d, "sphere");
+	resourceManager->Add(ResourceType::Model3d, "cylinder");
 
 	resourceManager->Add(ResourceType::Texture, "pina_normal");
 	resourceManager->Add(ResourceType::Texture, "pina");
@@ -84,6 +85,7 @@ void Game::Draw()
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
+
 	for (const auto box : boxes)
 	{
 		box->Draw();
