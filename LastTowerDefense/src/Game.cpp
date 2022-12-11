@@ -85,7 +85,6 @@ void Game::Draw()
 	skybox->Draw(shaderManager->GetViewMatrix(), shaderManager->GetProjectionMatrix());
 	shaderManager->Activate("phong-shader");
 	shaderManager->draw();
-
 	for (const auto box : boxes)
 	{
 		box->Draw();

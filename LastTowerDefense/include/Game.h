@@ -39,7 +39,6 @@ private:
 	Player* player;
 	std::list<Cube*> boxes;
 	Floor* floor;
-	Cylinder* cylinder;
 	BaseFloor* baseFloor;
 
 	DirectionalLight directionalLight;
