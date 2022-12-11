@@ -30,6 +30,7 @@ void Game::InitResources()
 	resourceManager->Add(ResourceType::Model3d, "floor");
 	resourceManager->Add(ResourceType::Model3d, "cube");
 	resourceManager->Add(ResourceType::Model3d, "sphere");
+	resourceManager->Add(ResourceType::Model3d, "cylinder");
 
 	resourceManager->Add(ResourceType::Texture, "pina_normal");
 	resourceManager->Add(ResourceType::Texture, "pina");
