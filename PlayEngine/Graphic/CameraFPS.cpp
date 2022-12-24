@@ -1,26 +1,7 @@
 #include "Graphic/CameraFPS.h"
 #include "Base/ResourceManager.h"
-CameraFPS::CameraFPS() 
-{
-}
 
-CameraFPS::CameraFPS(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLfloat startPitch, GLfloat startMoveSpeed, GLfloat startTurnSpeed)
-{
-	firstMove = true;
-	nextPosition = position = startPosition;
-	worldUp = startUp;
-	yaw = startYaw;
-	pitch = startPitch;
-	
-	front = glm::vec3(0.0f, 0.0f, 1.0f);
-
-	moveSpeed = startMoveSpeed;
-	turnSpeed = startTurnSpeed;
-
-	update();
-}
-
-void CameraFPS::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
+void CameraFps::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 {
 	GLfloat velocity = moveSpeed * deltaTime;
 
@@ -50,17 +31,7 @@ void CameraFPS::keyControl(std::map<int, bool> keys, GLfloat deltaTime)
 	}
 }
 
-glm::vec3 CameraFPS::getCameraPosition()
-{
-	return nextPosition;
-}
-
-glm::vec3 CameraFPS::getFront()
-{
-	return front;
-}
-
-void CameraFPS::mouseControl(GLfloat xChange, GLfloat yChange)
+void CameraFps::mouseControl(GLfloat xChange, GLfloat yChange)
 {
 	if (firstMove) {
 		prevXPos = xChange;
@@ -80,26 +51,4 @@ void CameraFPS::mouseControl(GLfloat xChange, GLfloat yChange)
 	yaw += xoffset;
 	pitch += yoffset;
 	update();
-}
-
-glm::mat4 CameraFPS::calculateViewMatrix()
-{
-	position = nextPosition;
-	return glm::lookAt(position, position + front, up);
-}
-
-void CameraFPS::update()
-{
-	front.x = cos(glm::radians(-yaw));
-	front.y = sin(glm::radians(-pitch));
-	front.z = sin(glm::radians(-yaw));
-	front = glm::normalize(front);
-	
-	right = glm::normalize(glm::cross(front, worldUp));
-	up = glm::normalize(glm::cross(right, front));
-}
-
-CameraFPS::~CameraFPS()
-{
-}
-	
+}	

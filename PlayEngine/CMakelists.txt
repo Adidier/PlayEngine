@@ -18,20 +18,33 @@ include_directories("../ExternalLibs/Assimp/include"
 set(CMAKE_BINARY_DIR "../")
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR})
 
-file(GLOB PlayEngineSrc
-                              "Audio/*.cpp"
+file(GLOB_RECURSE SRC_BASE
                               "Base/*.cpp"
-                              "Physics/*.cpp"
-                              "Graphic/*.cpp"
-                              "Graphic/Lights/*.cpp"
-                              "include/Audio/*.h"
                               "include/Base/*.h"
-                              "include/Physics/*.h"
-                              "include/Graphic/*.h"
-                              "include/Graphic/Lights/*.h"
 )
 
-add_library(PlayEngine SHARED ${PlayEngineSrc})
+file(GLOB_RECURSE SRC_AUDIO
+                              "Audio/*.cpp"
+                              "include/Audio/*.h"
+)
+
+file(GLOB_RECURSE SRC_PHYSICS
+                              "Physics/*.cpp"
+                              "include/Physics/*.h"
+)
+
+file(GLOB_RECURSE SRC_GRAPHICS
+                              "Graphic/*.cpp"
+                              "Graphic/Lights/*.cpp"
+                              "include/Graphic/*.h"
+                              "include/Graphic/Lights/*.h")
+
+source_group("Audio" FILES ${SRC_AUDIO})
+source_group("Base" FILES ${SRC_BASE})
+source_group("Physics" FILES ${SRC_PHYSICS})
+source_group("Graphics" FILES ${SRC_GRAPHICS})
+
+add_library(PlayEngine SHARED ${SRC_BASE} ${SRC_AUDIO} ${SRC_PHYSICS} ${SRC_GRAPHICS})
 
 target_link_libraries(PlayEngine "../../ExternalLibs/SDL2-2.0.12/lib/x86/SDL2"
                                  "../../ExternalLibs/SDL2_mixer-2.0.4/lib/x86/SDL2_mixer"

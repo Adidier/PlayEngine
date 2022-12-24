@@ -17,7 +17,7 @@ public:
 	void SetTransform(Transform transform);
 	Mesh* GetMesh();
 protected:
-	std::vector<Mesh*> meshList;
+	std::vector<Mesh*> meshList; //adidier
 	Transform transform;
 	std::vector<GLfloat> vertices;
 };

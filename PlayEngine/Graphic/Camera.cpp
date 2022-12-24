@@ -1,8 +1,5 @@
 #include "Graphic/Camera.h"
 #include "Base/ResourceManager.h"
-Camera::Camera() 
-{
-}
 
 Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLfloat startPitch, GLfloat startMoveSpeed, GLfloat startTurnSpeed)
 {
@@ -10,13 +7,10 @@ Camera::Camera(glm::vec3 startPosition, glm::vec3 startUp, GLfloat startYaw, GLf
 	nextPosition = position = startPosition;
 	worldUp = startUp;
 	yaw = startYaw;
-	pitch = startPitch;
-	
+	pitch = startPitch;	
 	front = glm::vec3(0.0f, 0.0f, 1.0f);
-
 	moveSpeed = startMoveSpeed;
 	turnSpeed = startTurnSpeed;
-
 	update();
 }
 
@@ -93,9 +87,7 @@ void Camera::update()
 	front.x = cos(glm::radians(-yaw));
 	front.y = sin(glm::radians(-pitch));
 	front.z = sin(glm::radians(-yaw));
-	std::cout <<"yaw "<< - yaw <<"pitch  "<< -pitch;
 	front = glm::normalize(front);
-	
 	right = glm::normalize(glm::cross(front, worldUp));
 	up = glm::normalize(glm::cross(right, front));
 }

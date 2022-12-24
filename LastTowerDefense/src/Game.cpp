@@ -115,7 +115,6 @@ void Game::Update(unsigned int delta)
 		timerNextCube = timeToSpawn;
 		spawnCube = false;
 	}	
-	std::cout << "timerNextCube " << timerNextCube << std::endl;
 }
 
 bool Game::MouseInput(int x, int y, bool leftbutton)

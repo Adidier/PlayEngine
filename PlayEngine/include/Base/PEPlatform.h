@@ -8,6 +8,7 @@
 #include<map>
 
 class GameState;
+
 class PLAYENGINE Platform
 {
 private:
@@ -18,9 +19,9 @@ private:
 	GLint bufferWidth, bufferHeight;
 	float deltaTime{ 0 };
 	float lastTime{ 0 };
-	ServiceConfiguration *serviceConfiguration;
+	ServiceConfiguration* serviceConfiguration;
 private:
-	void Init();
+	void InitWindow();
 	Platform(std::string name);
 	~Platform();
 	static Platform* ptr;

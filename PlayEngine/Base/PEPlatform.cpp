@@ -13,22 +13,16 @@ bool Platform::leftButtonMouse;
 
 Platform::Platform(std::string name)
 {
-	serviceConfiguration = ServiceConfiguration::getptr();
-	// Assets/Config/Config.lua: 
+	serviceConfiguration = ServiceConfiguration::Getptr();
 	auto resourceManager = ResourceManager::GetPtr();
 	serviceConfiguration->load(resourceManager->GetPath(ResourceType::Configuration, "Config"));
-
 	serviceConfiguration->getEntry("ScreenHeight", height);
 	serviceConfiguration->getEntry("ScreenWidth", width);
 	serviceConfiguration->getEntry("Name", this->name);
-	Init();
-
-	for (size_t i = 0; i < 1024; ++i) {
-		keys[i] = 0;
-	}
+	InitWindow();
 }
 
-void Platform::Init()
+void Platform::InitWindow()
 {
 	if (!glfwInit())
 	{
@@ -59,8 +53,6 @@ void Platform::Init()
 		glfwTerminate();
 		return;
 	}
-
-	// Get buffer size information
 	glfwGetFramebufferSize(mainWindow, &bufferWidth, &bufferHeight);
 
 	// Set the current context
@@ -79,8 +71,6 @@ void Platform::Init()
 	}
 
 	glEnable(GL_DEPTH_TEST);
-
-	// Create Viewport
 	glViewport(0, 0, bufferWidth, bufferHeight);
 }
 
@@ -92,10 +82,8 @@ Platform::~Platform()
 
 void Platform::RenderClear()
 {
-	// Clear the window
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 }
 
 void Platform::RenderPresent()
