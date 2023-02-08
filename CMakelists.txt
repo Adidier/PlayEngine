@@ -8,3 +8,5 @@ project(PlayEngine)
 add_subdirectory("PlayEngine")
 
 add_subdirectory("LastTowerDefense")
+
+add_subdirectory("Basic")
